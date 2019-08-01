@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Light Theme</title>
+  <link href="css/singlePageTemplate.css" rel="stylesheet" type="text/css">
+  <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+  <script>var __adobewebfontsappname__ = "dreamweaver"</script>
+<script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <blockquote>
+    <h1>회원가입</h1>
+  </blockquote>
+  <h1>
+    <!-- Main Container -->
+    <!-- Main Container Ends -->
+  </h1>
+  <form method="POST" action="{% url 'ms_signup' %}">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+      {{ field.label_tag }}<br>
+      {{ field }}
+      {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+      {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        </p>    
+        {% endfor %}
+        <label for="sex">SEX:</label>
+    <input type="radio" name="sex" required>Male<input type="radio" name="sex">Female
+    <br>
+    <br>
+
+    <label for="birth">Date of Birth</label>
+    <input type="date" name="birth" id="birth" placeholder="YYMMDD" required>
+    <br>
+    <br>
+
+    <label for="Phone_Number">Phone Number</label>
+      <select>
+        <option selected>010</option>
+        <option>011</option>
+        <option>019</option>
+      </select> - <input type="text" required> - <input type="text" required>
+    <br>
+    <br>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </form>
+</body>
+
+</html>
+
+{% comment %} <label for="textfield">Name:</label>
+    <input type="text" name="ms_username" id="ms_username">
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="ms_email" id="ms_email">
+    <br>
+    <br>
+
+    <label for="sex">SEX:</label>
+    <input type="radio" name="sex">Male<input type="radio" name="sex">Female
+    <br>
+    <br>
+
+    <label for="birth">Date of Birth</label>
+    <input type="date" name="birth" id="birth" placeholder="YYMMDD">
+    <br>
+    <br>
+
+    <label for="Phone_Number">Phone Number</label>
+      <select>
+        <option selected>010</option>
+        <option>011</option>
+        <option>019</option>
+      </select> - <input type="text"> - <input type="text">
+    <br>
+    <br>
+
+    <label for="ID">ID:</label>
+    <input type="text" name="ID" id="ID">
+
+    <label for="password2"><br>
+      <br>
+      Password:</label>
+    <input type="password" name="ms_password1" id="ms_password1">
+    <br>
+    <br>
+    <label for="password2">Password Verify:</label>
+    <input type="password" name="ms_password2" id="ms_password2">
+
+    <input type="submit" name="submit" id="submit" value="Submit"> {% endcomment %}

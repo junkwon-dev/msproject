@@ -1,0 +1,40 @@
+{% extends '' %} <!--여기다가 base template 주시면 됩니다!-->
+
+<html lang="ko">
+
+
+<head>
+<style>
+
+</style>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LIST</title>
+</head>
+
+<body>
+    {% block contents %}
+
+    <table border="1" bordercolor="blue" width ="500" height="300" align = "center">
+        <tr bgcolor="blue" align ="center">
+            <p><td colspan = "3" span style="color:white">전체 목록</td></p>
+        </tr>
+
+        {% for list in list.all %}
+        <tr align = "center" bgcolor="skybule">
+            <a href="{% url %}"><td>{{list.state}}</td></a> <!--매칭대기 / 녹음대기 / 매칭중 / 녹음중 / 완료-->
+            <a href="{% url %}"><td>{{list.name}}</td></a><!--허생전 박지원-->
+            <a href="{% url %}"><td>{{list.number}}</td></a><!--도서번호 A10210-->
+        </tr>    
+        {% endfor %}
+    </table>
+
+    {% endblock %}
+    <input class="button" name="나의 도서" href="{% url %}">
+    <input class="button" name="연결" href="{% url %}">
+    <input class="button" name="녹음 듣기" href="{% url %}">
+</body>
+</html>
