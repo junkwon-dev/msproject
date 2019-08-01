@@ -1,18 +1,10 @@
 <!-- ohjinjin, 프론트분들 수정 부탁드려용 우선 불편하실까봐 링크 쭉 걸어두겠습니다.-->
 index.html test page
 <br>
-
-<a href="{% url 'ms_signup'%}">시각장애인 회원가입? </a>
+<!-- ABOUT 넣을거에요!! 밑에 about 부분 만드신 후에 url about으로 수정해주세요 -->
+##<a href="{% url 'ms_index' %}">ABOUT</a>
 <br>
-<a href="{% url 'vr_signup'%}">자원봉사자 회원가입? </a>
+<a href="{% url 'vr_index' %}">자원봉사자 페이지</a>
 <br>
-{% if form.errors %}
-        {{error}}
-{% endif %} 
-{% if user.is_active %}
-    <h2>{{user.vr_email}}님 환영합니다.</h2>
-    <a href="{% url 'logout'%}">로그아웃</a>
-{% else %}
-    <a href="{% url 'vr_login'%}"> 로그인 </a>
-{% endif %}
-<br><!--ohjinjin, 구분지을 필요없을듯해서요 login.html로 파일명 수정하는거 어떠신가요 ㅎㅎ-->
+<a href="{% url 'ms_index' %}">시각장애인 페이지</a>
+<br>

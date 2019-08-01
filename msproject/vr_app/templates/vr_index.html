@@ -1,0 +1,20 @@
+<!--자원봉사자 페이지입니다. -->
+<!--설계도를 기반으로 마인드쉐어 소개 (ABOUT) 링크를 달았습니다-->
+<header>
+    <!--로그-->
+</header>
+<a href="{% url '' %}">ABOUT</a>
+
+<a href="{% url 'vr_signup'%}">자원봉사자 회원가입? </a>
+<br>
+<br>
+{% if form.errors %}
+{{error}}
+{% endif %}
+{% if user.is_active %}
+<h2>{{user.ms_email}}님 환영합니다.</h2>
+<a href="{% url 'logout'%}">로그아웃</a>
+{% else %}
+<a href="{% url 'vr_login'%}"> 로그인 </a>
+{% endif %}
+<br> 

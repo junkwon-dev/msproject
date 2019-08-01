@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vr_app.apps.VRappConfig',
+    'ms_app.apps.MSappConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 추가 chanho - 19_8_1_19:45
+MEDIA_URL = '/media/' # 추가 chanho - 19_8_1_19:45

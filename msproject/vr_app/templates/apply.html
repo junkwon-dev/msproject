@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APPLY</title>
 </head>
+<!--TOS-->
 <body>
     <style>
-        .boxed {border : 1px solid}
+        .TOS_boxed {border : 1px solid}
         .boxing{border :1px solid; margin-bottom:10px;}
         .cal{position:relative; left:400px; bottom:170px;}
 
@@ -16,13 +17,13 @@
         
     </header>
     <h3>NOTICE</h3>
-    <div class = "boxed">
+    <div class = "TOS_boxed">
        1. etc etc etc
        2. 블라블라블라
        3. 개인정보 사용 약관
        4. 더 추가 내용
     </div>
-<p>더 필요하신 내용은 QNA 페이지를 방문해주세요.</p>
+    <p>더 필요하신 내용은 QNA 페이지를 방문해주세요.</p>
 
 
     <div>
@@ -49,14 +50,12 @@
             <form id="calender" action="action.jsp">
                 <div><input type="date" id="userdate" name="userdate"></div>
             </form>
-        </div>
-
-        </div>
         
-        <div class = "boxing">
-            <h4>책선택</h4>
+        </div>
+        <div>
+            <a href="{% url 'list'%}"><button>다음</button></a>
+        </div>
 
-            리스트로이동???
-        </div>  
+        
     </div>
 </body>
