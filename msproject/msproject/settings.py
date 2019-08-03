@@ -121,5 +121,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR,'ms_app','static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 추가 chanho - 19_8_1_19:45
 MEDIA_URL = '/media/' # 추가 chanho - 19_8_1_19:45

@@ -1,37 +1,66 @@
 <!--시각장애인 페이지입니다. -->
 <!--설계도를 기반으로 마인드쉐어 소개 (ABOUT) 링크를 달았습니다-->
+<!--class
+    ms_md = ms_main_div 
+-->
+{% load staticfiles %}
+
+<style>
+        .ms_md{
+            width:80%; height:150px; text-align:center; position:relative; left:8%; background-color:#f1f3f5;
+                border :1px solid; vertical-align:middle; font-size:50px; line-height:150px;
+        }
+</style>
+
 <header>
-    <!--로고-->
+    <div class="ms_logo"> 
+        <img src="{% static 'ms_logo.png' %}" alt="ms_logo">
+    </div>
 </header>
-<div>
-    <a href="{% url 'ms_index' %}">ABOUT</a>
-</div>
 
-<div>
-    <a href="{% url 'ms_signup'%}">시각장애인 회원가입? </a>
+<div class="ms_md">
+    <a href="{% url 'about' %}">ABOUT</a>
 </div>
-
-<br>
-<br>
+<br><BR>
+<div class="ms_md">
+    <a href="{% url 'ms_signup'%}"> 회원가입 </a>
+</div>
+<Br><BR>
+<div class="ms_md">
 {% if form.errors %}
         {{error}}
 {% endif %} 
 {% if user.is_active %}
-    <h2>{{user.ms_email}}님 환영합니다.</h2>
+    <h2>{{user.username}}님 환영합니다.</h2>
     <a href="{% url 'logout'%}">로그아웃</a>
 {% else %}
     <a href="{% url 'ms_login'%}"> 로그인 </a>
 {% endif %}
+</div>
+<br><br>
+
+<!--개인정보페이지로 연결해야합니다-->
+
+<!--
+<div class="ms_md">
+    <a href=""> 개인정보설정 </a>
+</div>
+
+-->
+
+<div class="ms_md">
+    <a href="{% url 'ms_library'%}"> 음성도서관 </a>
+</div>
 <br>
-
-<div>
-    <a href="{% url ''%}"> 개인정보설정 </a>
+<br>
+<div class="ms_md">
+    <a href="{% url 'wish_books'%}"> 희망도서 신청페이지</a>
 </div>
-
-<div>
-    <a href="{% url '''%}"> 희망도서 신청 녹음 OR 매칭 </a>
+<br>
+<br>
+<div class="ms_md">
+    <a href="{% url 'lists'%}"> 희망도서 신청된 목록&검색 </a> 
 </div>
-
-<div>
-    <a href="{% url 'ms_signup'%}"> 등록된 도서 리스트 </a>
-</div>
+{% if user.is_active %}
+{% endif %}
+<a href="{% url 'index' %}">index페이지로 가기(임시))</a> <!--임시로 만들어 둔거라 언제든 없애셔도 됩니다!(손현준)-->

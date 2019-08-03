@@ -22,7 +22,7 @@
     <!-- 내용들-->
     </div>
 </div>
-
+    <a href="{% url 'qna'%}">질문하기</a>
 <div class="helping">
     <h2>자주 물어보는 질문</h2>
     <div class="question">
@@ -46,6 +46,11 @@
     <h2>요청받은 질문들</h2>
     <div class="ques_list">
     <!-- 내용들-->
+    {% for ques in question.all %}
+        <a href="{% url 'question_info' ques.id %}">Q. {{ques.question_title}}</a><br>
+        </p>
+        <hr>
+    {% endfor%}
     </div>
 </div>
 </body>

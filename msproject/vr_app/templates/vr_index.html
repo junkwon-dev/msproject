@@ -1,20 +1,54 @@
 <!--자원봉사자 페이지입니다. -->
 <!--설계도를 기반으로 마인드쉐어 소개 (ABOUT) 링크를 달았습니다-->
-<header>
-    <!--로그-->
+<!--class이름이 다 한국어라서 영어로 수정부탁드립니다.
+    vr_etc = vr_기타
+    vr_introduce = vr_소개
+    vr_title = 대문
+    
+-->
+<style>
+   
+</style>
+{% load staticfiles %}
+<header class="vr_header">
+    <div class="vr_signup">
+        <a href="{% url 'vr_signup'%}"> 회원가입 </a>
+    </div>    
+    <div class="vr_login">
+        {% if form.errors %}
+        {{error}}
+        {% endif %}  
+        {% if user.is_active %}
+        <h2>{{user.username}}님 환영합니다.</h2>
+        <a href="{% url 'logout'%}">로그아웃</a>
+        {% else %}
+        <a href="{% url 'vr_login'%}"> 로그인 </a>
+        {% endif %}
+    </div>
+    <div class="vr_about">
+        <a href="{% url 'about' %}">ABOUT</a>
+    </div>
 </header>
-<a href="{% url '' %}">ABOUT</a>
 
-<a href="{% url 'vr_signup'%}">자원봉사자 회원가입? </a>
-<br>
-<br>
-{% if form.errors %}
-{{error}}
-{% endif %}
-{% if user.is_active %}
-<h2>{{user.ms_email}}님 환영합니다.</h2>
-<a href="{% url 'logout'%}">로그아웃</a>
-{% else %}
-<a href="{% url 'vr_login'%}"> 로그인 </a>
-{% endif %}
+<div id = "vr_title" style="text-align:center">
+    <img src="{% static ''%}" alt="">
+    <h5>당신의 목소리가 필요합니다.</h5>
+</div>
 <br> 
+<div class = "vr_introduce">
+    <p style = "text-align:left"><img src = "" alt = "소개" ></p>
+    <p>책을 읽는데 어려움이 있으신 분들</p> 
+</div>
+<br> 
+<div class = "vr_warning">
+    <p style = "text-align:left"><img src = "" alt = "주의사항" ></p>
+    <p>주의사항</p>
+</div>
+<br>  
+<div class = "vr_etc">
+    <p style = "text-align:left"><img src = "" alt = "etc" ></p>
+    <p>등등</p>
+</div>
+<br>
+<br>
+<a href="{% url 'index' %}">index페이지로 가기(임시))</a> <!--임시로 만들어 둔거라 언제든 없애셔도 됩니다!(손현준)-->

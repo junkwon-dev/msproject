@@ -26,21 +26,96 @@
     <!-- Main Container -->
     <!-- Main Container Ends -->
   </h1>
-  <form method="POST" action="{% url 'ms_signup' %}">
-    {% csrf_token %}
-    {% for field in form %}
-    <p>
-      {{ field.label_tag }}<br>
-      {{ field }}
-      {% if field.help_text %}
-      <small style="color: grey">{{ field.help_text }}</small>
-      {% endif %}
-      {% for error in field.errors %}
-      <p style="color: red">{{ error }}</p>
-      {% endfor %}
-    </p>
-    {% endfor %}
-    <br>
+<form method="POST" action="{% url 'ms_signup' %}" enctype="multipart/form-data" "action">
+	{% csrf_token %}
+  First name:<br>{{form.first_name}}
+    {% if form.first_name.help_text %}
+        <small style="color: grey">{{ form.first_name.help_text }}</small>
+    {% endif %}
+    {% for error in form.first_name.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}<br><br>
+
+    Last name:<br>{{form.last_name}}
+    {% if form.last_name.help_text %}
+        <small style="color: grey">{{ form.last_name.help_text }}</small>
+    {% endif %}
+    {% for error in form.last_name.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}     <br><br>
+
+    Username:<br>{{form.username}}
+    {% if form.username.help_text %}
+        <small style="color: grey">{{ form.username.help_text }}</small>
+    {% endif %}
+    {% for error in form.username.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}<br><br>
+
+    Email:<br>{{form.email}}
+    {% if form.email.help_text %}
+        <small style="color: grey">{{ form.email.help_text }}</small>
+    {% endif %}
+    {% for error in form.email.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}  <br><br>
+
+    Evidence:<br>{{form.evidence}}
+    {% if form.evidence.help_text %}
+        <small style="color: grey">{{ form.evidence.help_text }}</small>
+    {% endif %}
+    {% for error in form.evidence.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}  <br><br>    
+
+    sex:<br>{{form.sex}}
+    {% if form.sex.help_text %}
+        <small style="color: grey">{{ form.sex.help_text }}</small>
+    {% endif %}
+    {% for error in form.sex.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}   
+
+    Birth date:<br>{{form.birth_date}}
+    {% if form.birth_date.help_text %}
+        <small style="color: grey">{{ form.birth_date.help_text }}</small>
+    {% endif %}
+    {% for error in form.birth_date.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}  <br><br>  
+
+    phone number:<br>{{form.phone_number}}
+    {% if form.phone_number.help_text %}
+        <small style="color: grey">{{ form.phone_number.help_text }}</small>
+    {% endif %}
+    {% for error in form.phone_number.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}     <br><br> 
+
+	password:<br>{{form.password1}}
+    {% if form.password1.help_text %}
+      <small style="color: grey">{{ form.password1.help_text }}</small>
+    {% endif %}
+    {% for error in form.password1.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}   <br><br>
+
+  password confirmation:<br>{{form.password2}}
+    {% if form.password2.help_text %}
+        <small style="color: grey">{{ form.password2.help_text }}</small>
+    {% endif %}
+    {% for error in form.password2.errors %}
+        <p style="color: red">{{ error }}</p>
+	{% endfor %}<br><br>
+
+	agreement:<br>{{form.agreement}}
+    {% if form.agreement.help_text %}
+        <small style="color: grey">{{ form.agreement.help_text }}</small>
+    {% endif %}
+    {% for error in form.agreement.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}<br>
+
     <input type="submit" name="submit" id="submit" value="Submit">
   </form>
 </body>
@@ -61,10 +136,13 @@
 <br>
 <br>
 
+
 <label for="birth">Date of Birth</label>
 <input type="date" name="birth" id="birth" placeholder="YYMMDD">
 <br>
 <br>
+
+
 
 <label for="Phone_Number">Phone Number</label>
 <select>
