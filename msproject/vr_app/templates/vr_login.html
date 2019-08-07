@@ -28,6 +28,7 @@
   </h1>
   <form method="POST" action="{% url 'vr_login' %}">
     {% csrf_token %}
+    {{error}}<br>
     <label for="ID">ID</label>
     <input type="text" name="ID" id="ID">
 

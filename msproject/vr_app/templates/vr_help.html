@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APPLY</title>
+    
 </head>
 <!--"class"
     helping = QnA게시판 
@@ -46,11 +47,24 @@
     <h2>요청받은 질문들</h2>
     <div class="ques_list">
     <!-- 내용들-->
-    {% for ques in question.all %}
+    {% for ques in questions %}
         <a href="{% url 'question_info' ques.id %}">Q. {{ques.question_title}}</a><br>
         </p>
         <hr>
     {% endfor%}
+    <!--pagination입니당-->
+    {% if questions.has_previous%}
+        <a href="?page=1">First</a>
+        <a href="?page={{questions.previous_page_number}}">Previous</a>
+    {% endif %}
+    <span>{{questions.number}}</span>
+    <span>of</span>
+    <span>{{questions.paginator.num_pages}}</span>
+
+    {% if questions.has_next%}
+        <a href="?page={{questions.next_page_number}}">Next</a>
+        <a href="?page={{questions.paginator.num_pages}}">Last</a>
+    {% endif%}
     </div>
 </div>
 </body>

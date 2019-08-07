@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .forms import SignUpForm
+from .forms import SignUpForm1
 #from .models import Profile
 from django.views.generic.edit import CreateView
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm # 장고의 기본적인 회원가입 폼. id, password만 확인한다는 한계점.
 from django.urls import reverse_lazy
 from django.contrib import auth
-from .models import Profile
-
+from .models import Profile1
+from .models import Wish_Book
+#from django.http import HttpResponse #190807 녹음파일 다운로드구현에 필요한 HttpResponse 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
 # Create your views here.
 """def ms_signup(request):
     if request.method == 'POST':
@@ -19,15 +20,16 @@ from .models import Profile
     #return render(request, 'accounts/ms_signup.html')
     return render(request, 'ms_signup.html',{'error':'회원가입 실패'})    # ohjinjin 문장 수정"""
 
-class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결돼서, 혹은 모델하고 연결돼서 새로운 데이터를 넣을 때 사용.
+class CreateUserView1(CreateView):  # 제네릭의 CreateView는 폼하고 연결돼서, 혹은 모델하고 연결돼서 새로운 데이터를 넣을 때 사용.
+   
     template_name = 'ms_signup.html'     # 회원가입 할 때 띄울 폼 템플릿
-    form_class = SignUpForm
+    form_class = SignUpForm1
     success_url = reverse_lazy('ms_index') # 성공하면 어디로 갈지, url name
     # 여기서 reverse가 아닌 reverse_lazy를 사용하는 이유: 제네릭뷰 같은경우 타이밍 문제 때문에 reverse_lazy를 사용해야함
 
     def form_valid(self,form):
         c = {'form':form,}
-        user = form.save(commit=False)  #여기서 default User model과 profile이 엮여서 db에 저장되는듯합니다.
+        user = form.save(commit=False)  #여기서 default User model과 profile이 엮여서 db에 저장되는듯합니다. 
         #email = form.cleaned_data["email"]
         #password1 = form.cleaned_data['password1']
         #password2 = form.cleaned_data['password2']
@@ -35,7 +37,9 @@ class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결
         sex = form.cleaned_data["sex"]
         birth_date = form.cleaned_data["birth_date"]
         phone_number = form.cleaned_data["phone_number"]
-        agreement = form.cleaned_data["agreement"]
+        agreement1 = form.cleaned_data["agreement1"]
+        agreement2 = form.cleaned_data["agreement2"]
+        agreement3 = form.cleaned_data["agreement3"]
         
         """if password1 != password2:
             messages.error(self.request, "Passwords do not Match", extra_tags = 'alert alert-danger')
@@ -43,41 +47,58 @@ class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결
         #user.set_password(password1)
         user.save()
 
-        Profile.objects.create(user=user, phone_number=phone_number, birth_date = birth_date, evidence=evidence,sex=sex,agreement=agreement)
+        Profile1.objects.create(user=user, phone_number=phone_number, birth_date = birth_date, evidence=evidence,sex=sex,agreement1=agreement1,agreement2=agreement2,agreement3=agreement3)
 
-        return super(CreateUserView, self).form_valid(form)
+        return super(CreateUserView1, self).form_valid(form)
 
 
 class RegisteredView(TemplateView): # 회원가입이 완료된 경우
     template_name = 'ms_index.html'
 
-def lists(request): # ohjinjin 08/02/19 AM 10:22 일부러 list말고 lists로 둔겁니당~
-    return render(request,'list.html')
+def lists(request):
+    wbooks=Wish_Book.objects.all()
+    return render(request,'list.html',{'wbooks': wbooks})
 
 def ms_login(request):
-    # ohjinjin �븿�닔 �쟾諛섏쟻�쑝濡� �닔�젙
     if request.method == "POST":
         username = request.POST['ID']
         password = request.POST['password']
+        # if request.COOKIES.get('username') is not None:
+        #     password = request.COOKIES.get('password')
+        #     username = request.COOKIES.get('username')
         user = auth.authenticate(request, username = username, password = password)
+        obj = None
+        msg = ""
+        for eachProf in Profile1.objects.all():
+            if eachProf.user.username == username:
+                obj = eachProf
+                break
         
-        if user is not None:
+        if user is not None and obj is not None:
             auth.login(request,user)
-            return render(request, 'ms_index.html', {'username' : user.username}) # ohjinjin 臾몄옣 異붽��
+            return render(request, 'ms_index.html', {'customedUser' : obj})
         else:
-            return render(request, 'ms_login.html',{'error' : 'username or password is incorrect.'})
-    #return render(request, 'accounts/vr_login.html')
+            if user is None:
+                msg = "id/pw incorrect"
+            else:
+                msg = "Inaccessible"
+            return render(request, 'ms_login.html',{'error' : msg})
+    # return render(request, 'accounts/vr_login.html')
     return render(request, 'ms_login.html') # ohjinjin 臾몄옣 異붽��
+
+def ms_logout(request):
+    response = render(request,'index.html')
+    response.delete_cookie('ID')
+    response.delete_cookie('password')
+    auth.logout(request)
+    return redirect('index')
 
 def ms_index(request):
     return render(request, 'ms_index.html')
 
 def ms_library(request):
+    #db table 이미 만들어져있어야되고 걔네를 불러와줘야함 다운로드가능하게해줘야함_ohjinjin 080619 PM15:08
     return render(request, 'ms_library.html')
-
-"""ohjinjin 여기 왜 이친구가 있는지 모르겠어서 주석처리해놓겠습니다!08/02/19 AM10:05
-def vr_index(request):
-    return render(request, 'vr_index.html')"""
     
 def about(request):
     return render(request, 'about.html')
@@ -85,5 +106,29 @@ def about(request):
 def wish_books(request):
     return render(request, 'wish_books.html')
 
+def create(request):
+    wbook = Wish_Book()
+    wbook.title = request.GET['book_name']
+    wbook.author = request.GET['book_author']
+    wbook.publisher = request.GET['book_publish']
+    wbook.pub_date = request.GET['book_year']
+    wbook.save()
+    return redirect('/ms/ms_index/')
 
+def mybooks(request):
+    return render(request, 'mybooks.html')
 
+def listening_page(request):
+    return render(request, 'listening_page.html')
+
+""" 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
+def record_download(request): 
+    filepath = os.path.join(settings.BASE_DIR, 'musics/녹음.m4a')
+    filename = os.path.basename(filepath) #파일명 반환
+
+    with open(filepath,'rb') as f:
+        response = HttpResponse(f,content_type='audio/m4a') # 필요한 응답헤더
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
+        return response
+"""
+    

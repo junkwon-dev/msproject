@@ -1,14 +1,27 @@
-
 <html lang="ko">
-
-
 <head>
 <style>
-.table_list{border:1px; border-color:blue; width:500; height:300; text-align:center;}
-.total_list{background-color:blue; text-align:center;}
-.contain_list{text-align:center; background-color:skyblue;}
+.table_list{
+    border-color:black;
+    width:800; height:500;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+th, td {
+    border: 1px solid black;
+    padding: 15px;
+}
+.table_title{
+    background-color:pink;
+}
+.total_list{
+    background-color:pink;
+    text-align:center;
+}
+.contain_list{text-align:center; background-color:gray;}
+.buttons{text-align: center;}
 </style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,27 +29,42 @@
 </head>
 
 <body>
-    {% block contents %}
-
-    <table class="table_list">
-        <tr class="total_lsit">
-            <p><td colspan = "3" span style="color:white">전체 목록</td></p>
+    <h1 class="total_list">전체 목록</h1>
+    
+    <table class="table_list" >
+        
+        <thead class="table_title">
+        <tr>
+            <th>STATE</th>
+            <th>BOOK LIST</th>
+            <th>AUTHOR</th>
+            <th>APPLY NUM</th>
         </tr>
-
-        {% for list in list.all %}
-        <tr contain_list>
-            <a href="{% url 'ms_index' %}"><td>{{list.state}}</td></a> <!--매칭대기 / 녹음대기 / 매칭중 / 녹음중 / 완료-->
-            <a href="{% url 'ms_index' %}"><td>{{list.name}}</td></a><!--허생전 박지원-->
-            <a href="{% url 'ms_index' %}"><td>{{list.number}}</td></a><!--도서번호 A10210-->
-        </tr>
-        {% endfor %}
+        </thead>
+        
+        <tbody class="contain_list">
+        
+            {% for wbook in wbooks%}            
+            <tr>
+                {%if wbook.state == 0%}
+                <td><p style = "background-color: green">녹음대기중</td>
+                {%elif wbook.state == 1 %}
+                <td><p style = "background-color: yellow">녹음중</td>
+                {%elif wbook.state == 2 %}
+                <td><p style = "background-color: red">녹음완료</td>
+                {%endif%}
+                <td>{{wbook.title}}</td>
+                <td>{{wbook.author}}</td>
+                <td>{{wbook.id}}</td>
+            </tr>
+            {%endfor%}
+       </tbody>
     </table>
-    
-    <input type="button" class="btn btn-primary" name="MYBOOK" href="{% url 'ms_index'%}"value = "나의 도서" >
-    <input type="button" class="btn btn-primary" name="MATCH" href="{% url 'ms_index'%}" value = "연결">
-    <input type="button" class="btn btn-primary" name="RECORDL" href="{% url 'ms_index'%}" value = "녹음 듣기">
-
-{% endblock %}
-    
+    <div class="buttons">
+    <a href="{%url 'ms_index'%}"><button>돌아가기</button></a>
+    <a href="{%url 'mybooks'%}"><button>나의 도서</button></a>
+    <a href="{%url 'ms_library'%}"><button>음성 도서관</button></a>
+    <a href="{%url 'listening'%}"><button>늑음듣기</button></a>
+    </div>
 </body>
 </html>

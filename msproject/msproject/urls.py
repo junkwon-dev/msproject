@@ -20,9 +20,13 @@ import vr_app.views   # ohjinjin 문장 추가
 import ms_app.views   # ohjinjin 문장 추가
 from django.conf import settings # 추가 chanho - 19_8_1_19:50
 from django.conf.urls.static import static # 추가 chanho - 19_8_1_19:50
+from ms_app.admin import ms_admin_site
+from vr_app.admin import vr_admin_site
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    path('ms-admin/',ms_admin_site.urls),
+    path('vr-admin/',vr_admin_site.urls),
     path('',vr_app.views.index, name="index"), # index.html 파일 생성해뒀습니다. -# ohjinjin 문장 추가
     path('vr/', include('vr_app.urls')), #2019_07_31_10:45, ohjinjin 수정 2019_08_01 14:57
     path('ms/', include('ms_app.urls')), # ohjinjin 문장 추가

@@ -6,35 +6,49 @@
     vr_title = 대문
     
 -->
-<style>
-   
-</style>
 {% load staticfiles %}
+<style>
+    .vr_signup{
+        display: block;
+        position: center; 
+    }
+</style>
+
 <header class="vr_header">
     <div class="vr_signup">
-        <a href="{% url 'vr_signup'%}"> 회원가입 </a>
+        <a href="{% url 'vr_signup'%}">회원가입 </a>
     </div>    
     <div class="vr_login">
+        {{error}}<br>
         {% if form.errors %}
         {{error}}
         {% endif %}  
-        {% if user.is_active %}
-        <h2>{{user.username}}님 환영합니다.</h2>
+        {% if customedUser.user.is_active %}
+        <h2>{{customedUser.user.username}}님 환영합니다.{{customedUser.phone_number}}</h2>
         <a href="{% url 'logout'%}">로그아웃</a>
         {% else %}
         <a href="{% url 'vr_login'%}"> 로그인 </a>
         {% endif %}
     </div>
-    <div class="vr_about">
-        <a href="{% url 'about' %}">ABOUT</a>
-    </div>
+    
 </header>
 
-<div id = "vr_title" style="text-align:center">
-    <img src="{% static ''%}" alt="">
-    <h5>당신의 목소리가 필요합니다.</h5>
+<div class = "vr_title" style="text-align:center">
+    <img src="{% static 'ms_logo.png'%}" alt="ms_logo">
+    <p >MINDSHARE</p>
+    <h5>당신의 목소리를 들려주세요.</h5>
 </div>
 <br> 
+<div class="vr_about">
+    <a href="{% url 'about' %}">ABOUT</a>
+</div>
+<div class="vr_apply">
+    <a href="{% url 'apply' %}">apply</a>
+</div>
+<div class="vr_help">
+    <a href="{% url 'vr_help' %}">help</a>
+</div>
+<br>
 <div class = "vr_introduce">
     <p style = "text-align:left"><img src = "" alt = "소개" ></p>
     <p>책을 읽는데 어려움이 있으신 분들</p> 
@@ -49,6 +63,7 @@
     <p style = "text-align:left"><img src = "" alt = "etc" ></p>
     <p>등등</p>
 </div>
+
 <br>
 <br>
 <a href="{% url 'index' %}">index페이지로 가기(임시))</a> <!--임시로 만들어 둔거라 언제든 없애셔도 됩니다!(손현준)-->

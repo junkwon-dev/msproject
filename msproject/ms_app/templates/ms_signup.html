@@ -28,7 +28,7 @@
   </h1>
 <form method="POST" action="{% url 'ms_signup' %}" enctype="multipart/form-data" "action">
 	{% csrf_token %}
-  First name:<br>{{form.first_name}}
+    First name:<br>{{form.first_name}}
     {% if form.first_name.help_text %}
         <small style="color: grey">{{ form.first_name.help_text }}</small>
     {% endif %}
@@ -42,7 +42,7 @@
     {% endif %}
     {% for error in form.last_name.errors %}
         <p style="color: red">{{ error }}</p>
-    {% endfor %}     <br><br>
+    {% endfor %}<br><br>
 
     Username:<br>{{form.username}}
     {% if form.username.help_text %}
@@ -60,13 +60,13 @@
         <p style="color: red">{{ error }}</p>
     {% endfor %}  <br><br>
 
-    Evidence:<br>{{form.evidence}}
+    evidence :<br>{{form.evidence}}
     {% if form.evidence.help_text %}
         <small style="color: grey">{{ form.evidence.help_text }}</small>
     {% endif %}
     {% for error in form.evidence.errors %}
         <p style="color: red">{{ error }}</p>
-    {% endfor %}  <br><br>    
+    {% endfor %}  <br><br>
 
     sex:<br>{{form.sex}}
     {% if form.sex.help_text %}
@@ -108,14 +108,29 @@
         <p style="color: red">{{ error }}</p>
 	{% endfor %}<br><br>
 
-	agreement:<br>{{form.agreement}}
-    {% if form.agreement.help_text %}
-        <small style="color: grey">{{ form.agreement.help_text }}</small>
+	agreement1:<form>{{form.agreement1}}
+    {% if form.agreement1.help_text %}
+        <small style="color: grey">{{ form.agreement1.help_text }}</small>
     {% endif %}
-    {% for error in form.agreement.errors %}
+    {% for error in form.agreement1.errors %}
         <p style="color: red">{{ error }}</p>
-    {% endfor %}<br>
+    {% endfor %}<form>
 
+    agreement2:<form>{{form.agreement2}}
+    {% if form.agreement2.help_text %}
+        <small style="color: grey">{{ form.agreement2.help_text }}</small>
+    {% endif %}
+    {% for error in form.agreement2.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}<form>
+    
+    agreement3:<form>{{form.agreement3}}
+    {% if form.agreement3.help_text %}
+        <small style="color: grey">{{ form.agreement3.help_text }}</small>
+    {% endif %}
+    {% for error in form.agreement3.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}<form>
     <input type="submit" name="submit" id="submit" value="Submit">
   </form>
 </body>

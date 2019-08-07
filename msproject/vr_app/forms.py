@@ -1,4 +1,4 @@
-from django import forms
+"""from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
@@ -31,22 +31,23 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
-#from .models import Profile2
+from .models import Profile2
+
 class SignUpForm2(UserCreationForm):
-    evidence = forms.ImageField()
+    test_record = forms.FileField()
     gender_choice=[('woman','woman'),('man','man')]
     sex= forms.ChoiceField(choices=gender_choice, widget=forms.RadioSelect)
     birth_date = forms.DateTimeField(help_text='1900-00-00')
     phone_valid = RegexValidator(regex=r'^\d{3}-\d{3,4}-\d{4}$', message="000-0000-0000")
     phone_number = forms.CharField(validators=[phone_valid],max_length=13)
-    #agreement1 = forms.TypedChoiceField(coerce=lambda x: x =='True', choices=((False, 'No'), (True, 'Yes')), widget=forms.RadioSelect )
-    #agreement2 = forms.TypedChoiceField(coerce=lambda x: x =='True', choices=((False, 'No'), (True, 'Yes')), widget=forms.RadioSelect )
-    accept_choice=[('yes','yes'),('no','no')]
+    agreement1 = forms.TypedChoiceField(coerce=lambda x: x =='True', choices=((False, 'No'), (True, 'Yes')), widget=forms.RadioSelect )
+    agreement2 = forms.TypedChoiceField(coerce=lambda x: x =='True', choices=((False, 'No'), (True, 'Yes')), widget=forms.RadioSelect )
+    """accept_choice=[('yes','yes'),('no','no')]
     agreement1= forms.ChoiceField(choices=accept_choice, widget=forms.RadioSelect)
-    agreement2= forms.ChoiceField(choices=accept_choice, widget=forms.RadioSelect)
+    agreement2= forms.ChoiceField(choices=accept_choice, widget=forms.RadioSelect)"""
     class Meta:
         model = User 
-        fields = ('first_name','last_name','username' , 'email', 'evidence','sex','birth_date','phone_number','password1','password2','agreement1', 'agreement2')
+        fields = ('first_name','last_name','username' , 'email', 'test_record','sex','birth_date','phone_number','password1','password2','agreement1', 'agreement2')
     
     # ohjinjin, 08/03/19 AM 01:52
     # 이 함수 두개는 파라미터 주면서 통일 가능한지 확인해보도록 하겠습니다
@@ -60,4 +61,4 @@ class SignUpForm2(UserCreationForm):
         data = self.cleaned_data.get('agreement2')
         if data == self.fields['agreement2'].choices[0][0]:
             raise forms.ValidationError('agreement2 is required')
-        return data"""
+        return data

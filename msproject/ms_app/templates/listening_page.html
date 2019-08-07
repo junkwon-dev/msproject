@@ -1,0 +1,49 @@
+<!--음성도서관에서 선택한 도서를 듣는 공간입니다.-->
+<style>
+    .book_title{
+        text-align: center;
+        border: 1px solid black;
+        background-color: #f1f3f5;
+    }
+    .title{
+        font-size: xx-large;
+    }
+    .information{
+        border: 1px solid black;
+        background-color: #f1f3f5;
+    }
+    .audio_book{
+        border: 1px solid black;
+        background-color: #f1f3f5;
+        height: 200px;
+    }
+    li{
+        list-style: none;
+    }
+
+</style>
+
+<header>
+
+</header>
+
+<body>
+    <div class="book_title"> <p class="title">제목</p> </div>
+    <br>
+    <div class="information">
+        <ul> 
+            <li>제목</li>
+            <li>저자</li>
+            <li>출판사</li>
+            <li>발행일</li>
+            <li>등록일</li>
+        </ul>
+        <p>책 내용</p>
+    </div>
+    <br>
+    <div class="audio_book">
+        저장된 음성도서
+    </div>
+    <a href="{% url 'ms_library'%}"><button>목록</button></a> 
+</body>
+

@@ -6,37 +6,68 @@
 {% load staticfiles %}
 
 <style>
-        .ms_md{
-            width:80%; height:150px; text-align:center; position:relative; left:8%; background-color:#f1f3f5;
-                border :1px solid; vertical-align:middle; font-size:50px; line-height:150px;
-        }
+    .ms_md{
+        width:80%; height:150px; text-align:center; position:relative; margin-left:auto; margin-right:auto; background-color:#f1f3f5;
+        border :1px solid; vertical-align:middle; font-size:50px; line-height:150px;
+    }
+    p{
+        font-size: 40px;
+        text-align:right;
+    }
+    .ms_logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    header{
+        text-align: center; 
+    }
+
 </style>
 
 <header>
     <div class="ms_logo"> 
-        <img src="{% static 'ms_logo.png' %}" alt="ms_logo">
+        <img src="{% static 'ms_logo.png' %}" alt="ms_logo" >
     </div>
 </header>
-
+<!--{% if user.is_active %}
+{%else%}-->
+<!--
 <div class="ms_md">
     <a href="{% url 'about' %}">ABOUT</a>
 </div>
-<br><BR>
+-->
+<!--{% endif %}-->
+
+<br>
+{% if customedUser.user.is_active %}
+{%else%}
 <div class="ms_md">
     <a href="{% url 'ms_signup'%}"> 회원가입 </a>
 </div>
-<Br><BR>
-<div class="ms_md">
+{% endif %}
+
+<Br>
+{{error}}<br>
 {% if form.errors %}
         {{error}}
 {% endif %} 
-{% if user.is_active %}
-    <h2>{{user.username}}님 환영합니다.</h2>
+
+{% if customedUser.user.is_active %}
+<p>{{customedUser.user.username}}님 환영합니다.{{customedUser.phone_number}}</p>
+{%endif%}
+
+{% if customedUser.user.is_active %}
+<div class="ms_md">
     <a href="{% url 'logout'%}">로그아웃</a>
-{% else %}
-    <a href="{% url 'ms_login'%}"> 로그인 </a>
-{% endif %}
 </div>
+{% else %}
+<div class="ms_md">
+    <a href="{% url 'ms_login'%}"> 로그인 </a>
+</div>
+{% endif %}
+
 <br><br>
 
 <!--개인정보페이지로 연결해야합니다-->
@@ -47,7 +78,7 @@
 </div>
 
 -->
-
+{% if customedUser.user.is_active %}
 <div class="ms_md">
     <a href="{% url 'ms_library'%}"> 음성도서관 </a>
 </div>
@@ -61,6 +92,5 @@
 <div class="ms_md">
     <a href="{% url 'lists'%}"> 희망도서 신청된 목록&검색 </a> 
 </div>
-{% if user.is_active %}
 {% endif %}
 <a href="{% url 'index' %}">index페이지로 가기(임시))</a> <!--임시로 만들어 둔거라 언제든 없애셔도 됩니다!(손현준)-->

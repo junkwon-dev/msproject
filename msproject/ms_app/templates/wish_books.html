@@ -12,7 +12,7 @@
 
 </header>
 
-<form>
+<form action="{% url 'create' %}">
         도서명:<br>
         <input type="text" name="book_name"><br>
         저자:<br>
@@ -21,9 +21,10 @@
         <input type="text" name="book_publish"><Br>
         발행년도:<br>
         <input type="text" name="book_year"><Br>    
+        <input class="button" type="submit" value="제출하기">
 </form>
 
 <!--의준 :: 다음을 누르면 "신청되었습니다"창이 뜬후에 index로 넘어가게 해주세용-->
 <div>
-    <a href="{% url 'ms_index'%}"><button>다음</button></a>
+    <a href="{% url 'ms_index'%}"><button>돌아가기</button></a>
 </div>

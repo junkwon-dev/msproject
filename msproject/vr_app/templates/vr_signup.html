@@ -38,7 +38,7 @@
   </h1>
   <form method="POST" action="{% url 'vr_signup' %}" enctype="multipart/form-data" "action">
 	{% csrf_token %}
-First name:<br>{{form.first_name}}
+    First name:<br>{{form.first_name}}
     {% if form.first_name.help_text %}
         <small style="color: grey">{{ form.first_name.help_text }}</small>
     {% endif %}
@@ -70,15 +70,15 @@ First name:<br>{{form.first_name}}
         <p style="color: red">{{ error }}</p>
     {% endfor %}  <br><br>
     
-    Evidence:<br>{{form.evidence}}
-    {% if form.evidence.help_text %}
-        <small style="color: grey">{{ form.evidence.help_text }}</small>
+    Test Record:<br>{{form.test_record}}
+    {% if form.test_record.help_text %}
+        <small style="color: grey">{{ form.test_record.help_text }}</small>
     {% endif %}
-    {% for error in form.evidence.errors %}
+    {% for error in form.test_record.errors %}
         <p style="color: red">{{ error }}</p>
     {% endfor %}  <br><br>    
 
-    sex:<br>{{form.sex}}
+    Sex:<br>{{form.sex}}
     {% if form.sex.help_text %}
         <small style="color: grey">{{ form.sex.help_text }}</small>
     {% endif %}
@@ -94,7 +94,7 @@ First name:<br>{{form.first_name}}
         <p style="color: red">{{ error }}</p>
     {% endfor %}  <br><br>  
 
-    phone number:<br>{{form.phone_number}}
+    Phone number:<br>{{form.phone_number}}
     {% if form.phone_number.help_text %}
         <small style="color: grey">{{ form.phone_number.help_text }}</small>
     {% endif %}
@@ -102,7 +102,7 @@ First name:<br>{{form.first_name}}
         <p style="color: red">{{ error }}</p>
     {% endfor %}     <br><br> 
 
-	password:<br>{{form.password1}}
+	Password:<br>{{form.password1}}
     {% if form.password1.help_text %}
         <small style="color: grey">{{ form.password1.help_text }}</small>
     {% endif %}
@@ -110,22 +110,22 @@ First name:<br>{{form.first_name}}
         <p style="color: red">{{ error }}</p>
     {% endfor %}   
 
-    password confirmation:<br>{{form.password2}}
+    Password confirmation:<br>{{form.password2}}
     {% if form.password2.help_text %}
         <small style="color: grey">{{ form.password2.help_text }}</small>
     {% endif %}
     {% for error in form.password2.errors %}
         <p style="color: red">{{ error }}</p>
     {% endfor %}<br><br>
-    agreement:<br>{{form.agreement}}
+    <!--agreement:<br>{{form.agreement}}
     {% if form.agreement.help_text %}
         <small style="color: grey">{{ form.agreement.help_text }}</small>
     {% endif %}
     {% for error in form.agreement.errors %}
         <p style="color: red">{{ error }}</p>
-    {% endfor %}<br><br>
-<!--
-	agreement1:<br>{{form.agreement1}}
+    {% endfor %}<br><br>-->
+
+	개인정보 수집 및 활용 동의:<br>{{form.agreement1}}
     {% if form.agreement1.help_text %}
         <small style="color: grey">{{ form.agreement1.help_text }}</small>
     {% endif %}
@@ -133,13 +133,13 @@ First name:<br>{{form.first_name}}
         <p style="color: red">{{ error }}</p>
     {% endfor %}<br><br>
     
-    agreement2:<br>{{form.agreement2}}
+    약관동의:<br>{{form.agreement2}}
     {% if form.agreement2.help_text %}
         <small style="color: grey">{{ form.agreement2.help_text }}</small>
     {% endif %}
     {% for error in form.agreement2.errors %}
         <p style="color: red">{{ error }}</p>
-    {% endfor %}<br><br>-->
+    {% endfor %}<br><br>
     <br>
     <input type="submit" name="submit" id="submit" value="Submit">
   </form>

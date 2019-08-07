@@ -1,1 +1,109 @@
-<!--음성도서관 페이지 입니다.-->
+<style>
+    .table_list{
+        border-color:black;
+        width:800; height:500;
+        text-align:center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 15px;
+    }
+    .table_title{
+        background-color:pink;
+    }
+    tr{
+        text-align: center;
+    }
+    li{
+        list-style: none;
+        float: left;
+    }
+    ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align: center;
+    }
+    .pagination{
+        text-align: center;
+    }
+
+</style>
+
+<h1><p style = "background-color: pink;text-align:center">VOICE LIBRARY</h1>
+<br><br>
+<div class="container">
+    <table class="table_list">
+
+        <thead class="table_title">
+        <tr>
+            <th>ORDER</th>
+            <th>BOOK TITLE</th>
+            <th>AUTHOR</th>
+            <th>APPLY NUMBER</th>
+            <th>DATE</th>
+            <th>VIEWS</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>죽음1</td>
+                <td>베르나르 베르베르</td>
+                <td>843 W491d 019가 </td>
+                <td>8/3</td>
+                <td>3</td> 
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>실어증입니다, 일하기 싫어증</td>
+                <td>양경수</td>
+                <td>814.6 양14ㅅ</td>
+                <td>8/3</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>천년의 질문</td>
+                <td>조정래</td>
+                <td>853.72 조806ㅊ</td> 
+                <td>8/3</td>
+                <td>5</td> 
+            </tr>
+            <td>
+                <td>4</td>
+                <td>은교</td>
+                <td>박범신</td>
+                <td>813.6 ㅂ268아</td> 
+                <td>8/3</td>
+                <td>14</td> 
+            </td>
+            <tr>
+                <td>5</td>
+                <td>하마터면 열심히 살 뻔했다</td>
+                <td>하완</td>
+                <td>818 하65ㅎ</td> 
+                <td>8/3</td>
+                <td>8</td> 
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+    
+    <div class="pagination" >
+        <ul>
+            <li><a href="#">1</a> </li>
+            <li><a href="#">2</a> </li>
+            <li><a href="#">3</a> </li>
+            <li><a href="#">4</a> </li>
+            <li><a href="#">5</a> </li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <a href="{% url 'ms_index'%}"><button>돌아가기</button></a>
+</div>

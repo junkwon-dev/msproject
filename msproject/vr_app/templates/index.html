@@ -2,9 +2,22 @@
 index.html test page
 <br>
 
-##<a href="{% url 'about' %}">ABOUT</a>
+<Style>
+    
+    .volun{
+        font-size : 20px; margin:0; width:50%; height:50px; text-align:center;
+    }
+    .mis{
+        font-size : 20px; margin:0; width:50%; height:50px; text-align:center;
+    }
+
+</style>
+
+##<a class="about" href="{% url 'about' %}">ABOUT</a>
 <br>
-<a href="{% url 'vr_index' %}">자원봉사자 페이지</a>
 <br>
-<a href="{% url 'ms_index' %}">시각장애인 페이지</a>
+<a href="{% url 'vr_index' %}"><button class="volun">자원봉사자 페이지</button></a>
+<br>
+<br>
+<a href="{% url 'ms_index' %}"><button class="mis" >시각장애인 페이지</button></a>
 <br>
