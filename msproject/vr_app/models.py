@@ -39,6 +39,7 @@ class Profile2(models.Model):
     phone_number = models.CharField(max_length=15,blank=True)
     agreement1 = models.CharField(max_length=10, blank=True)
     agreement2 = models.CharField(max_length=10, blank=True)
+    mileage = models.CharField(max_length=10, default=0, blank=True)
 
 """class Apply(models.Model):ohjinjin 080619 PM15:08
     writer = models.CharField(max_length=150) # username

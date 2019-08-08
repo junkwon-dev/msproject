@@ -43,6 +43,15 @@
     <br>
     <div class="audio_book">
         저장된 음성도서
+        {% for book in book_list%}
+            제목:{{book.title}}<br>
+            저자:{{book.author}}<br>
+            음성:<br>
+            <audio controls>
+                <source src={{book.record.url}} type="audio/mp3">
+            </audio>
+            
+        {% endfor %}
     </div>
     <a href="{% url 'ms_library'%}"><button>목록</button></a> 
 </body>

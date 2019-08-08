@@ -85,7 +85,7 @@
                     <small style="color: grey">{{ form.agreement1.help_text }}</small>
                     {% endif %}
                     {% for error in form.agreement1.errors %}
-                    <p style="color: red">{{ error }}</p>
+                    <p forle="color:form">{{ error }}</p>
                     {% endfor %}
                     <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1"><strong><a href="#">이용약관1</a>에
@@ -99,10 +99,10 @@
                     <iframe id="agreement2_iframe" style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement2_vr' %}"></iframe>
                     {% render_field form.agreement2 class="radio" %}
                     {% if form.agreement2.help_text %}
-                    <small style="color: grey">{{ form.agreement2.help_text }}</small>
+                    <small style="color: y">{{ form.agreement2.help_text }}</small>
                     {% endif %}
                     {% for error in form.agreement2.errors %}
-                    <p style="color: red">{{ error }}</p>
+                    <p style="color: red">{{ error /p>
                     {% endfor %}
 
                     <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -125,7 +125,6 @@
                         {% for error in form.first_name.errors %}
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
-                        <br>
                       </div>
                       <br>
                       <label for="inputname" class="col-sm-2 col-form-label">Last name</label>
@@ -166,19 +165,20 @@
                       <br>
                     </div>
 
-                    <div class="form-group col-sm-11">
-                      <label>VR TEST RECORD</label>
-                      <br>
-                      Test Record:<br>{{form.test_record}}
-                      {% if form.test_record.help_text %}
-                      <small style="color: grey">{{ form.test_record.help_text }}</small>
-                      {% endif %}
-                      {% for error in form.test_record.errors %}
-                      <p style="color: red">{{ error }}</p>
-                      {% endfor %} <br><br>
-                      <br>
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">GENDER</label><br>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">VR TEST RECORD</label>
+                      <div class="col-sm-11">
+                        {{form.test_record}}
+                        {% if form.test_record.help_text %}
+                        <small style="color: grey">{{ form.test_record.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.test_record.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %} <br><br>
+                        <br>
+                      </div>
+                      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">GENDER</label>
+                      <div class="col-sm-11">
                         {% render_field form.sex class="radio" %}
                         {% if form.sex.help_text %}
                         <small style="color: grey">{{ form.sex.help_text }}</small>
@@ -187,11 +187,8 @@
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
                       </div>
-
-                      <div class="form-group">
-                        <br>
-                        <label for="date">DATE OF BIRTH</label>
-                        <br>
+                      <label for="date" class="col-sm-2 col-form-label">DATE OF BIRTH</label>
+                      <div class="col-sm-11">
                         {% render_field form.birth_date class="form-control" %}
                         {% if form.birth_date.help_text %}
                         <small style="color: grey"><br>{{ form.birth_date.help_text }}</small>
@@ -258,9 +255,7 @@
               <script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
               <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
               <script type="text/javascript" src="/static/admin/js/main.js"></script>-->
-</body>
 
-</html>
 
 <!--
 <!DOCTYPE HTML>
@@ -328,14 +323,15 @@
 <!-- Three -->
 <!-- CTA -->
 <!-- Footer -->
-<!--
+
+
 	<div id="footer">
   <div class="container text-center">
     <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
   </div>
 </div>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<!--<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
 <script type="text/javascript" src="js/nivo-lightbox.js"></script> 
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
@@ -345,4 +341,3 @@
 </body>
 
 </html>
--->

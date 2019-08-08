@@ -158,7 +158,8 @@ def mybooks(request):
     return render(request, 'mybooks.html')
 
 def listening_page(request):
-    return render(request, 'listening_page.html')
+    book_list = Library.objects.all()
+    return render(request, 'listening_page.html',{'book_list':book_list})
 
 """ �끃�쓬�뙆�씪 �떎�슫濡쒕뱶 �븿�닔�씤�뜲 �닔�젙�씠 �븘�슂�빐�꽌 �씪�떒 二쇱꽍泥섎━ �뻽�뒿�땲�떎(20190807 05:31 �넀�쁽以�)def record_download(request): 
     filepath = os.path.join(settings.BASE_DIR, 'musics/�끃�쓬.m4a

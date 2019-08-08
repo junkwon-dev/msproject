@@ -48,7 +48,19 @@
             <th>VIEWS</th>
         </tr>
         </thead>
-
+        <tbody class="contain_list">
+        
+            {% for eachBook in bookLists%}            
+            <tr>
+                <td>1</td>
+                <td>{{eachBook.title}}</td>
+                <td>{{eachBook.author}}</td>
+                <td>{{eachBook.publisher}}</td>
+                <td>{{eachBook.record}}</td>
+            </tr>
+            {%endfor%}
+       </tbody>
+<!--
         <tbody>
             <tr>
                 <td>1</td>
@@ -90,7 +102,7 @@
                 <td>8/3</td>
                 <td>8</td> 
             </tr>
-        </tbody>
+        </tbody>-->
     </table>
     <Br><Br>
     <hr/>

@@ -16,7 +16,6 @@
   .explain_elements{margin-top: 50px;}
   .left_side{float:left;}
   .right_side{float:right;}
-  .center{text-align: center;}
 </style>
 <!-- Favicons
     ================================================== -->
@@ -67,7 +66,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-right navbar-brand">
           {% if user.is_active and user.profile2.agreement2 %}
-          <h2>{{user.username}}님 환영합니다.</h2>
+          <h2 class="userusername">{{user.username}}님 환영합니다.</h2>
           <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
           <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
           {% else %}
@@ -121,13 +120,13 @@
 
 </nav>
 <!-- Header -->
-<header id="header">
+<header id="header" class="header">
   <div class="intro">
     <div class="overlay">
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 intro-text">
-            <p class="navbar-header" style ="text-align: center">&nbsp;</p><span class="navbar-header" style="text-align: center"><img src="{% static 'ms_logo.png'%}" alt="mindsharelogo" width="220" height="652" class="page-scroll img-responsive img-rounded"/></span>
+            
 			  <h2 class="head1">ABOUT</h2>
             <h2 class="head">miNDshARE</h2>
             <br>
@@ -135,7 +134,7 @@
 	 "책을 읽어주는 도서관"을 운영하고 있습니다.</p>
 	</div>
            
-            <table class="center">
+            <table>
                 <tbody>
                   <h2>motivate of miNDshARE</h2>
                     <tr>
@@ -162,7 +161,7 @@
                 </tbody>
               </table>
               <br><br>
-              <table cl>
+              <table>
                 <tbody>
                     <h2>feature of miNDshARE</h2>
                       <tr>
@@ -187,6 +186,8 @@
     </div>
   </div>
 </header>
+
+
 <div id="footer">
   <div class="container text-center">
     <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>

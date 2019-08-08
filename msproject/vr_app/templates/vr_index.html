@@ -67,7 +67,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-right navbar-brand">
                     {% if user.is_active and user.profile2.agreement2 %}
-                    <h2>{{user.username}}님 환영합니다.</h2>
+                    <h2 class="userusername">{{user.username}}님 환영합니다.</h2>
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
                     <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
                     {% else %}
