@@ -42,20 +42,22 @@
 {%load staticfiles%}
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-  <nav id="menu" class="navbar navbar-default navbar-fixed-top"></nav>
+  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span
-          class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a href="{% url 'index'%}"><img src="{% static 'ms_logo.png'%}" alt="" width="100" height="52"
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="{% url 'index'%}"><img src="{% static '/admin/img/ms_logo.png'%}" alt="" width="100" height="52"
           class="page-scroll img-responsive img-rounded"></a> </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-right navbar-brand">
         <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand">회원가입</a>
-        <a href="#features" class="page-scroll navbar navbar-brand navbar-right">로그인</a>
-        <a href="{% url 'about'%}" class="page-scroll navbar navbar-right navbar-brand">소개</a>
+        <a href="{% url 'vr_login'%}" class="page-scroll navbar navbar-brand navbar-right">로그인</a>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -70,13 +72,14 @@
               <h1>회원가입</h1>
               <br><br>
               <div class="form-group row">
-                <form method="POST" action="{% url 'vr_signup' %}" enctype="multipart/form-data" "action">>
+                <form method="POST" action="{% url 'vr_signup' %}" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="form-group form-check">
                     <!--<p>이용약관 1</p>-->
-                    <p>개인정보 수집 및 활용 동의</p>
-                    <iframe id="agreement1_iframe" height="100%" width="50%" src="{% url 'agreement1' %}"></iframe>
+                    <p>MINDSHARE 이용약관 [필수] </p>
 
+
+                    <iframe id="agreement1_iframe"  scrolling="auto" style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement1' %}"></iframe>
                     {% render_field form.agreement1 class="radio" %}
                     {% if form.agreement1.help_text %}
                     <small style="color: grey">{{ form.agreement1.help_text }}</small>
@@ -92,8 +95,8 @@
                     <br>
                     <br>
                     <!--<p>이용약관 2</p>-->
-                    <p>약관 동의</p>
-                    <iframe id="agreement2_iframe" height="100%" width="50%" src="{% url 'agreement2' %}"></iframe>
+                    <p>개인정보 수집 및 이용에 관한 동의 [필수] </p>
+                    <iframe id="agreement2_iframe" style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement2_vr' %}"></iframe>
                     {% render_field form.agreement2 class="radio" %}
                     {% if form.agreement2.help_text %}
                     <small style="color: grey">{{ form.agreement2.help_text }}</small>
@@ -101,155 +104,154 @@
                     {% for error in form.agreement2.errors %}
                     <p style="color: red">{{ error }}</p>
                     {% endfor %}
-                </form>
 
-                <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1"><strong><a href="#">이용약관2</a>에
                         동의합니다.</strong></label>-->
-                <br>
-                <br>
-                <br>
+                    <br>
+                    <br>
+                    <br>
 
-                <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1"><strong><a href="#">이용약관3</a>에
                         동의합니다.</strong></label>-->
-                <div class="form-group row">
-                  <label for="inputname" class="col-sm-2 col-form-label">First name</label>
-                  <div class="col-sm-11">
-                    {% render_field form.first_name class="form-control" %}
-                    {% if form.first_name.help_text %}
-                    <small style="color: grey">{{ form.first_name.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.first_name.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    <br>
-                  </div>
-                  <br>
-                  <label for="inputname" class="col-sm-2 col-form-label">Last name</label>
-                  <div class="col-sm-11">
-                    {% render_field form.last_name class="form-control" %}
-                    {% if form.last_name.help_text %}
-                    <small style="color: grey">{{ form.last_name.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.last_name.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    <br>
-                  </div>
-                  <br>
-                  <label for="inputusername" class="col-sm-2 col-form-label">USERNAME</label>
-                  <div class="col-sm-11">
-                    {% render_field form.username class="form-control" %}
-                    {% if form.username.help_text %}
-                    <small style="color: grey"><br>{{ form.username.help_text }}
-                    </small>
-                    {% endif %}
-                    {% for error in form.username.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-                  <br>
-                  <label for="inputemail" class="col-sm-2 col-form-label">EMAIL</label>
-                  <div class="col-sm-11">
-                    {% render_field form.email class="form-control" %}
-                    {% if form.email.help_text %}
-                    <small style="color: grey">{{ form.email.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.email.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    <br><br>
-                  </div>
-                  <br>
-                </div>
-
-                <div class="form-group col-sm-11">
-                  <label>VR TEST RECORD</label>
-                  <br>
-                  Test Record:<br>{{form.test_record}}
-                  {% if form.test_record.help_text %}
-                  <small style="color: grey">{{ form.test_record.help_text }}</small>
-                  {% endif %}
-                  {% for error in form.test_record.errors %}
-                  <p style="color: red">{{ error }}</p>
-                  {% endfor %} <br><br>
-                  <br>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">GENDER</label><br>
-                    {% render_field form.sex class="radio" %}
-                    {% if form.sex.help_text %}
-                    <small style="color: grey">{{ form.sex.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.sex.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                  </div>
-
-                  <div class="form-group">
-                    <br>
-                    <label for="date">DATE OF BIRTH</label>
-                    <br>
-                    {% render_field form.birth_date class="form-control" %}
-                    {% if form.birth_date.help_text %}
-                    <small style="color: grey"><br>{{ form.birth_date.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.birth_date.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    <br><br>
-                  </div>
-                </div>
-
-
-                <div class="form-group row">
-                  <label for="inputnumber" class="col-sm-2 col-form-label">PHONE NUMBER</label>
-                  <div class="col-sm-11">
-                    {% render_field form.phone_number class="form-control" %}
-                    {% if form.phone_number.help_text %}
-                    <small style="color: grey">{{ form.phone_number.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.phone_number.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    <br><br>
-                  </div>
-                  <br>
-                  <label for="inputusername2" class="col-sm-2 col-form-label">PASSWORD</label>
-                  <div class="col-sm-11">
-                    {% render_field form.password1 class="form-control" %}
-                    {% if form.password1.help_text %}
-                    <small style="color: grey">{{ form.password1.help_text }}</small>
-                    {% endif %}
-                    {% for error in form.password1.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %} <br><br>
-                  </div>
-                  <br>
-
-                  <label for="inputemail2" class="col-sm-2 col-form-label">PASSWORD CONFIRMATION</label>
-                  <div class="col-sm-11">
-                    {% render_field form.password2 class="form-control" %}
-                    {% if form.password2.help_text %}
-                    <small style="color: grey">
+                    <div class="form-group row">
+                      <label for="inputname" class="col-sm-2 col-form-label">First name</label>
+                      <div class="col-sm-11">
+                        {% render_field form.first_name class="form-control" %}
+                        {% if form.first_name.help_text %}
+                        <small style="color: grey">{{ form.first_name.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.first_name.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        <br>
+                      </div>
                       <br>
-                      {{ form.password2.help_text }}
-                    </small>
-                    {% endif %}
-                    {% for error in form.password2.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}<br><br>
+                      <label for="inputname" class="col-sm-2 col-form-label">Last name</label>
+                      <div class="col-sm-11">
+                        {% render_field form.last_name class="form-control" %}
+                        {% if form.last_name.help_text %}
+                        <small style="color: grey">{{ form.last_name.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.last_name.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        <br>
+                      </div>
+                      <br>
+                      <label for="inputusername" class="col-sm-2 col-form-label">USERNAME</label>
+                      <div class="col-sm-11">
+                        {% render_field form.username class="form-control" %}
+                        {% if form.username.help_text %}
+                        <small style="color: grey"><br>{{ form.username.help_text }}
+                        </small>
+                        {% endif %}
+                        {% for error in form.username.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                      </div>
+                      <br>
+                      <label for="inputemail" class="col-sm-2 col-form-label">EMAIL</label>
+                      <div class="col-sm-11">
+                        {% render_field form.email class="form-control" %}
+                        {% if form.email.help_text %}
+                        <small style="color: grey">{{ form.email.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.email.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        <br><br>
+                      </div>
+                      <br>
+                    </div>
+
+                    <div class="form-group col-sm-11">
+                      <label>VR TEST RECORD</label>
+                      <br>
+                      Test Record:<br>{{form.test_record}}
+                      {% if form.test_record.help_text %}
+                      <small style="color: grey">{{ form.test_record.help_text }}</small>
+                      {% endif %}
+                      {% for error in form.test_record.errors %}
+                      <p style="color: red">{{ error }}</p>
+                      {% endfor %} <br><br>
+                      <br>
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">GENDER</label><br>
+                        {% render_field form.sex class="radio" %}
+                        {% if form.sex.help_text %}
+                        <small style="color: grey">{{ form.sex.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.sex.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                      </div>
+
+                      <div class="form-group">
+                        <br>
+                        <label for="date">DATE OF BIRTH</label>
+                        <br>
+                        {% render_field form.birth_date class="form-control" %}
+                        {% if form.birth_date.help_text %}
+                        <small style="color: grey"><br>{{ form.birth_date.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.birth_date.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        <br><br>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                      <label for="inputnumber" class="col-sm-2 col-form-label">PHONE NUMBER</label>
+                      <div class="col-sm-11">
+                        {% render_field form.phone_number class="form-control" %}
+                        {% if form.phone_number.help_text %}
+                        <small style="color: grey">{{ form.phone_number.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.phone_number.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        <br><br>
+                      </div>
+                      <br>
+                      <label for="inputusername2" class="col-sm-2 col-form-label">PASSWORD</label>
+                      <div class="col-sm-11">
+                        {% render_field form.password1 class="form-control" %}
+                        {% if form.password1.help_text %}
+                        <small style="color: grey">{{ form.password1.help_text }}</small>
+                        {% endif %}
+                        {% for error in form.password1.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %} <br><br>
+                      </div>
+                      <br>
+
+                      <label for="inputemail2" class="col-sm-2 col-form-label">PASSWORD CONFIRMATION</label>
+                      <div class="col-sm-11">
+                        {% render_field form.password2 class="form-control" %}
+                        {% if form.password2.help_text %}
+                        <small style="color: grey">
+                          <br>
+                          {{ form.password2.help_text }}
+                        </small>
+                        {% endif %}
+                        {% for error in form.password2.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}<br><br>
+                      </div>
+                      <br>
+                    </div>
                   </div>
                   <br>
-                </div>
               </div>
-              <br>
-            </div>
-            <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="submit">
-          </form>
+              <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="submit">
+              </form>
 
 
-            <!--<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+              <!--<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
               <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
               <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
               <script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>

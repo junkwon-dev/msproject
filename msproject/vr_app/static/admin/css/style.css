@@ -595,8 +595,6 @@ color: #777;
 /* Footer Section*/
 #footer {
     background: #f6f6f6;
-	position:absolute;
-	bottom:0;
     
 }
 #footer p {
@@ -607,7 +605,7 @@ color: #777;
 	color: #608dfd;
 }
 #footer a:hover {
-	border-bottom: 2px solid #608dfd;
+	border-bottom: solid #608dfd;
 }
 
 @media (max-width: 768px) {

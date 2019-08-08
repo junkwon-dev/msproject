@@ -1,3 +1,22 @@
+<!--  어플라이 수정 8_8 찬호-->
+<form method='POST' enctype="multipart/form-data" >
+    {% csrf_token %}
+    <table>
+        {{form2.as_table}}
+        m_1365_id{{form1.m_1365_id}}
+        privacy{{form1.privacy}}
+       
+    </table>
+    <br>
+    <input class="btn btn-dark" type="submit" value="제출하기">
+
+    
+</form>
+<br><br><br>
+
+
+
+{% comment %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -47,3 +66,5 @@
             <a href="{% url 'lists'%}"><button>다음</button></a>
     </div>
 </body>
+
+{% endcomment %}

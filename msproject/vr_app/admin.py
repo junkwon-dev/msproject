@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import Profile2
 from django.contrib.admin import AdminSite
-
+from .models import Apply
 class VRAdminSite(AdminSite):
     site_header = "MindShare VR Admin"
     site_title = "MindShare VR Admin Portal"
@@ -27,3 +27,4 @@ class UserAdmin(BaseUserAdmin):
 #admin.site.unregister(User)
 #admin.site.register(User,UserAdmin)
 vr_admin_site.register(User,UserAdmin)
+vr_admin_site.register(Apply) #### 8_8 추가 찬호 

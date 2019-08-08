@@ -15,6 +15,13 @@ import ms_app.models
 from django.core.paginator import Paginator
 # from django.contrib import messages
 # from .models import Comment
+from .forms import ApplyForm
+from .forms import LibraryForm
+from .models import Apply
+from ms_app.models import Library
+from django.utils import timezone
+
+
 
 def index(request): # ohjinjin 함수 추가
     return render(request,'index.html')
@@ -95,8 +102,28 @@ def logout(request):
     auth.logout(request)
     return redirect('vr_index')
 
+############################## views.py apply 수정 8_8 찬호 ############
 def apply(request):
-    return render(request,'apply.html')
+    username = request.user.username 
+    if request.method=='POST':
+        form1 = LibraryForm(request.POST, request.FILES)
+        form2 = ApplyForm(request.POST)
+        if form1.is_valid() and form2.is_valid: # 수정 
+            obj = Library(title=form1.data['title'], author=form1.data['author'], publisher=form1.data['publisher'], record=request.FILES['record'])
+            obj.save()
+            obj2 = Apply(primarykey=obj , writer=username, pub_date = timezone.datetime.now(), m_1365_id=form2.data['m_1365_id'], privacy=form2.data['privacy'] )
+            #obj = form.save(commit=False)
+            #obj.writer = username
+            #obj.pub_date=timezone.now()
+            obj2.save()     
+            
+            return redirect('vr_index')
+        return redirect('vr_index')
+    else:
+        form1 = ApplyForm()
+        form2 = LibraryForm()
+        return render(request, 'apply.html', {'form1':form1, 'form2':form2})
+#####################################################################
 
 def vr_help(request): 
     question =HelpData.objects

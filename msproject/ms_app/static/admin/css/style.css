@@ -253,8 +253,8 @@ header .signup-form {
 	padding-bottom: 100px;
 }
 header .intro-text {
-	padding-top: 250px;
-	padding-bottom: 0px;
+	padding-top: 150px;
+	padding-bottom: 80px;
 	text-align: center;
 }
 /* Features Section */
@@ -594,9 +594,10 @@ color: #777;
 }
 /* Footer Section*/
 #footer {
-    background: #f6f6f6;
+	background: #f6f6f6;
+	margin-top: 9.8%;
     padding-top: 10px;
-	padding-bottom: 0px;
+	padding-bottom: -100px;
 	
 }
 #footer p {
@@ -610,6 +611,7 @@ color: #777;
 	border-bottom: 2px solid #608dfd;
 }
 
+
 @media (max-width: 768px) {
 #about img {
 	margin: 50px 0;
@@ -622,7 +624,8 @@ color: #777;
 
 }
 
-.pagination{
-	text-align:center;
+#header{
+	margin-top:110px;
 }
+
 

@@ -31,6 +31,16 @@ class Wish_Book(models.Model):
     publisher =models.CharField(max_length=200)
     pub_date = models.CharField(max_length=200)
 
+
+# Library model 수정 8_8 찬호   
+
+class Library(models.Model):# ohjinjin 080619 PM15:08
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    publisher =models.CharField(max_length=200)
+    record = models.FileField(upload_to = 'musics/',blank=True)
+
+    """
 class Library(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -39,3 +49,4 @@ class Library(models.Model):
     publisher =models.CharField(max_length=200)
     pub_date = models.CharField(max_length=200)
     record = models.FileField(upload_to = 'musics/',blank=True)
+"""

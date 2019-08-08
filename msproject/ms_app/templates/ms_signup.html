@@ -26,7 +26,7 @@
         <!-- Main Container -->
         <!-- Main Container Ends -->
     </h1>
-    <form method="POST" action="{% url 'ms_signup' %}" enctype="multipart/form-data" "action">
+    <form method="POST" action="{% url 'ms_signup' %}" enctype="multipart/form-data">
         {% csrf_token %}
         First name:<br>{{form.first_name}}
         {% if form.first_name.help_text %}
@@ -116,7 +116,7 @@
             {% for error in form.agreement1.errors %}
             <p style="color: red">{{ error }}</p>
             {% endfor %}<form>
-
+                <iframe id="agreement2_iframe" height="100%" width="50%" src="{% url 'agreement2_ms' %}"></iframe>
                 agreement2:<form>{{form.agreement2}}
                     {% if form.agreement2.help_text %}
                     <small style="color: grey">{{ form.agreement2.help_text }}</small>
@@ -124,7 +124,7 @@
                     {% for error in form.agreement2.errors %}
                     <p style="color: red">{{ error }}</p>
                     {% endfor %}<form>
-
+                        <iframe id="agreement3_iframe" height="100%" width="50%" src="{% url 'agreement3' %}"></iframe>
                         agreement3:<form>{{form.agreement3}}
                             {% if form.agreement3.help_text %}
                             <small style="color: grey">{{ form.agreement3.help_text }}</small>

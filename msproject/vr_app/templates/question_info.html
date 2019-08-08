@@ -4,10 +4,9 @@ Q. {{question.question_title}}<br>
 {% comment %} {{question.update_counter}}
 조회수{{question.question_visit}} {% endcomment %}
 </p>
-
 {% if user.is_active and user.profile2.agreement2 %}
     <p><a href="{% url 'delete' question.id%}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
-    <p><a href="{% url 'modify' question.id%}">수정</a></p>
+    <a href="{% url 'modify' question.id%}">수정</a></p>
 {% endif %}
 <!--댓글 기능-->
 {% comment %}
@@ -20,10 +19,12 @@ Q. {{question.question_title}}<br>
 {% empty %}
 <p>No comment here yet</p>
 {% endfor %} 
-
+{% if user.profile1.username is b_admin %}
 <form action="{% url 'comment_write' question.pk %}" method = "POST">
     {% csrf_token %}
     <input type="text" name="content" placeholder="Write your comments">
     <input type="submit" value="Write" />
-</form> {% endcomment %}
+</form> 
+{% endif %}
+{% endcomment %}
 

@@ -32,6 +32,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from .models import Profile2
+from ms_app.models import Library ####
+from .models import Apply   ###
+
 
 class SignUpForm2(UserCreationForm):
     test_record = forms.FileField()
@@ -62,3 +65,20 @@ class SignUpForm2(UserCreationForm):
         if data == self.fields['agreement2'].choices[0][0]:
             raise forms.ValidationError('agreement2 is required')
         return data
+
+
+
+################## forms.py 수정 찬호 8_8 ######################       
+class LibraryForm(forms.ModelForm):
+    class Meta:
+        model = Library
+        fields = ['title', 'author', 'publisher', 'record']
+    
+        
+
+class ApplyForm(forms.ModelForm):
+    class Meta:
+        model = Apply
+        fields = ['primarykey', 'm_1365_id', 'privacy']
+
+###############################################################

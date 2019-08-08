@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from ms_app.models import Library
 
 class HelpData(models.Model):
     question_title = models.CharField(max_length=100)
@@ -45,3 +46,11 @@ class Profile2(models.Model):
     library_id = models.IntegerField()  # Library table 내 primary key
     1365_id = models.charFiels(max_length = 30) # 1365 ID 테이블 추가했어요(손현준)
     """
+
+###### apply model 수정 8_8 찬호 ######
+class Apply(models.Model): #ohjinjin 080619 PM15:08
+    primarykey = models.OneToOneField(Library, on_delete=models.DO_NOTHING, db_constraint=False, null=True)
+    writer = models.CharField(max_length=150) # username
+    pub_date = models.DateTimeField('date published')
+    m_1365_id = models.CharField(max_length = 30) # 1365 ID 테이블 추가했어요(손현준)
+    privacy = models.CharField(max_length = 150)
