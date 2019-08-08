@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.models import User
 from .forms import SignUpForm1
 #from .models import Profile
@@ -10,6 +10,8 @@ from django.contrib import auth
 from .models import Profile1
 from .models import Wish_Book
 from .models import Library
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 #from django.http import HttpResponse #190807 녹음파일 다운로드구현에 필요한 HttpResponse 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
 # Create your views here.
 """def ms_signup(request):
@@ -56,6 +58,7 @@ class CreateUserView1(CreateView):  # 제네릭의 CreateView는 폼하고 연�
 class RegisteredView(TemplateView): # 회원가입이 완료된 경우
     template_name = 'ms_index.html'
 
+@login_required
 def lists(request):
     wbooks=Wish_Book.objects.all()
     return render(request,'list.html',{'wbooks': wbooks})
@@ -135,16 +138,25 @@ def ms_logout(request):
 def ms_index(request):
     return render(request, 'ms_index.html')
 
+@login_required
 def ms_library(request):
     #db table 이미 만들어져있어야되고 걔네를 불러와줘야함 다운로드가능하게해줘야함_ohjinjin 080619 PM15:08
-    return render(request, 'ms_library.html')
+    bookList=Library.objects
+    paginator = Paginator(bookList.all(), 3)
+    page = request.GET.get('page')
+    books = paginator.get_page(page)
+
+    return render(request,'ms_library.html',{'bookList': bookList, 'books':books})
     
+@login_required
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def wish_books(request):
     return render(request, 'wish_books.html')
 
+@login_required
 def create(request):
     wbook = Wish_Book()
     wbook.title = request.GET['book_name']
@@ -154,12 +166,14 @@ def create(request):
     wbook.save()
     return redirect('/ms/ms_index/')
 
+@login_required
 def mybooks(request):
     return render(request, 'mybooks.html')
 
-def listening_page(request):
-    book_list = Library.objects.all()
-    return render(request, 'listening_page.html',{'book_list':book_list})
+@login_required
+def listening_page(request,book_id):
+    booklist = get_object_or_404(Library,pk=book_id)
+    return render(request, 'listening_page.html',{'booklist':booklist})
 
 """ �끃�쓬�뙆�씪 �떎�슫濡쒕뱶 �븿�닔�씤�뜲 �닔�젙�씠 �븘�슂�빐�꽌 �씪�떒 二쇱꽍泥섎━ �뻽�뒿�땲�떎(20190807 05:31 �넀�쁽以�)def record_download(request): 
     filepath = os.path.join(settings.BASE_DIR, 'musics/�끃�쓬.m4a

@@ -639,6 +639,12 @@ color: #777;
 .userusername1{
 	font-size:15px;
 	margin-bottom:0;
+	margin-top:15px;
+}
+
+.userusername1{
+	font-size:15px;
+	margin-bottom:0;
 	float:right;
 	}
 
@@ -651,4 +657,15 @@ color: #777;
 
 .ms_logo{
 	margin-bottom:20px;
+}
+
+.menubar{
+	padding-top:160px;
+}
+
+
+h3.diffi{float: none; text-align: center;}
+
+.pagination{
+	text-align:center;
 }

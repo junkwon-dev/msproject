@@ -54,4 +54,4 @@ class Apply(models.Model): #ohjinjin 080619 PM15:08
     writer = models.CharField(max_length=150) # username
     pub_date = models.DateTimeField('date published')
     m_1365_id = models.CharField(max_length = 30) # 1365 ID 테이블 추가했어요(손현준)
-    privacy = models.CharField(max_length = 150)
+    BookPermission = models.BooleanField(default=0)

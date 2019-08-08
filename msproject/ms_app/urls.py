@@ -12,7 +12,7 @@ urlpatterns = [
     path('wish_books/create', views.create, name = 'create'),
     path('mybooks/', views.mybooks, name = 'mybooks'),
     path('ms_logout/',views.ms_logout,name='ms_logout'),
-    path('listening_page/', views.listening_page, name = 'listening')
+    path('listening_page/<int:book_id>', views.listening_page, name = 'listening')
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

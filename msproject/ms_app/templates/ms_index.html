@@ -33,7 +33,7 @@
 </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>마인드쉐어 - 회원가입</title>
+  <title>마인드쉐어 - 인덱</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -79,23 +79,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#"><img src="{% static '/admin/img/ms_logo.png'%}" alt="" width="100" height="52"
-          class="page-scroll img-responsive img-rounded"></a> </div>
+    <img src="{% static '/admin/img/ms_logo.png'%}" alt="" width="100" height="52"
+          class="page-scroll img-responsive img-rounded"></div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-right navbar-brand">
-        <a href="{% url 'ms_signup'%}" class="page-scroll navbar navbar-right navbar-brand">회원가입</a>
-        <a href="{% url 'ms_login'%}" class="page-scroll navbar navbar-brand navbar-right">로그인</a>
-      </ul>
+        <ul class="nav navbar-right navbar-brand">
+            {% if user.is_active and user.profile1.agreement3 %}
+            <h2 class="userusername1">{{user.username}}님 환영합니다.</h2>
+            {% endif %}
+        </ul>
+
     </div>
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-<header>
-    <div class="ms_logo"> 
-        <img src="{% static '/admin/img/ms_logo.png' %}" alt="mindshare logo" width="200" height="105" >
-    </div>
-</header>
+
 <!--{% if user.is_active %}
 {%else%}-->
 <!--
@@ -105,7 +103,7 @@
 -->
 <!--{% endif %}-->
 
-<div>
+<div class="menubar">
 {% if user.is_active and user.profile1.agreement3 %}
 {% else%}
 <div class="center">
@@ -113,6 +111,8 @@
 </div>
 {% endif %}
 
+<br>
+<Br>
 <Br>
 {{error}}<div>
 {% if form.errors %}
@@ -120,7 +120,6 @@
 {% endif %} 
 
 {% if user.is_active and user.profile1.agreement3 %}
-<h2 class="userusername1">{{user.username}}님 환영합니다.</h2>
 {% endif%}
 
 {% if user.is_active and user.profile1.agreement3 %}
@@ -158,6 +157,13 @@
     <a href="{% url 'lists'%}"><button class="ms_md">희망도서 신청된 목록&검색</button></a> 
 </div>
 {% endif %}
+
+<footer id="footer">
+  <div class="container text-center"  >
+    <p style="text-align:center" >&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
