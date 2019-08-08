@@ -20,37 +20,80 @@ def index(request): # ohjinjin 함수 추가
     return render(request,'index.html')
 
 def vr_login(request):
-    # ohjinjin 함수 전반적으로 수정
-    if request.method == "POST":
-        username = request.POST['ID']
-        password = request.POST['vr_password']
-        user = auth.authenticate(request, username = username, password = password)
+    # 해당 쿠키에 값이 없을 경우 None을 return 한다.
+    if request.COOKIES.get('inputid') is not None:
+        username = request.COOKIES.get('inputid')
+        password = request.COOKIES.get('inputpassword')
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect("vr_index")  
+        else:
+            return render(request, "vr_login.html")
+    elif request.method == "POST":
+        username = request.POST["inputid"]
+        password = request.POST["inputpassword"]
+        # 해당 user가 있으면 username, 없으면 None
+        user = auth.authenticate(request, username=username, password=password)
         obj = None
-        msg = ""
+        # msg = ""
         for eachProf in Profile2.objects.all():
             if eachProf.user.username == username:
                 obj = eachProf
                 break
-
-        if user is not None and obj is not None:
-            auth.login(request,user)
-            return render(request, 'vr_index.html', {"customedUser":obj})
+        if user is not None and obj is not None :
+            auth.login(request, user)
+            if request.POST.get("keep_login") == "TRUE":
+                response = render(request, 'vr_index.html')
+                response.set_cookie('inputid',username)
+                response.set_cookie('inputpassword',password)
+                return response
+            return redirect('vr_index')
         else:
             if user is None:
                 msg = "id/pw incorrect"
             else:
                 msg = "Inaccessible"
-            return render(request, 'vr_login.html',{'error' : msg})
-    #return render(request, 'accounts/vr_login.html')
-    return render(request, 'vr_login.html') # ohjinjin 문장 추가
+            return render(request, 'vr_login.html', {'error':msg})
+    else:
+        return render(request, 'vr_login.html')
+    return render(request, 'vr_login.html')
+
+# def vr_login(request):
+#     # ohjinjin 함수 전반적으로 수정
+#     if request.method == "POST":
+#         username = request.POST['ID']
+#         password = request.POST['vr_password']
+#         user = auth.authenticate(request, username = username, password = password)
+#         obj = None
+#         msg = ""
+#         for eachProf in Profile2.objects.all():
+#             if eachProf.user.username == username:
+#                 obj = eachProf
+#                 break
+
+#         if user is not None and obj is not None:
+#             auth.login(request,user)
+#             return render(request, 'vr_index.html', {"customedUser":obj})
+#         else:
+#             if user is None:
+#                 msg = "id/pw incorrect"
+#             else:
+#                 msg = "Inaccessible"
+#             return render(request, 'vr_login.html',{'error' : msg})
+#     #return render(request, 'accounts/vr_login.html')
+#     return render(request, 'vr_login.html') # ohjinjin 문장 추가
 
 """def vr_signup(request):
     return render(request,'vr_signup.html')"""
 
     
 def logout(request):
+    response = render(request,'vr_index.html')
+    response.delete_cookie('inputid')
+    response.delete_cookie('inputpassword')
     auth.logout(request)
-    return redirect('index')
+    return redirect('vr_index')
 
 def apply(request):
     return render(request,'apply.html')
@@ -72,7 +115,7 @@ def vr_index(request):  # 추가 chanho - 19_8_2_13:50
 def qna(request):
     return render(request,'qna.html')
 
-def create(request):
+def qscreate(request):
     question = HelpData()
     question.question_title = request.GET['question_title']
     question.question_content = request.GET['question_content']
@@ -130,7 +173,7 @@ def qnamodify(request,question_id):
 #             return redirect('/vr/question_info/'+str(question_id))
 #         Comment.objects.create(question=questioin,comment_contents=content)
 #         return redirect('/vr/question_info/'+str(question_id))
-
+##
 class RegisteredView(TemplateView): # �쉶�썝媛��엯�씠 �셿猷뚮맂 寃쎌슦
     template_name = 'vr_index.html'
 
@@ -157,3 +200,12 @@ class CreateUserView2(CreateView):  # 제네릭의 CreateView는 폼하고 연�
         Profile2.objects.create(user=user, phone_number=phone_number, birth_date = birth_date, test_record=test_record,sex=sex,agreement1=agreement1, agreement2=agreement2)
 
         return super(CreateUserView2, self).form_valid(form)
+
+def apply_create():
+    abook = Wish_Book()
+    wbook.title = request.GET['book_name']
+    wbook.author = request.GET['book_author']
+    wbook.publisher = request.GET['book_publish']
+    wbook.pub_date = request.GET['book_year']
+    wbook.save()
+    return redirect('/ms/ms_index/')

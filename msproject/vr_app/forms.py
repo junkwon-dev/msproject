@@ -36,8 +36,8 @@ from .models import Profile2
 class SignUpForm2(UserCreationForm):
     test_record = forms.FileField()
     gender_choice=[('woman','woman'),('man','man')]
-    sex= forms.ChoiceField(choices=gender_choice, widget=forms.RadioSelect)
-    birth_date = forms.DateTimeField(help_text='1900-00-00')
+    sex= forms.ChoiceField(choices=gender_choice, widget=forms.RadioSelect())
+    birth_date = forms.DateTimeField(help_text='YYYY-MM-DD')
     phone_valid = RegexValidator(regex=r'^\d{3}-\d{3,4}-\d{4}$', message="000-0000-0000")
     phone_number = forms.CharField(validators=[phone_valid],max_length=13)
     agreement1 = forms.TypedChoiceField(coerce=lambda x: x =='True', choices=((False, 'No'), (True, 'Yes')), widget=forms.RadioSelect )

@@ -31,31 +31,17 @@
 
 
     <div>
-        <h3>신청란</h3>
-
-        <div class = "boxing">
-            <h4>인증방법</h4>
-            <input type="radio" name="confirm" value="1" checked="checked">1365 인증칸 <br>
-            <br>
-            <input type="radio" name="confirm" value="2"  > 개인정보기입 <br> 
-        </div>
-    
-        
-        <div class = "boxing">
-            <H4>횟수</H4>
-            <input type="radio" name="confirm1" value="1">주기적 <br>
-            <br>
-            <input type="radio" name="confirm1" value="2"  > 1회 <br> 
-            <BR>
-            <input type="radio" name="confirm1" value="3"  > 예약 <br>
-        
-        <div class ="cal">
-            <h4>원하는 날짜</h4>
-            <form id="calender" action="action.jsp">
-                <div><input type="date" id="userdate" name="userdate"></div>
-            </form>
-        
-        </div>
+        <form action="{% url 'apply_create' %}">
+            �룄�꽌紐�:<br>
+            <input type="text" name="book_name"><br>
+            ����옄:<br>
+            <input type="text" name="book_author"><Br>
+            異쒗뙋�궗�씠由�:<br>
+            <input type="text" name="book_publish"><Br>
+            諛쒗뻾�뀈�룄:<br>
+            <input type="text" name="book_year"><Br>    
+            <input class="button" type="submit" value="�젣異쒗븯湲�">
+    </form>
     </div>
     <div>
             <a href="{% url 'lists'%}"><button>다음</button></a>

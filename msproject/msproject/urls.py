@@ -22,6 +22,7 @@ from django.conf import settings # 추가 chanho - 19_8_1_19:50
 from django.conf.urls.static import static # 추가 chanho - 19_8_1_19:50
 from ms_app.admin import ms_admin_site
 from vr_app.admin import vr_admin_site
+from django.views.generic import TemplateView
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
@@ -30,4 +31,7 @@ urlpatterns = [
     path('',vr_app.views.index, name="index"), # index.html 파일 생성해뒀습니다. -# ohjinjin 문장 추가
     path('vr/', include('vr_app.urls')), #2019_07_31_10:45, ohjinjin 수정 2019_08_01 14:57
     path('ms/', include('ms_app.urls')), # ohjinjin 문장 추가
+    path('agreement1/',TemplateView.as_view(template_name = "agreement1.html"),name='agreement1'),
+    path('agreement2/',TemplateView.as_view(template_name = "agreement2.html"),name='agreement2'),
+    path('agreement3/',TemplateView.as_view(template_name = "agreement3.html"),name='agreement3'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # 추가 chanho - 19_8_1_19:50

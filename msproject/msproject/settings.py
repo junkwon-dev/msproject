@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vr_app.apps.VRappConfig',
     'ms_app.apps.MSappConfig',
+    'widget_tweaks',    # ohjinjin 08/08/19 AM05:00 form에 css 적용을 위한 용도로 third partylibrary 설치후 include
 ]
 
 MIDDLEWARE = [

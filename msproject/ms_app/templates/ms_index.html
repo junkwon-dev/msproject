@@ -6,6 +6,10 @@
 {% load staticfiles %}
 
 <style>
+    .center{
+        text-align:center;
+        margin-left:auto; margin-right:auto;
+    }
     .ms_md{
         width:80%; height:150px; text-align:center; position:relative; margin-left:auto; margin-right:auto; background-color:#f1f3f5;
         border :1px solid; vertical-align:middle; font-size:50px; line-height:150px;
@@ -40,32 +44,32 @@
 -->
 <!--{% endif %}-->
 
-<br>
-{% if customedUser.user.is_active %}
-{%else%}
-<div class="ms_md">
-    <a href="{% url 'ms_signup'%}"> 회원가입 </a>
+<div>
+{% if user.is_active and user.profile1.agreement3 %}
+{% else%}
+<div class="center">
+    <a href="{% url 'ms_signup'%}"><button class="ms_md">회원가입</button></a>
 </div>
 {% endif %}
 
 <Br>
-{{error}}<br>
+{{error}}<div>
 {% if form.errors %}
         {{error}}
 {% endif %} 
 
-{% if customedUser.user.is_active %}
-<p>{{customedUser.user.username}}님 환영합니다.{{customedUser.phone_number}}</p>
-{%endif%}
+{% if user.is_active and user.profile1.agreement3 %}
+<p>{{user.username}}님 환영합니다.{{user.profile1.phone_number}}</p>
+{% endif%}
 
-{% if customedUser.user.is_active %}
-<div class="ms_md">
-    <a href="{% url 'logout'%}">로그아웃</a>
-</div>
+{% if user.is_active and user.profile1.agreement3 %}
+    <div class="center">
+        <a href="{% url 'ms_logout'%}"><button class="ms_md">로그아웃</button></a>
+    </div>
 {% else %}
-<div class="ms_md">
-    <a href="{% url 'ms_login'%}"> 로그인 </a>
-</div>
+    <div class="center">
+    <a href="{% url 'ms_login'%}"><button class="ms_md">로그인</button></a>
+    </div>
 {% endif %}
 
 <br><br>
@@ -78,19 +82,19 @@
 </div>
 
 -->
-{% if customedUser.user.is_active %}
-<div class="ms_md">
-    <a href="{% url 'ms_library'%}"> 음성도서관 </a>
+{% if user.is_active and user.profile1.agreement3 %}
+<div class="center">
+    <a href="{% url 'ms_library'%}"><button class="ms_md">음성도서관</button></a>
 </div>
 <br>
 <br>
-<div class="ms_md">
-    <a href="{% url 'wish_books'%}"> 희망도서 신청페이지</a>
+<div class="center">
+    <a href="{% url 'wish_books'%}"><button class="ms_md">희망도서 신청페이지</button></a>
 </div>
 <br>
 <br>
-<div class="ms_md">
-    <a href="{% url 'lists'%}"> 희망도서 신청된 목록&검색 </a> 
+<div class="center">
+    <a href="{% url 'lists'%}"><button class="ms_md">희망도서 신청된 목록&검색</button></a> 
 </div>
 {% endif %}
 <a href="{% url 'index' %}">index페이지로 가기(임시))</a> <!--임시로 만들어 둔거라 언제든 없애셔도 됩니다!(손현준)-->

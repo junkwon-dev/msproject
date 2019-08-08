@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import Profile1
 from django.contrib.admin import AdminSite
 from .models import Wish_Book
+from .models import Library
 class MSAdminSite(AdminSite):
     site_header = "MindShare MS Admin"
     site_title = "MindShare MS Admin Portal"
@@ -26,3 +27,4 @@ ms_admin_site.register(User,UserAdmin)
 # admin.site.register(SignUpForm)
 
 ms_admin_site.register(Wish_Book)
+ms_admin_site.register(Library)

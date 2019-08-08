@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.contrib import auth
 from .models import Profile1
 from .models import Wish_Book
+from .models import Library
 #from django.http import HttpResponse #190807 녹음파일 다운로드구현에 필요한 HttpResponse 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
 # Create your views here.
 """def ms_signup(request):
@@ -60,31 +61,69 @@ def lists(request):
     return render(request,'list.html',{'wbooks': wbooks})
 
 def ms_login(request):
-    if request.method == "POST":
-        username = request.POST['ID']
-        password = request.POST['password']
-        # if request.COOKIES.get('username') is not None:
-        #     password = request.COOKIES.get('password')
-        #     username = request.COOKIES.get('username')
-        user = auth.authenticate(request, username = username, password = password)
+    # 해당 쿠키에 값이 없을 경우 None을 return 한다.
+    if request.COOKIES.get('ID') is not None:
+        username = request.COOKIES.get('ID')
+        password = request.COOKIES.get('password')
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect("ms_index")  
+        else:
+            return render(request, "ms_login.html")
+
+    elif request.method == "POST":
+        username = request.POST["ID"]
+        password = request.POST["password"]
+        # 해당 user가 있으면 username, 없으면 None
+        user = auth.authenticate(request, username=username, password=password)
         obj = None
-        msg = ""
         for eachProf in Profile1.objects.all():
             if eachProf.user.username == username:
                 obj = eachProf
                 break
-        
         if user is not None and obj is not None:
-            auth.login(request,user)
-            return render(request, 'ms_index.html', {'customedUser' : obj})
+            auth.login(request, user)
+            if request.POST.get("keep_login") == "TRUE":
+                response = render(request, 'ms_index.html')
+                response.set_cookie('ID',username)
+                response.set_cookie('password',password)
+                return response
+            return redirect('ms_index')
         else:
             if user is None:
                 msg = "id/pw incorrect"
             else:
                 msg = "Inaccessible"
-            return render(request, 'ms_login.html',{'error' : msg})
-    # return render(request, 'accounts/vr_login.html')
-    return render(request, 'ms_login.html') # ohjinjin 臾몄옣 異붽��
+            return render(request, 'ms_login.html', {'error':msg})
+    else:
+        return render(request, 'ms_login.html')
+    return render(request, 'ms_login.html')
+
+
+# def ms_login(request):
+#     if request.method == "POST":
+#         username = request.POST['ID']
+#         password = request.POST['password']
+#         user = auth.authenticate(request, username = username, password = password)
+#         obj = None
+#         msg = ""
+#         for eachProf in Profile1.objects.all():
+#             if eachProf.user.username == username:
+#                 obj = eachProf
+#                 break
+        
+#         if user is not None and obj is not None:
+#             auth.login(request,user)
+#             return render(request, 'ms_index.html', {'customedUser' : obj})
+#         else:
+#             if user is None:
+#                 msg = "id/pw incorrect"
+#             else:
+#                 msg = "Inaccessible"
+#             return render(request, 'ms_login.html',{'error' : msg})
+#     # return render(request, 'accounts/vr_login.html')
+#     return render(request, 'ms_login.html') # ohjinjin 臾몄옣 異붽��
 
 def ms_logout(request):
     response = render(request,'index.html')
@@ -121,14 +160,11 @@ def mybooks(request):
 def listening_page(request):
     return render(request, 'listening_page.html')
 
-""" 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
-def record_download(request): 
-    filepath = os.path.join(settings.BASE_DIR, 'musics/녹음.m4a')
-    filename = os.path.basename(filepath) #파일명 반환
-
+""" �끃�쓬�뙆�씪 �떎�슫濡쒕뱶 �븿�닔�씤�뜲 �닔�젙�씠 �븘�슂�빐�꽌 �씪�떒 二쇱꽍泥섎━ �뻽�뒿�땲�떎(20190807 05:31 �넀�쁽以�)def record_download(request): 
+    filepath = os.path.join(settings.BASE_DIR, 'musics/�끃�쓬.m4a
+    filename = os.path.basename(filepath) #�뙆�씪紐� 諛섑솚
     with open(filepath,'rb') as f:
-        response = HttpResponse(f,content_type='audio/m4a') # 필요한 응답헤더
-        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
+        response = HttpResponse(f,content_type='audio/m4a') # �븘�슂�븳 �쓳�떟�뿤�뜑        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
         return response
 """
     
