@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Interact</title>
+<title>MINDSHARE - About</title>
 <meta name="description" content="">
 <a name="author" content="">
 <style>
@@ -16,7 +16,28 @@
   .explain_elements{margin-top: 50px;}
   .left_side{float:left;}
   .right_side{float:right;}
-  .divdiv{margin-bottom: 50px;clear: both;}
+  .divdiv{margin-bottom: 50px;margin-top: 50px;
+  clear: both;}
+  .divdivdiv{margin-bottom: 50px;margin-top: 50px;
+  }
+  .intro-h1-white {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    font-size: 82px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    align:center;
+  margin-bottom: 10px;}
+  .intro-white p {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+  
 </style>
 <!-- Favicons
     ================================================== -->
@@ -47,7 +68,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/advent-pro:n1:default;antic:n4:default.js" type="text/javascript"></script>
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script var __adobewebfontsappname__="dreamweaver"></script><script src="http://use.edgefonts.net/advent-pro:n1:default;antic:n4:default.js" type="text/javascript"></script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -67,9 +88,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-right navbar-brand">
           {% if user.is_active and user.profile2.agreement2 %}
-          <h2 class="userusername">{{user.username}}님 환영합니다.</h2>
           <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
           <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+          <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
           {% else %}
 
           <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>
@@ -121,47 +142,64 @@
 
 </nav>
 <!-- Header -->
-<header id="header" class="header">
-  <div class="intro">
-    <div class="overlay">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 intro-text">
-            
-			  <h2 class="head1">ABOUT</h2>
-            <h2 class="head">miNDshARE</h2>
+<body>
+<header class="v-header">
+        <div class = "fullscreen-video-wrap">
+          <img src= "/static/admin/img/reading.jpg">
+        <!-- <video src ="/static/admin/img/intro.bg" autoplay="true" loop="true"></video> THIS IS FOR THE VIDEO. DON'T DELETE THIS--> 
+          </div>
+          <header id="header">
+              <div class="intro-white">
+                  <div class="overlay">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-8 col-md-offset-2 intro-text">
+                                  <h1 class="intro-h1-white">ABOUT<BR>MINDSHARE</h1>
+                                  <h4 class="intro-white">당신의 목소리를 들려주세요</h4>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </header>
+</div>
+    </div>
+  </header>
+</body>
             <br>
-	<div class="explain"> <p>마인드쉐어는 시각장애인을 위한 작은 도서관,<br>
-	 "책을 읽어주는 도서관"을 운영하고 있습니다.</p>
+	<div class="explain"> 
 	</div>
   <br>
-  <br>
-  <br>
   <div class="divdiv">
-  <h2 class="h21">motivate of miNDshARE</h2><br><br>
-  <div>
-  <img src="" height="200px" width="300px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자책으로 번역된 도서비율은 1%</h3></div>
-  <div>
+  <h2 class="h21">MOTIVATION OF MINDSHARE</h2><br><br>
+  <div class="divdivdiv">
+  <img src="/static/admin/img/reading.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자책으로 번역된 도서비율은 1%</h3>
+    <br><p>전국에서 시각장애인을 위해 제작된 도서는 1%에 불과합니다. (201?년 기준)</p>
+</div>
+  <div class="divdivdiv">
     <br>
-  <img src="" height="200px" width="300px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: left;" ><br><br><br>디지털 점자 리더기의 가격은 2000$</h3></div>
-  <br>
-  <div>
-  <img src="" height="200px" width="300px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자 배우기를 포기한 시각장애인 비율 95%</h3></div>
-  <br>
-  <br>
-  </div>
+  <img src="/static/admin/img/money.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: left;" ><br><br><br>디지털 점자 리더기의 가격은 2000$</h3>
+  <br><p>비싼 가격에 전자 리더기를 사용하는 사람들이 대중적으로 많지는 않습니다.</p></div>
+  
+  <div class="divdivdiv">
+  <img src="/static/admin/img/angry.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자 학습을 포기한 시각장애인 비율 95%  <br><p>언어가 어려울 뿐만 아니라 시각이 보이지 않는 등 여러가지 이유로 많은 시각장애인들이 언어 학습을 포기하고 있습니다.</p></h3>
+
+</div>
+ </div>
   <br>
   <br>
   <div class="divdiv">
+    <br><br>
   <h2 class="h21">feature of miNDshARE</h2></div><br>
-  <div>
-    <div>
-  <img src="" height="200px" width="300px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>자원 봉사자들이 읽어주는 도서관</h3></div>
- 
+  <div class="divdivdiv">
+    
+  <img src="/static/admin/img/book.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>자원 봉사자들이 읽어주는 도서관<br><p>자원봉사자들이 직접 시각장애인들을 위해서 자원하여 세계적인 베스트셀러, 만화 등 다양한 컨텐츠를 들을 수 있는 기회를 제공하고 있습니다.</p></h3>
   </div>
+ 
   <br>
-  <div>
-  <img src="" height="200px" width="300px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: left;" ><br><br><br>함께 만드는 오디오북</h3></div>
+  <div class="divdivdiv">
+    <br><br>
+  <img src="/static/admin/img/mic.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: left;" ><br><br><br>함께 만드는 오디오북<br><p>함께 읽고, 함께 생각을 공유하는 곳, 이곳은 Mindshare, 책을 읽어주는 도서관입니다.</p></h3>
+  </div>
  
   </div>
 

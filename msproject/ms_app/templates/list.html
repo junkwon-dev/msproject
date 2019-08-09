@@ -79,7 +79,7 @@ th, td {
   </nav>
     <h1 class="total_list">전체 목록</h1>
     
-    <table class="table_list" >
+    <table class="table_list" style="margin-top:100px"><!--울 마진값 일부러 준거에요 추후에 수정할게요-->
         
         <thead class="table_title">
         <tr>
@@ -106,13 +106,13 @@ th, td {
                 <td>{{wbook.id}}</td>
             </tr>
             {%endfor%}
-       </tbody>
+      </tbody>
     </table>
     <div class="buttons">
     <a href="{%url 'ms_index'%}"><button>돌아가기</button></a>
     <a href="{%url 'mybooks'%}"><button>나의 도서</button></a>
     <a href="{%url 'ms_library'%}"><button>음성 도서관</button></a>
-    {% comment %} <a href="{%url 'listening'%}"><but ton>늑음듣기</button></a>
+    {% comment %} <a href="{%url 'listening'%}"><button>녹음듣기</button></a>
  {% endcomment %}    </div>
     <footer id="footer">
   <div class="container text-center"  >

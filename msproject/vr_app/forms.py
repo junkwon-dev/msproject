@@ -70,15 +70,47 @@ class SignUpForm2(UserCreationForm):
 
 ################## forms.py 수정 찬호 8_8 ######################       
 class LibraryForm(forms.ModelForm):
+    title = forms.CharField(max_length=30)
+    author = forms.CharField(max_length=30)
+    publisher = forms.CharField(max_length=30)
+    record = forms.FileField()
+    pub_date = forms.CharField(max_length=30)
+
     class Meta:
         model = Library
-        fields = ['title', 'author', 'publisher', 'record']
-    
+        #fields = ['title', 'author', 'publisher', 'record']
+        fields = ['title', 'author', 'publisher', 'record', 'pub_date']
         
-
+# ex) 1365 | ohjinjin | 니체의 말 | 니체 | 삼호미디어 | True | 실명 | 게시물작성자(ms의 username)
 class ApplyForm(forms.ModelForm):
+    whichOrgan=[('1365','1365'),('VMS','VMS')]#얘를 모델에서 받을떄 charfield로 받아서 저장
+    vms_or_1365= forms.ChoiceField(choices=whichOrgan, widget=forms.RadioSelect())#계정
+    vr_accounts = forms.CharField(max_length=15)
+    #book_name = forms.CharField(max_length=30)
+    #author = forms.CharField(max_length=15)
+    #publisher = forms.CharField(max_length=15)
+    sms = forms.BooleanField()
+
     class Meta:
         model = Apply
-        fields = ['primarykey', 'm_1365_id', 'privacy']
 
+        sms = forms.BooleanField(required=False)
+        
+        #primarykey==Library obj
+        #1365 or VMS 라디오로
+        #id 봉사계정
+        #실명, username은 자동저장되야하니까 모델에 있어야함
+        #책이름
+        #저자
+        #출판사
+        #연락처로 sms수신하실지 여부 체크박스로
+        #검색기능은 분리하기 ㅎㅎ
+        #찬호님 이거 음 그 보여지는 폼들을 전부 적는 방향으로할게용 !?
+        #잘 이해가 .. 템플릿에서 전부 적는다는 말씀인가요? {{form.sms }}이런식 ? 네네!!!
+        #fields = ['primarykey', 'm_1365_id', 'privacy']
+        fields = ['vms_or_1365','vr_accounts','sms']
+        #exclude = ['is_deleted'] 
+        #widgets = {
+        #    'is_anything_required' : CheckboxInput(),
+        #}
 ###############################################################

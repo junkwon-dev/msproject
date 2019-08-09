@@ -12,7 +12,6 @@ from .models import Wish_Book
 from .models import Library
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-#from django.http import HttpResponse #190807 녹음파일 다운로드구현에 필요한 HttpResponse 녹음파일 다운로드 함수인데 수정이 필요해서 일단 주석처리 했습니다(20190807 05:31 손현준)
 # Create your views here.
 """def ms_signup(request):
     if request.method == 'POST':
@@ -60,8 +59,9 @@ class RegisteredView(TemplateView): # 회원가입이 완료된 경우
 
 @login_required
 def lists(request):
-    wbooks=Wish_Book.objects.all()
-    return render(request,'list.html',{'wbooks': wbooks})
+    #wbooks=Wish_Book.objects.all()
+    tmpWbooks = Wish_Book.objects
+    return render(request,'list.html',{'wbooks': tmpWbooks.order_by('id').reverse().all()})
 
 def ms_login(request):
     # 해당 쿠키에 값이 없을 경우 None을 return 한다.
@@ -76,8 +76,8 @@ def ms_login(request):
             return render(request, "ms_login.html")
 
     elif request.method == "POST":
-        username = request.POST["ID"]
-        password = request.POST["password"]
+        username = request.POST["inputid"]
+        password = request.POST["inputpassword"]
         # 해당 user가 있으면 username, 없으면 None
         user = auth.authenticate(request, username=username, password=password)
         obj = None
@@ -174,12 +174,4 @@ def mybooks(request):
 def listening_page(request,book_id):
     booklist = get_object_or_404(Library,pk=book_id)
     return render(request, 'listening_page.html',{'booklist':booklist})
-
-""" �끃�쓬�뙆�씪 �떎�슫濡쒕뱶 �븿�닔�씤�뜲 �닔�젙�씠 �븘�슂�빐�꽌 �씪�떒 二쇱꽍泥섎━ �뻽�뒿�땲�떎(20190807 05:31 �넀�쁽以�)def record_download(request): 
-    filepath = os.path.join(settings.BASE_DIR, 'musics/�끃�쓬.m4a
-    filename = os.path.basename(filepath) #�뙆�씪紐� 諛섑솚
-    with open(filepath,'rb') as f:
-        response = HttpResponse(f,content_type='audio/m4a') # �븘�슂�븳 �쓳�떟�뿤�뜑        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
-        return response
-"""
     

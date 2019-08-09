@@ -11,7 +11,6 @@
             width: 20%;
             height: 20%;
         }
-    
         header {
             text-align: center;
         }
@@ -25,18 +24,33 @@
         .index_header{
             padding-top: 200px;
             padding-bottom: 200px;
-
         }
-        .index_btn{
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
+        h1{
+            margin-top: 10%;
+        }
+        .container_left{
+            margin-top: 10%;
+        }    
+        .container_right{
+            margin-top: 10%;
+        }    
+        .leftbox{
+            border: 3px solid black;
+            border-radius: 60px;
+            background-color: white;
             float: left;
-
-        }
-        .text_center{
-            color: white;
+            width: 40%;
+            height: 500px;
+            margin-top: 30px;    
+        } 
+        .rightbox{
+            border: 3px solid black;
+            border-radius: 60px;
+            background-color: white;
+            float: right;
+            width: 40%;
+            height: 500px; 
+            margin-top: 30px;
         }
     </style>
 <meta charset="utf-8">
@@ -95,24 +109,39 @@
         </div>
     </nav>
 </body>
-
-
-<header class="index_header">
-    <div class="center">
-        <div onclick="location.href ='{% url 'vr_index' %}'" class="index_btn">
-            <h1 class="text-center">자원봉사자</h1>
-        </div>
-        <div onclick="location.href ='{% url 'ms_index' %}'" class="index_btn">
-            <h1 class="text-center">시각장애인</h1>
+<header id="header">
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="container_left" OnClick="location.href='{% url 'ms_index'%}'">
+                        <div  class="leftbox">
+                            <h1 style="color: black" > 시각장애인 </h1>
+                        </div>
+                    </div>
+                    <div class="container_right" OnClick="location.href='{% url 'vr_index'%}'">
+                        <div  class="rightbox">
+                            <h1 style="color: black"> 자원봉사자 </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>
-    
-<footer id="footer">
-    <div class="container text-center">
-        <p> &copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
+
+
+<!--
+<header>
+    <div class="container_left">
+        <div  class="leftbox"><h1> 시각장애인 </h1></div>
     </div>
-</footer>
+    <div class="container_right">
+        <div    class="rightbox"><h1> 자원봉사자 </h1></div>
+    </div>
+</header>
+-->
+
 <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>

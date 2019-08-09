@@ -104,18 +104,19 @@ def logout(request):
 
 ############################## views.py apply 수정 8_8 찬호 ############
 def apply(request):
-    username = request.user.username 
+    username = request.user.username
     if request.method=='POST':
         form1 = LibraryForm(request.POST, request.FILES)
         form2 = ApplyForm(request.POST)
-        if form1.is_valid() and form2.is_valid: # 수정 
-            obj = Library(title=form1.data['title'], author=form1.data['author'], publisher=form1.data['publisher'], record=request.FILES['record'])
+        if form1.is_valid() and form2.is_valid(): # 수정 
+            obj = Library(title=form1.data['title'], author=form1.data['author'], publisher=form1.data['publisher'], record=request.FILES['record'], pub_date=form1.data['pub_date'])
             obj.save()
-            obj2 = Apply(primarykey=obj , writer=username, pub_date = timezone.datetime.now(), m_1365_id=form2.data['m_1365_id'], privacy=form2.data['privacy'] )
+            #obj2 = Apply(primarykey=obj , writer=username, date = timezone.datetime.now(), vms_1365_id=form2.data['vms_1365_id'], writer_name=form2.data['writer_name'],sms = form2.data['sms'] )
+            obj2 = Apply(primarykey=obj ,vr_accounts=form2.data['vr_accounts'], username=username, vms_or_1365=form2.data['vms_or_1365'], sms = form2.data['sms'], real_name = request.user.lastname+request.user.firstname)
             #obj = form.save(commit=False)
             #obj.writer = username
             #obj.pub_date=timezone.now()
-            obj2.save()     
+            obj2.save()
             
             return redirect('vr_index')
         return redirect('vr_index')
@@ -228,11 +229,3 @@ class CreateUserView2(CreateView):  # 제네릭의 CreateView는 폼하고 연�
 
         return super(CreateUserView2, self).form_valid(form)
 
-def apply_create():
-    abook = Wish_Book()
-    wbook.title = request.GET['book_name']
-    wbook.author = request.GET['book_author']
-    wbook.publisher = request.GET['book_publish']
-    wbook.pub_date = request.GET['book_year']
-    wbook.save()
-    return redirect('/ms/ms_index/')

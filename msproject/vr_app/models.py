@@ -40,7 +40,7 @@ class Profile2(models.Model):
     agreement1 = models.CharField(max_length=10, blank=True)
     agreement2 = models.CharField(max_length=10, blank=True)
     mileage = models.CharField(max_length=10, default=0, blank=True)
-
+    
 """class Apply(models.Model):ohjinjin 080619 PM15:08
     writer = models.CharField(max_length=150) # username
     pub_date = models.DateField()
@@ -51,7 +51,18 @@ class Profile2(models.Model):
 ###### apply model 수정 8_8 찬호 ######
 class Apply(models.Model): #ohjinjin 080619 PM15:08
     primarykey = models.OneToOneField(Library, on_delete=models.DO_NOTHING, db_constraint=False, null=True)
-    writer = models.CharField(max_length=150) # username
-    pub_date = models.DateTimeField('date published')
-    m_1365_id = models.CharField(max_length = 30) # 1365 ID 테이블 추가했어요(손현준)
-    BookPermission = models.BooleanField(default=0)
+    """writer = models.CharField(max_length=150) # username  -   id 
+    date = models.DateTimeField('date published')
+    vms_1365_id = models.CharField(max_length = 30) # 1365 ID 테이블 추가했어요(손현준)
+    privacy = models.CharField(max_length = 150)
+    BookPermission = models.IntegerField(max_length=10,default = 0,blank =True)
+    writer_name = models.CharField(max_length=150) # 작성자 이름 
+    sms = models.BooleanField(default=False)"""
+    vms_or_1365 = models.CharField(max_length=10,blank=True)
+    vr_accounts = models.CharField(max_length = 15,blank=True)
+    #book_name = models.CharField(max_length=30,blank=True)
+    #author = models.CharField(max_length=15,blank=True)
+    #publisher = models.CharField(max_length=15,blank=True)
+    sms = models.BooleanField(default=False,blank=True)
+    full_name = models.CharField(max_length=15,blank=True)
+    username = models.CharField(max_length=15,blank=True)#view?

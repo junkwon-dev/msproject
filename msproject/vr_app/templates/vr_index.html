@@ -8,20 +8,24 @@
 -->
 <!doctype html>
 <html lang="ko">
-
+<style type="text/css">
+    .copyright {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;   
+        background: #dfe4ea;
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>마인드쉐어 - 로그인</title>
+    <title>마인드쉐어 - 인덱스</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Favicons
     ================================================== -->
-
-
-
-
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/static/admin/css/bootstrap.css">
@@ -49,7 +53,7 @@
 
 {%load staticfiles%}
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body class="h-div" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <nav id="menu" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -67,9 +71,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-right navbar-brand">
                     {% if user.is_active and user.profile2.agreement2 %}
-                    <h2 class="userusername">{{user.username}}님 환영합니다.</h2>
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
                     <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
                     {% else %}
 
                     <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>
@@ -134,11 +138,12 @@
         </div>
     </div>
 </header>
-<footer id="footer">
-    <div class="container text-center">
-        <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
+
+
+    <div class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
     </div>
-</footer>
+
+
 <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
@@ -146,30 +151,5 @@
 <script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
 <script type="text/javascript" src="/static/admin/js/main.js"></script>
-</body>
-<!--<footer id="footer">
-        <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
-<footer>-->
-</html>
 
-<!--
-<div class="vr_apply">
-    <a href="{% url 'apply' %}">apply</a>
-</div>
-<div class="vr_help">
-    <a href="{% url 'vr_help' %}">help</a>
-</div>
-<br>
-<div class = "vr_introduce">
-    <p style = "text-align:left"><img src = "" alt = "소개" ></p>
-    <p>책을 읽는데 어려움이 있으신 분들</p> 
-</div>
-<br> 
-<div class = "vr_warning">
-    <p style = "text-align:left"><img src = "" alt = "주의사항" ></p>
-    <p>주의사항</p>
-</div>
-<br>  
-<div class = "vr_etc">
-    <p style = "text-align:left"><img src = "" alt = "etc" ></p>
--->
+</html>

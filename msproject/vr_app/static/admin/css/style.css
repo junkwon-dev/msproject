@@ -592,8 +592,12 @@ color: #777;
 	color: #608dfd;
 	background: #fff;
 }
+
 /* Footer Section*/
 #footer {
+	position:absolute;
+    bottom:0;
+    width:100%;
     background: #f6f6f6;
     
 }

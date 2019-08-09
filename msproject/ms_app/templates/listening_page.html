@@ -85,7 +85,13 @@
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-    <div class="book_title"> <p class="title">{{booklist.title}}</p> </div>
+  
+<header id="header">
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+    <div class="book_title"> <br><p class="title" style="font-size: 5vw">{{booklist.title}}</p> </div>
     <br>
     <div class="information">
         
@@ -97,13 +103,18 @@
         </ul>
     </div>
     <br>
-    <div class="audio_book">
+    <div class="audio_book"><br>
         <p>저장된 음성도서</p>
             <audio controls>
                 <source src={{booklist.record.url}} type="audio/mp3">
             </audio>
-    </div>
+    </div> <br>
     <a href="{% url 'ms_library'%}"><button>목록</button></a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 </body>
 <footer id="footer">
   <div class="container text-center"  >

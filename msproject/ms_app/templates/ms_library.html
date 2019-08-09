@@ -99,7 +99,7 @@
         </div>
     </nav>
     <h1>
-        <p style="background-color: pink;text-align:center">VOICE LIBRARY
+        <p style="background-color: pink;text-align:center; margin-top: 50px">VOICE LIBRARY<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
     </h1>
     <br><br>
     <div class="container">
@@ -116,15 +116,25 @@
                 </tr>
             </thead>
             <tbody class="contain_list">
+
                 {% for eachBook in books %}
+                {%if eachBook.Bookperm %}
                 <tr>
                     <!--<td>1</td>-->
                     <td><a href="{% url 'listening' eachBook.id %}">{{eachBook.title}}</a></td>
                     <td><a href="{% url 'listening' eachBook.id %}">{{eachBook.author}}</a></td>
                     <td><a href="{% url 'listening' eachBook.id %}">{{eachBook.publisher}}</a></td>
                     <!--<td>{{eachBook.record}}</td>-->
-                </tr></a>
+                </tr>
+                {% else %}
+                <tr>
+                    <td><p style="text-decoration:line-through">{{eachBook.title}}</p></td>
+                    <td><p style="text-decoration:line-through">{{eachBook.author}}</p></td>
+                    <td><p style="text-decoration:line-through">{{eachBook.publisher}}</p></td>
+                </tr>
+                {%endif%}
                 {%endfor%}
+
             </tbody>
             <!--
         <tbody>
@@ -174,11 +184,10 @@
         <hr />
 
         <!--<div class="page#">
-                <ul class="pagination">
-                    <li><a href="#">1</a> </li>
-                    <li><a href="#">2</a> </li>
-                    <li><a href="#">3</a> </li>
-                    <li><a href="#">4</a> </li>
+                <ul clas<a href="?page=1">1</a>                    <li><a href="?page=2">2</a></li>
+                    <li><a href="?page=3">3</a></li>
+                    <li><a href="?page=4">4</a></li>
+                    <li><a href="?page=5">5</a> </li>
                     <li><a href="#">5</a> </li>
                 </ul>
             </div>-->

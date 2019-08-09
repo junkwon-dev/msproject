@@ -39,7 +39,8 @@ class Library(models.Model):# ohjinjin 080619 PM15:08
     author = models.CharField(max_length=200)
     publisher =models.CharField(max_length=200)
     record = models.FileField(upload_to = 'musics/',blank=True)
-
+    Bookperm = models.BooleanField(default=False)
+    pub_date = models.CharField(max_length=200) # 추가
     """
 class Library(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
