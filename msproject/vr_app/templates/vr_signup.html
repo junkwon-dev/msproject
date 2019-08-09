@@ -92,7 +92,7 @@
                     <p>MINDSHARE 이용약관 [필수] </p>
 
 
-                    <iframe id="agreement1_iframe"  scrolling="auto" style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement1' %}"></iframe>
+                    <iframe id="agreement1_iframe"  style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement1' %}"></iframe>
                     {% render_field form.agreement1 class="radio" %}
                     {% if form.agreement1.help_text %}
                     <small style="color: grey">{{ form.agreement1.help_text }}</small>
@@ -265,13 +265,13 @@
             <div class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
             </div>
             
-<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+{% comment %} <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
 <script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>
 <script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
-<script type="text/javascript" src="/static/admin/js/main.js"></script>
+<script type="text/javascript" src="/static/admin/js/main.js"></script> {% endcomment %}
   </body>
   
   </html>

@@ -2283,6 +2283,7 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  margin-top:20px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -4994,6 +4995,14 @@ a.badge:focus {
   color: inherit;
   background-color: #eee;
 }
+
+.jumbotron0 {
+  padding-top: 100px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eee;
+}
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
@@ -6798,4 +6807,9 @@ button.close {
 
 #text{
 	font-size:13px;
+}
+
+.thead-text0{
+
+  margin-
 }

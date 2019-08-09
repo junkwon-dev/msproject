@@ -6,9 +6,6 @@ body, html {
 	font-weight: 400;
 	width: 100% !important;
 	height: 100% !important;
-	margin: 0;
-    padding: 0;
-    overflow: hidden;
 }
 h2, h3, h4 {
 	font-family: 'Raleway', sans-serif;

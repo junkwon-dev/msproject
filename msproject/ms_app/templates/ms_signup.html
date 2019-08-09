@@ -86,7 +86,7 @@
                     <p>MINDSHARE 이용약관 [필수] </p>
 
 
-                    <iframe id="agreement1_iframe"  scrolling="auto" style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement1' %}"></iframe>
+                    <iframe id="agreement1_iframe"  style="overflow-x:hidden; overflow:auto; width:100%; min-height:50px;" src="{% url 'agreement1' %}"></iframe>
                     {% render_field form.agreement1 class="radio" %}
                     {% if form.agreement1.help_text %}
                     <small style="color: grey">{{ form.agreement1.help_text }}</small>
