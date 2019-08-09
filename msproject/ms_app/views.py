@@ -61,7 +61,11 @@ class RegisteredView(TemplateView): # 회원가입이 완료된 경우
 def lists(request):
     #wbooks=Wish_Book.objects.all()
     tmpWbooks = Wish_Book.objects
-    return render(request,'list.html',{'wbooks': tmpWbooks.order_by('id').reverse().all()})
+    paginator = Paginator(tmpWbooks.all(), 6)
+    page = request.GET.get('page')
+    wbook_list = paginator.get_page(page)
+
+    return render(request,'list.html',{'wbooks': tmpWbooks.order_by('id').reverse().all(),'wbook_list':wbook_list})
 
 def ms_login(request):
     # 해당 쿠키에 값이 없을 경우 None을 return 한다.

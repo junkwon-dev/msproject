@@ -18,6 +18,8 @@ urlpatterns = [
     path('question_info/<int:question_id>/delete/',views.delete,name='delete'),
     path('<int:question_id>/modify/',views.modify,name='modify'),
     path('<int:question_id>/qnamodify/',views.qnamodify,name='qnamodify'),
+    path('mypage/',views.mypage,name='mypage'),
+    path('mapage/transmile',views.mypage,name='transmile'),
     #path('apply_create/',views.apply_create, name='apply_create'),
     # path('<int:question_id>/comment_new', views.comment_write, name="comment_write"),
     

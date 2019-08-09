@@ -40,7 +40,6 @@ class Profile2(models.Model):
     agreement1 = models.CharField(max_length=10, blank=True)
     agreement2 = models.CharField(max_length=10, blank=True)
     mileage = models.CharField(max_length=10, default=0, blank=True)
-    
 """class Apply(models.Model):ohjinjin 080619 PM15:08
     writer = models.CharField(max_length=150) # username
     pub_date = models.DateField()
@@ -63,6 +62,7 @@ class Apply(models.Model): #ohjinjin 080619 PM15:08
     #book_name = models.CharField(max_length=30,blank=True)
     #author = models.CharField(max_length=15,blank=True)
     #publisher = models.CharField(max_length=15,blank=True)
-    sms = models.BooleanField(default=False,blank=True)
+    BoolChoices = [(True,'Yes'),(False,'No')]
+    sms = models.BooleanField(choices=BoolChoices,default=False,blank=True)
     full_name = models.CharField(max_length=15,blank=True)
     username = models.CharField(max_length=15,blank=True)#view?

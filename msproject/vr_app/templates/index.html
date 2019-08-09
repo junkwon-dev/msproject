@@ -114,16 +114,16 @@
         <div class="overlay">
             <div class="container">
                 <div class="row">
-                    <div class="container_left" OnClick="location.href='{% url 'ms_index'%}'">
-                        <div  class="leftbox">
+                    <a class="container_left" href="{% url 'ms_index'%}">
+                        <button  class="leftbox" >
                             <h1 style="color: black" > 시각장애인 </h1>
-                        </div>
-                    </div>
-                    <div class="container_right" OnClick="location.href='{% url 'vr_index'%}'">
-                        <div  class="rightbox">
+                        </button>
+                    </da>
+                    <a class="container_right" href="{% url 'vr_index'%}">
+                        <button  class="rightbox">
                             <h1 style="color: black"> 자원봉사자 </h1>
-                        </div>
-                    </div>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

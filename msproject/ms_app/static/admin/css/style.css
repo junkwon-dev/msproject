@@ -672,7 +672,7 @@ color: #777;
 	
   }
   
-  #myVideo {
+#myVideo {
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -680,12 +680,12 @@ color: #777;
 	min-height: 100%;
   }
 
-
-h3.diffi{
+h2.diffi{
 	float: none; text-align: center;
-	padding-left:250px;
-	padding-right:250px;
+	margin-left:5%;
+	margin-right:5%;
 }
+
 
 .pagination{
 	text-align:center;
@@ -758,8 +758,9 @@ font-family: 'Open Sans', sans-serif;
 	font-size:50px;
 	font-weight:bold;
 	color: black;
-	margin-top:20%;
+	margin-top:10%;
 }
+
 {
 	box-sizing:border-box;
 
@@ -780,4 +781,17 @@ font-family: 'Open Sans', sans-serif;
 	display: block;
 	height: 100px;
 	text-align: center;
+}
+
+.table_list {
+	border-color: black;
+	width: 800;
+	height: 500;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#black0{
+	bottom:0px;
 }

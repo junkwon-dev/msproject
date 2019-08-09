@@ -105,6 +105,8 @@ def logout(request):
 ############################## views.py apply 수정 8_8 찬호 ############
 def apply(request):
     username = request.user.username
+    last_name = request.user.last_name
+    first_name = request.user.first_name
     if request.method=='POST':
         form1 = LibraryForm(request.POST, request.FILES)
         form2 = ApplyForm(request.POST)
@@ -112,7 +114,7 @@ def apply(request):
             obj = Library(title=form1.data['title'], author=form1.data['author'], publisher=form1.data['publisher'], record=request.FILES['record'], pub_date=form1.data['pub_date'])
             obj.save()
             #obj2 = Apply(primarykey=obj , writer=username, date = timezone.datetime.now(), vms_1365_id=form2.data['vms_1365_id'], writer_name=form2.data['writer_name'],sms = form2.data['sms'] )
-            obj2 = Apply(primarykey=obj ,vr_accounts=form2.data['vr_accounts'], username=username, vms_or_1365=form2.data['vms_or_1365'], sms = form2.data['sms'], real_name = request.user.lastname+request.user.firstname)
+            obj2 = Apply(primarykey=obj ,vr_accounts=form2.data['vr_accounts'], username=username, vms_or_1365=form2.data['vms_or_1365'], sms = form2.data['sms'], full_name = last_name+first_name)
             #obj = form.save(commit=False)
             #obj.writer = username
             #obj.pub_date=timezone.now()
@@ -129,7 +131,7 @@ def apply(request):
 def vr_help(request): 
     question =HelpData.objects
     question_list = HelpData.objects.all()
-    paginator = Paginator(question_list,10)
+    paginator = Paginator(question_list,5)
     page = request.GET.get('page')
     questions = paginator.get_page(page)
     return render(request, 'vr_help.html',{'question':question,'questions':questions})
@@ -180,6 +182,21 @@ def delete(request,question_id):
     question = HelpData.objects.get(id=question_id)
     question.delete()
     return redirect('vr_help')
+
+def mypage(request):
+    
+    return render(request,'mypage.html')
+
+def transmile(request):
+    frommile = request.user.Profile2.Mileage
+    wanttomile = request.GET['wanttomile']
+    if(wanttomile*60>transmile):
+        pass
+    else:
+        frommile = tranmile - wanttomile*60
+    
+    fromsmile.save()
+    return redirect('mypage')
 
 def modify(request,question_id):
     question = get_object_or_404(HelpData,pk=question_id)

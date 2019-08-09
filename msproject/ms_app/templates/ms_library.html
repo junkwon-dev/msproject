@@ -4,28 +4,7 @@
 <head>
     <meta charset="utf-8">
     <style>
-        .table_list {
-            border-color: black;
-            width: 800;
-            height: 500;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 15px;
-        }
-
-        .table_title {
-            background-color: pink;
-        }
-
-        tr {
-            text-align: center;
-        }
+       
 
         li {
             list-style: none;
@@ -102,20 +81,19 @@
         <p style="background-color: pink;text-align:center; margin-top: 50px">VOICE LIBRARY<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
     </h1>
     <br><br>
-    <div class="container">
-        <table class="table_list">
-
-            <thead class="table_title">
-                <tr>
+    <div class="table-responsive-md col-md-12" style="align-content:center">
+        <table class="table">
+        <thead class="thead-light" style="text-align:center">
+          <tr>
                     <!--<th>ORDER</th>-->
                     <th>BOOK TITLE</th>
                     <th>AUTHOR</th>
-                    <th>DATE</th>
+                    <th>PUBLISHER</th>
                     <!--<th>APPLY NUMBER</th>
             <th>VIEWS</th>-->
                 </tr>
             </thead>
-            <tbody class="contain_list">
+            <tbody>
 
                 {% for eachBook in books %}
                 {%if eachBook.Bookperm %}

@@ -1,3 +1,4 @@
+<!--textarea 디자인 form-class디자인 늘려준거로 부탁드립니다.-->
 <!doctype html>
 <html lang="ko">
 
@@ -7,7 +8,37 @@
     <title>마인드쉐어 - QnA</title>
     <meta name="description" content="">
     <meta name="author" content="">
+    
 
+<style type="text/css">
+.form-control-textarea {
+        display: block;
+        width: 100%;
+        height:150px;
+        padding: 6px 12px;
+        font-size: 16px;
+        line-height: 1.42857143;
+        color: #444;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none;}
+    .copyright {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;   
+        background: rgb(231, 231, 231);
+        position: static;
+    }
+
+    #black{color: rgb(156, 156, 156);}
+</style>
     <!-- Favicons
     ================================================== -->
 
@@ -60,27 +91,31 @@
                 <ul class="nav navbar-right navbar-brand">
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
                     <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
-                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
+                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">도움말</a>
                 </ul>
             </div>
 		</div>
     </nav>
-<header id="header">
+
+    <header id="header">
   	<div class="intro">
     	<div class="overlay">
       		<div class="container">
         		<div class="row">
           			<div class="col-md-8 col-md-offset-2 login-text">
+                        <h1>Q&A</h1> 
+                        <p>문의를 해주세요</p>
 						<form action="{% url 'qscreate'%}">
-						<h4>제목: </h4>
-						<input type="text" name="question_title" class="form-control">
-						<br>
-						<br>
-						<h4>질문: </h4>
-						<textarea style="width:102%; height:150px;" name="question_content"></textarea>
-						<br>
-						<br>
-						<input class="btn btn-custom btn-lg page-scroll"  type="submit" value=" 제출하기">
+                            <div class="form-group row">
+                                <h4>제목: </h4>
+                                <input type="text" name="question_title" class="form-control">
+                                <br>
+                                <br>
+                                <h4>문의사항: </h4>
+                                <textarea style="width:102%; height:150px;"></textarea>						<br>
+                                <br>
+                                <input class="btn btn-custom btn-lg page-scroll"  type="submit" value=" 제출하기">
+                            </div>
 						</form>
 					</div>
         		</div>
@@ -88,18 +123,16 @@
     	</div>
   	</div>
 </header>
-<div id="footer">
-  <div class="container text-center">
-    <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
-  </div>
-</div>
-{% comment %} <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+
+<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
 <script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>
 <script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
 <script type="text/javascript" src="/static/admin/js/main.js"></script>
-</body> {% endcomment %}
 
+<div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a></div>
+
+</body>
 </html>

@@ -2,14 +2,13 @@
 <!--
     서명, 저자, 출판사 이름, 발행년도, 
 -->>
+{% load widget_tweaks %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<style>
-
-</style>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>마인드쉐어 - 회원가입</title>
@@ -68,34 +67,58 @@
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-<form action="{% url 'create' %}" style="margin-top: 100px"><!--울 마진값 일부러 준거에요 추후에 수정할게요-->
-        도서명:<br>
-        <input type="text" name="book_name"><Br>
-        저자:<br>
-        <input type="text" name="book_author"><Br>
-        출판사이름:<br>
-        <input type="text" name="book_publish"><Br>
-        발행년도:<br>
-        <input type="text" name="book_year"><Br>    
-        <input class="button" type="submit" value="제출하기">
-</form>
-
-<!--의준 :: 다음을 누르면 "신청되었습니다"창이 뜬후에 index로 넘어가게 해주세용-->
-<div>
-    <a href="{% url 'ms_index'%}"><button>돌아가기</button></a>
-</div>
-<footer id="footer">
-  <div class="container text-center"  >
-    <p style="text-align:center" >&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 login-text">
+            <h1>희망도서</h1>
+            <p>원하시는 도서를 신청할 수 있습니다.</p>
+            <form action="{% url 'create' %}" style="margin-top: 100px"><!--울 마진값 일부러 준거에요 추후에 수정할게요-->
+              <div class="form-group row">
+              {% render_field models.title class="radio" %}
+                <label class="col-sm-2 col-form-label">도서명</label>
+                <div class="col-sm-10 col-md-11">
+                  <input type="text" class="form-control" name="book_name" required>
+                </div>
+                <br>
+                <label class="col-sm-2 col-form-label">저자</label>
+                <div class="col-sm-10 col-md-11">
+                  <input type="text" class="form-control" name="book_author" required>
+                </div>
+                <br>
+                <label class="col-sm-2 col-form-label">출판사이름</label>
+                <div class="col-sm-10 col-md-11">
+                  <input type="text" class="form-control" name="book_publish" required>
+                </div>
+                <br>
+                <label class="col-sm-2 col-form-label">발행년도</label>
+                <div class="col-sm-10 col-md-11">
+                  <input type="text" class="form-control" name="book_year" required>
+                </div>
+                <br>
+                </div>
+                <input type="submit" class="btn btn-custom btn-lg page-scroll" value="제출하기">
+                <a href="{% url 'ms_index'%}"><button class="btn btn-custom btn-lg page-scroll">돌아가기</button></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
+</header>
+<!--의준 :: 다음을 누르면 "신청되었습니다"창이 뜬후에 index로 넘어가게 해주세용-->
 
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+<div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
+</div>
+{% comment %} 
+<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
+<script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>
+<script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
+<script type="text/javascript" src="/static/admin/js/main.js"></script> {% endcomment %}
 </body>
 </html>

@@ -10,6 +10,18 @@
   <title>마인드쉐어 - 회원가입</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <style type="text/css">
+    .copyright {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;   
+        background: rgb(231, 231, 231);
+        position: static;
+    }
+
+    #black{color: rgb(156, 156, 156);}
+</style>
 
   <!-- Favicons
       ================================================== -->
@@ -67,7 +79,7 @@
               <h1>회원가입</h1>
               <br><br>
               <div class="form-group row">
-                <form method="POST" action="{% url 'vr_signup' %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'ms_signup' %}" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="form-group form-check">
                     <!--<p>이용약관 1</p>-->
@@ -252,8 +264,10 @@
               </div>
               <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="submit">
               </form>
-
-
+            </br>
+          </header>
+              <div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
+              </div>
               <!--<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
               <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
               <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
@@ -262,6 +276,7 @@
               <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
               <script type="text/javascript" src="/static/admin/js/main.js"></script>-->
 </body>
+
 
 </html>
 
@@ -338,7 +353,7 @@
   </div>
 </div>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<!--<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
 <script type="text/javascript" src="js/nivo-lightbox.js"></script> 
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 

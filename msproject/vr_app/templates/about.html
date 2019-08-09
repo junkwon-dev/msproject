@@ -9,9 +9,9 @@
 <meta name="description" content="">
 <a name="author" content="">
 <style>
-	.explain{margin:20px;};
-	.explain_detail{font-size: 5px;}
-	.head{margin-left:30px;margin-top: 40px;}
+  .explain{margin:20px;};
+  .explain_detail{font-size: 5px;}
+  .head{margin-left:30px;margin-top: 40px;}
   .head1{margin-left:30px;margin-top: 20px;}
   .explain_elements{margin-top: 50px;}
   .left_side{float:left;}
@@ -19,24 +19,62 @@
   .divdiv{margin-bottom: 50px;margin-top: 50px;
   clear: both;}
   .divdivdiv{margin-bottom: 50px;margin-top: 50px;
+
   }
-  .intro-h1-white {
+  @media screen and (min-width: 750px) {
+    .intro-h1-white-double {
     font-family: 'Raleway', sans-serif;
+    display:block;
     color: #fff;
-    font-size: 82px;
+    font-size: 87px;
     font-weight: 700;
     text-transform: uppercase;
     margin-top: 0;
-    align:center;
+    text-align:center;
+    opacity:0.5;
   margin-bottom: 10px;}
-  .intro-white p {
+}
+
+@media screen and (max-width: 749px) {
+  .intro-h1-white-double {
+    font-family: 'Raleway', sans-serif;
+    display:block;
     color: #fff;
-    font-size: 22px;
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    text-align:center;
+    opacity:0.5;
+  margin-bottom: 10px;}
+}
+
+
+@media screen and (min-width: 750px) {
+  .intro-white-p {
+    color: #fff;
+    font-size: 21px;
     font-weight: 300;
     line-height: 30px;
-    margin: 0 auto;
-    margin-bottom: 60px;
+  }
 }
+@media screen and (max-width: 749px) {
+  .intro-white-p {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 30px;
+}
+}
+.p-diffi{
+  float: none; text-align: center;
+  margin-left:7%;
+  margin-right:7%
+  margin-top:-15%;
+  margin-bottom:1%;
+  
+}
+
   
 </style>
 <!-- Favicons
@@ -153,9 +191,9 @@
                   <div class="overlay">
                       <div class="container">
                           <div class="row">
-                              <div class="col-md-8 col-md-offset-2 intro-text">
-                                  <h1 class="intro-h1-white">ABOUT<BR>MINDSHARE</h1>
-                                  <h4 class="intro-white">당신의 목소리를 들려주세요</h4>
+                              <div class="col-md-8 col-md-offset-3 intro-h1-white">
+                                  <h1 class="intro-h1-white-double" style="text-align:center">ABOUT<br>MINDSHARE</h1>
+                                  <h5 class="intro-white-p">마인드쉐어는 시각장애인을 위한 작은 도서관, "책을 읽어주는 도서관"을 운영하고 있습니다. </h5>
                               </div>
                       </div>
                   </div>
@@ -166,24 +204,22 @@
   </header>
 </body>
             <br>
-	<div class="explain"> 
-	</div>
+  <div class="explain"> 
+  </div>
   <br>
   <div class="divdiv">
-  <h2 class="h21">MOTIVATION OF MINDSHARE</h2><br><br>
+  <h2 class="h21">WHY MINDSHARE?</h2><br><br>
   <div class="divdivdiv">
-  <img src="/static/admin/img/reading.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자책으로 번역된 도서비율은 1%</h3>
-    <br><p>전국에서 시각장애인을 위해 제작된 도서는 1%에 불과합니다. (201?년 기준)</p>
-</div>
+  <img src="/static/admin/img/reading.jpg" height="270px" width="480px" border="1px" hspace="20px"><h2 class ="diffi" style="float: right;" ><br><br><br>전자책으로 번역된 도서비율은 1%</h3>
+  <br><p class="p-diffi" style="float: right;">전국에 시각장애인을 위한 도서는 아주 희박합니다.</p></div>
   <div class="divdivdiv">
     <br>
-  <img src="/static/admin/img/money.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: left;" ><br><br><br>디지털 점자 리더기의 가격은 2000$</h3>
-  <br><p>비싼 가격에 전자 리더기를 사용하는 사람들이 대중적으로 많지는 않습니다.</p></div>
-  
+  <img src="/static/admin/img/money.jpg" height="270px" width="480px" border="1px"  hspace="20px"><h2 class ="diffi" style="float: left;" ><br><br><br>디지털 점자 리더기의 가격은 2000$</h3>
+  <br><p class="p-diffi" style="float: left;">비싼 가격에 전자 리더기를 사용하는 사람들이 대중적으로 많지 않습니다.</p></div>
   <div class="divdivdiv">
-  <img src="/static/admin/img/angry.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h3 class ="diffi" style="float: right;" ><br><br><br>점자 학습을 포기한 시각장애인 비율 95%  <br><p>언어가 어려울 뿐만 아니라 시각이 보이지 않는 등 여러가지 이유로 많은 시각장애인들이 언어 학습을 포기하고 있습니다.</p></h3>
-
-</div>
+    <img src="/static/admin/img/angry.jpg" height="270px" width="480px" border="1px"  hspace="20px"><h2 class ="diffi" style="float: right;" ><br><br>
+      <br>점자 학습을 포기한 시각장애인 80%</h3><p class="p-diffi" style="float: right;">어려운 언어학습과 시각의 문제 등 다양한 원인으로 점자 학습을 포기하는 학생들이 늘고 있습니다.</p>
+  </div>
  </div>
   <br>
   <br>
@@ -203,7 +239,7 @@
  
   </div>
 
-  </div>		
+  </div>    
         </div>
       </div>
     </div>
@@ -211,11 +247,7 @@
 </header>
 
 
-<div id="footer">
-  <div class="container text-center">
-    <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
-  </div>
-</div>
+
 <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script> 
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script> 

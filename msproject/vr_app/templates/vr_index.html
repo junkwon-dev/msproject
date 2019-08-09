@@ -73,7 +73,7 @@
                     {% if user.is_active and user.profile2.agreement2 %}
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
                     <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
-                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
+                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">도움말</a>
                     {% else %}
 
                     <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>

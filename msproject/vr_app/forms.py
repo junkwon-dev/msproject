@@ -70,12 +70,12 @@ class SignUpForm2(UserCreationForm):
 
 ################## forms.py 수정 찬호 8_8 ######################       
 class LibraryForm(forms.ModelForm):
-    title = forms.CharField(max_length=30)
+    """title = forms.CharField(max_length=30)
     author = forms.CharField(max_length=30)
     publisher = forms.CharField(max_length=30)
     record = forms.FileField()
     pub_date = forms.CharField(max_length=30)
-
+"""
     class Meta:
         model = Library
         #fields = ['title', 'author', 'publisher', 'record']
@@ -89,12 +89,10 @@ class ApplyForm(forms.ModelForm):
     #book_name = forms.CharField(max_length=30)
     #author = forms.CharField(max_length=15)
     #publisher = forms.CharField(max_length=15)
-    sms = forms.BooleanField()
+    sms = forms.BooleanField(required=False, initial=True)
 
     class Meta:
         model = Apply
-
-        sms = forms.BooleanField(required=False)
         
         #primarykey==Library obj
         #1365 or VMS 라디오로
