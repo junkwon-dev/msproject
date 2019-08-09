@@ -100,7 +100,6 @@
                 float: left;
                 width: 40%;
                    height: 500px;
-                margin-top: 30px;    
             } 
             .rightbox1{
                 border: 3px solid black;
@@ -109,7 +108,6 @@
                 float: right;
                 width: 40%;
                 height: 500px; 
-                margin-top: 30px;
             }
     </style>
     <style type="text/css">
@@ -185,34 +183,35 @@
         <div class="overlay">
             <div class="container">
                 <div class="row">
+                
                     {{error}}
                     {% if form.errors %}
                             {{error}}
                     {% endif %} 
-
                     {% if user.is_active and user.profile1.agreement3 %}
-                        <a href="{% url 'vr_list'%}">test</a>
+                    <div style="margin-top: 10%">
                         <button  class="box2" onclick="location.href='{% url 'ms_logout'%}'">
                             <h2 style="color: black"> 로그아웃</h2>
                         </button >
                         <button class="box2" onclick="location.href='{% url 'ms_library'%}'">
                             <h2 style="color: black"> 음성도서관 </h2>
                         </button><button class="box2" onclick="location.href='{% url 'wish_books'%}'">
-                            <h2 style="color:black"> 희망도서 <br> 신청페이지 </h2>
+                            <h2 style="color:black"> 희망도서신청 </h2>
                         </button>
                         <button class="box2" onclick="location.href='{% url 'lists'%}'">
-                            <h2 syle="color:black"> 희망도서 <br> 목록 & 검색 </h2>
+                            <h2 syle="color:black"> 희망도서목록 </h2>
                         </button>
+                        </div>
                     {% else %}
                     <a  href="{% url 'ms_signup'%}">
                         <button  class="leftbox1">
                             <h1 style="color: black" > 회원가입 </h1>
                         </button>
                     <a  href="{% url 'ms_login'%}" class="container_right">
-                            <button  class="rightbox1">
-                                <h1 style="color: black"> 로그인 </h1>
-                            </button >
-                        </a>
+                        <button  class="rightbox1">
+                            <h1 style="color: black"> 로그인 </h1>
+                        </button >
+                    </a>
                     {% endif %}
                 </div>
             </div>

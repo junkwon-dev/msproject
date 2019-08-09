@@ -5,10 +5,111 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MINDSHARE - About</title>
+<title>마인드쉐어 - 소개</title>
 <meta name="description" content="">
 <a name="author" content="">
+    <style type="text/css">
+      /* What it does: Remove spaces around the email design added by some email clients. */
+            /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+      /* What it does: Stops email clients resizing small text. */
+      * {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+      /* What it does: Forces Outlook.com to display emails full width. */
+      .ExternalClass {
+        width: 100%;
+      }
+      /* What is does: Centers email on Android 4.4 */
+      div[style*="margin: 5px 0"] {
+        margin: 0 !important;
+      }
+      /* What it does: Stops Outlook from adding extra spacing to tables. */
+      table, td {
+        mso-table-lspace: 0pt !important;
+        mso-table-rspace: 0pt !important;
+      }
+      /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+      table {
+        border-spacing: 0 !important;
+        border-collapse: collapse !important;
+        table-layout: fixed !important;
+        margin: 0 auto !important;
+      }
+      table table table {
+        table-layout: auto;
+      }
+      /* What it does: Uses a better rendering method when resizing images in IE. */
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+      /* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+      .yshortcuts a {
+        border-bottom: none !important;
+      }
+      /* What it does: Another work-around for iOS meddling in triggered links. */
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+      }
+      </style>
+      
+      <!-- Progressive Enhancements -->
+      <style type="text/css">
+      /* What it does: Hover styles for buttons */
+      .button-td, .button-a {
+        transition: all 100ms ease-in;
+      }
+      .button-td:hover, .button-a:hover {
+        background: #555555 !important;
+        border-color: #555555 !important;
+      }
+      
+      /* Media Queries */
+      @media screen and (max-width: 480px) {
+      /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+      .fluid, .fluid-centered {
+        width: 100% !important;
+        max-width:100% !important;
+        height: auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      /* And center justify these ones. */
+      .fluid-centered {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      /* What it does: Forces table cells into full-width rows. */
+      .stack-column, .stack-column-center {
+        display: block !important;
+        width: 100% !important;
+        max-width:100% !important;
+        direction: ltr !important;
+      }
+      /* And center justify these ones. */
+      .stack-column-center {
+        text-align: center !important;
+      }
+      /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+      .center-on-narrow {
+        text-align: center !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+      }
+      table.center-on-narrow {
+        display: inline-block !important;
+      }
+      }
 <style>
+  
   .explain{margin:20px;};
   .explain_detail{font-size: 5px;}
   .head{margin-left:30px;margin-top: 40px;}
@@ -18,8 +119,7 @@
   .right_side{float:right;}
   .divdiv{margin-bottom: 50px;margin-top: 50px;
   clear: both;}
-  .divdivdiv{margin-bottom: 50px;margin-top: 50px;
-    margin-left:30px; margin-right:30px;
+  .divdivdiv{
   }
   @media screen and (min-width: 750px) {
     .intro-h1-white-double {
@@ -31,8 +131,7 @@
     text-transform: uppercase;
     margin-top: 0;
     text-align:center;
-    opacity:0.5;
-  margin-bottom: 10px;}
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 749px) {
@@ -51,7 +150,7 @@
 
 
 @media screen and (min-width: 750px) {
-  .intro-white-p {
+   .intro-white-p {
     color: #fff;
     font-size: 21px;
     font-weight: 300;
@@ -66,16 +165,26 @@
     line-height: 30px;
 }
 }
-.p-diffi{
+  .p-diffi{
   float: none; text-align: center;
   margin-left:7%;
   margin-right:7%;
-  margin-top:-8%;
+  margin-top:-2%;
+  font-size:20px;
+  
+}
+
+.diffi{
+	float: none; text-align: center;
+  font-size:35px;
+  font-weight:500;
+  margin-top:15%
   
 }
 
   
 </style>
+
 <!-- Favicons
     ================================================== -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -108,17 +217,17 @@
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script var __adobewebfontsappname__="dreamweaver"></script><script src="http://use.edgefonts.net/advent-pro:n1:default;antic:n4:default.js" type="text/javascript"></script>
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target="navbar-fixed-top">
   <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="{% url 'vr_index'%}"><img src="{% static '/admin/img/ms_logo.png'%}" alt="사진안나와요 ㅠㅠ" width="100"
+        <a href="{% url 'vr_index'%}"><img src="{% static '/admin/img/ms_logo.png'%}" alt="MINDSHARE_logo" width="100"
             height="52" class="page-scroll img-responsive img-rounded"></a>
       </div>
 
@@ -126,8 +235,9 @@
         <ul class="nav navbar-right navbar-brand">
           {% if user.is_active and user.profile2.agreement2 %}
           <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
-          <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
-          <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
+          <a href="{% url 'vr_mypage'%}" class="page-scroll navbar navbar-right navbar-brand">내정보</a>
+          <a href="{% url 'apply_choice'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+          <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">문의</a>
           {% else %}
 
           <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>
@@ -167,7 +277,7 @@
 
 {% if customedUser.user.is_active %}
 <div class="vr_apply">
-  <a href="{% url 'apply' %}">apply</a>
+  <a href="{% url 'apply' %}">apply</a> 
 </div>
 <div class="vr_help">
   <a href="{% url 'vr_help' %}">help</a>
@@ -181,71 +291,336 @@
 <!-- Header -->
 <body>
 <header class="v-header">
-        <div class = "fullscreen-video-wrap">
-          <img src= "/static/admin/img/reading.jpg">
-        <!-- <video src ="/static/admin/img/intro.bg" autoplay="true" loop="true"></video> THIS IS FOR THE VIDEO. DON'T DELETE THIS--> 
+  <div class="fullscreen-video-wrap">
+    <img src="/static/admin/img/reading.jpg" style="width:98vw; height:auto;">
+    <!-- <video src ="/static/admin/img/intro.bg" autoplay="true" loop="true" ></video> THIS IS FOR THE VIDEO. DON'T DELETE THIS-->
+  </div>
+  <header id="header" style="width:60%">
+    <div class="intro-white" >
+      <div class="overlay">
+        <div class="container" >
+          <div class="row">
+            <div class="col-md-10 col-md-offset-2 intro-h1-white">
+              <h1 class="intro-h1-white-double" style=" font-size: 7vw; text-align:center; width:40vw; height:auto; opacity:0.5;" >ABOUT<br>MINDSHARE</h1>
+              <h5 class="intro-white-p" style=" font-size: 1.5vw;  text-align :center; width:40vw; height:auto; ">시각장애인을 위한 작은 도서관<br>"책을 읽어주는 도서관"을 운영하고 있습니다. </h5>
+            </div>
           </div>
-          <header id="header">
-              <div class="intro-white">
-                  <div class="overlay">
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-md-8 col-md-offset-3 intro-h1-white">
-                                  <h1 class="intro-h1-white-double" style="text-align:center">ABOUT<br>MINDSHARE</h1>
-                                  <h5 class="intro-white-p">마인드쉐어는 시각장애인을 위한 작은 도서관, "책을 읽어주는 도서관"을 운영하고 있습니다. </h5>
-                              </div>
-                      </div>
-                  </div>
-              </div>
-          </header>
-</div>
-    </div>
-  </header>
-</body>
-            <br>
-  <div class="explain"> 
-  </div>
-  <br>
-  <div class="col-md-10 col-md-offset-1">
-  <h2 class="h21">WHY MINDSHARE?</h2><br><br>
-  <div class="divdivdiv">
-  <img src="/static/admin/img/reading.jpg" height="270px" width="480px" border="1px" hspace="20px"><h2 class ="diffi" style="float: right;" ><br><br><br>전자책으로 번역된 도서비율은 1%</h2>
-  <br><p class="p-diffi" style="float: right;">전국에 시각장애인을 위한 도서는 아주 희박합니다.</p></div>
-  <div class="divdivdiv">
-    <br>
-  <img src="/static/admin/img/money.jpg" height="270px" width="480px" border="1px"  hspace="20px"><h2 class ="diffi" style="float: left;" ><br><br><br>디지털 점자 리더기의 가격은 $2000</h2>
-  <br><p class="p-diffi" style="float: left;">비싼 가격에 전자 리더기를 사용하는 사람들이 대중적으로 많지 않습니다.</p></div>
-  <div class="divdivdiv">
-    <img src="/static/admin/img/angry.jpg" height="270px" width="480px" border="1px"  hspace="20px"><h2 class ="diffi" style="float: right;" ><br><br>
-      <br>점자 학습을 포기한 시각장애인 80%</h3><p class="p-diffi" style="float: right;">어려운 언어학습과 시각의 문제 등 다양한 원인으로 점자 학습을 포기하는 학생들이 늘고 있습니다.</p>
-  </div>
-  <br>
-  <br>
-  <div class="divdiv">
-    <br><br>
-  <h2 class="h21">FEATURE OF MINDSHARE</h2></div><br>
-  <div class="divdivdiv">
-    
-  <img src="/static/admin/img/book.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h2 class ="diffi" style="float: right;" ><br><br><br>자원 봉사자들이 읽어주는 도서관<br><p>자원봉사자들이 직접 시각장애인들을 위해서 자원하여 세계적인 베스트셀러, 만화 등 다양한 컨텐츠를 들을 수 있는 기회를 제공하고 있습니다.</p></h2>
-  </div>
- 
-  <br>
-  <div class="divdivdiv">
-    <br><br>
-  <img src="/static/admin/img/mic.jpg" height="270px" width="480px" border="1px"  hspace="30px"><h2 class ="diffi" style="float: left;" ><br><br><br>함께 만드는 오디오북<br><p>함께 읽고, 함께 생각을 공유하는 곳, 이곳은 Mindshare, 책을 읽어주는 도서관입니다.</p></h2>
-  </div>
- 
-  </div>
-
-  </div>    
         </div>
       </div>
-    </div>
+  </header>
+  </div>
   </div>
 </header>
-
-
-
+</body>
+<br>
+  <div class="explain">
+    </div>
+<br>
+<div class="col-md-10 col-md-offset-1">
+  <h2 class="h21" style="width:99vw height:auto" style="text-align:center">WHY MINDSHARE?</h2><br><br>
+  <div class="divdivdiv">
+    <!--COLUMNS-->
+        <!--[if (gte mso 9)|(IE)]>
+          <table cellspacing="0" cellpadding="0" border="0" width="680" align="center">
+          <tr>
+          <td>
+          <![endif]--> 
+        
+        <!-- Email Header : BEGIN -->          <!-- Email Header : END --> 
+        
+        <!-- Email Body : BEGIN -->
+        <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%">
+          
+          <!-- Hero Image, Flush : BEGIN -->            <!-- Hero Image, Flush : END --> 
+          
+          <!-- 1 Column Text : BEGIN -->            <!-- 1 Column Text : BEGIN --> 
+          
+          <!-- Background Image with Text : BEGIN -->            <!-- Background Image with Text : END --> 
+          
+          <!-- Two Even Columns : BEGIN -->            <!-- Two Even Columns : END --> 
+          
+          <!-- Three Even Columns : BEGIN -->            <!-- Three Even Columns : END --> 
+          
+          <!-- Thumbnail Left, Text Right : BEGIN -->
+          <tr>
+            <td dir="ltr" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;"><!--[if mso]>
+                      <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                      <tr>
+                      <td align="center" valign="top" width="660">
+                      <![endif]-->
+              
+              <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+                <tr>
+                  <td align="center" valign="top" style="font-size:0; padding: 10px 0;"><!--[if mso]>
+                                  <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                  <tr>
+                                  <td align="left" valign="top" width="220">
+                                  <![endif]-->
+                    
+                    <div style="display:inline-block; margin: 0 -2px; max-width:33.33%; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                          <td dir="ltr" style="padding: 0 10px 10px 10px;"><img src="{% static '/admin/img/book.jpg'%}" width="500vw" height="auto" alt="" style="border: 0;" class="center-on-narrow"></td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+                    <!--[if mso]>
+                                  </td>
+                                  <td align="left" valign="top" width="440">
+                                  <![endif]-->
+                    
+                    <div style="display:inline-block; margin: 0 -2px; max-width:66.66%; min-width:320px; vertical-align:top;" class="stack-column">
+                      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                          <br>
+                          <br>
+                          <td dir="ltr" style="font-family: sans-serif; font-size: 10px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow"><div class="diffi">전자책으로 번역된 도서비율은 1%</div><br>
+                            <br>
+                            <div class="p-diffi" font-size="+2">전국에 시각장애인을 위한 도서는 아주 희박합니다.</div><br>
+                            <br>
+                        </tr>
+                      </table>
+                    </div>
+                    
+                    <!--[if mso]>
+                                  </td>
+                                  </tr>
+                                  </table>
+                                  <![endif]--></td>
+                </tr>
+              </table>
+              
+              <!--[if mso]>
+                      </td>
+                      </tr>
+                      </table>
+                      <![endif]--></td>
+          </tr>
+          <!-- Thumbnail Left, Text Right : END --> 
+          
+          <!-- Thumbnail Right, Text Left : BEGIN -->
+          <tr>
+            <td dir="rtl" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;"><!--[if mso]>
+                      <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                      <tr>
+                      <td align="center" valign="top" width="660">
+                      <![endif]-->
+              
+              <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+                <tr>
+                  <td align="center" valign="top" style="font-size:0; padding: 10px 0;"><!--[if mso]>
+                                  <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                                  <tr>
+                                  <td align="left" valign="top" width="220">
+                                  <![endif]-->
+                    
+                    <div style="display:inline-block; margin: 0 -2px; max-width:33.33%; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                          <td dir="ltr" style="padding: 0 10px 10px 10px;"><img src="/static/admin/img/angry.jpg" alt="" style="width:30vw; height: auto;" class="center-on-narrow"></td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+                    <!--[if mso]>
+                                  </td>
+                                  <td align="left" valign="top" width="440">
+                                  <![endif]-->
+                    
+                    <div style="display:inline-block; margin: 0 -2px; max-width:66.66%; min-width:320px; vertical-align:top;" class="stack-column">
+                      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                          <td dir="ltr" style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow"><div class="diffi">디지털 점자 리더기의 가격은 $2000</div><br>
+                            <br>
+                            <div class="p-diffi" font-size="+2">비싼 가격에 전자 리더기를 사용하는 사람들이 대중적으로 많지 않습니다.</div><br>
+                            <br>
+                            
+                            <!-- Button : Begin -->
+                            
+                            <!-- Button : END --></td>
+                        </tr>
+                      </table>
+                    </div>
+                    
+                    <!--[if mso]>
+                                  </td>
+                                  </tr>
+                                  </table>
+                                  <![endif]--></td>
+                </tr>
+              </table>
+              
+              <!--[if mso]>
+                      </td>
+                      </tr>
+                      </table>
+                      <![endif]--></td>
+          </tr>
+          <!-- Thumbnail Right, Text Left : END -->
+          
+        </table>
+        <!-- Email Body : END --> 
+        
+        <!-- Email Footer : BEGIN -->          <!-- Email Footer : END --> 
+        
+        <!--[if (gte mso 9)|(IE)]>
+          </td>
+          </tr>
+          </table>
+          <![endif]--> 
+      </div>
+    </body>
+<!--COLUMN 2-->
+    <!--[if (gte mso 9)|(IE)]>
+      <table cellspacing="0" cellpadding="0" border="0" width="680" align="center">
+      <tr>
+      <td>
+      <![endif]--> 
+    
+    <!-- Email Header : BEGIN -->          <!-- Email Header : END --> 
+    
+    <!-- Email Body : BEGIN -->
+    <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%">
+      
+      <!-- Hero Image, Flush : BEGIN -->            <!-- Hero Image, Flush : END --> 
+      
+      <!-- 1 Column Text : BEGIN -->            <!-- 1 Column Text : BEGIN --> 
+      
+      <!-- Background Image with Text : BEGIN -->            <!-- Background Image with Text : END --> 
+      
+      <!-- Two Even Columns : BEGIN -->            <!-- Two Even Columns : END --> 
+      
+      <!-- Three Even Columns : BEGIN -->            <!-- Three Even Columns : END --> 
+      
+      <!-- Thumbnail Left, Text Right : BEGIN -->
+      <tr>
+        <td dir="ltr" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;"><!--[if mso]>
+                  <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                  <tr>
+                  <td align="center" valign="top" width="660">
+                  <![endif]-->
+          
+          <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+            <tr>
+              <td align="center" valign="top" style="font-size:0; padding: 10px 0;"><!--[if mso]>
+                              <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                              <tr>
+                              <td align="left" valign="top" width="220">
+                              <![endif]-->
+                
+                <div style="display:inline-block; margin: 0 -2px; max-width:33.33%; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td dir="ltr" style="padding: 0 10px 10px 10px;"><img src="{% static '/admin/img/mic.jpg'%}"  alt="" style="border: 0; width:40vw; height: auto;" class="center-on-narrow"></td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <!--[if mso]>
+                              </td>
+                              <td align="left" valign="top" width="440">
+                              <![endif]-->
+                
+                <div style="display:inline-block; margin: 0 -2px; max-width:66.66%; min-width:320px; vertical-align:top;" class="stack-column">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td dir="ltr" style="font-family: sans-serif; font-size: 10px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow"><div class="diffi" style="text-align:right">점자 학습을 포기한 시각장애인 80%</div><br>
+                        <br>
+                        <div class="p-diffi" style="text-align:right">어려운 언어학습과 시각의 문제 등 다양한 원인으로<br> 점자 학습을 포기하는 학생들이 늘고 있습니다.</div><br>
+                        <br>
+                    </tr>
+                  </table>
+                </div>
+                
+                <!--[if mso]>
+                              </td>
+                              </tr>
+                              </table>
+                              <![endif]--></td>
+            </tr>
+          </table>
+          
+          <!--[if mso]>
+                  </td>
+                  </tr>
+                  </table>
+                  <![endif]--></td>
+      </tr>
+      <!-- Thumbnail Left, Text Right : END --> 
+      
+      <!-- Thumbnail Right, Text Left : BEGIN -->
+      <tr>
+        <td dir="rtl" bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding: 10px 0;"><!--[if mso]>
+                  <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                  <tr>
+                  <td align="center" valign="top" width="660">
+                  <![endif]-->
+          
+          <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+            <tr>
+              <td align="center" valign="top" style="font-size:0; padding: 10px 0;"><!--[if mso]>
+                              <table border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                              <tr>
+                              <td align="left" valign="top" width="220">
+                              <![endif]-->
+                
+                <div style="display:inline-block; margin: 0 -2px; max-width:33.33%; min-width:160px; vertical-align:top; width:100%;" class="stack-column">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td dir="ltr" style="padding: 0 10px 10px 10px;"><img src="/static/admin/img/money.jpg"  alt="" width="400vw" style="border: 0;height: auto;"  class="center-on-narrow"></td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <!--[if mso]>
+                              </td>
+                              <td align="left" valign="top" width="440">
+                              <![endif]-->
+                
+                <div style="display:inline-block; margin: 0 -2px; min-width:320px; max-width:66.66%; vertical-align:top;" class="stack-column">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td dir="ltr" style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow"><div class="diffi" style="margin-top:8%" style="text-align:left">자원 봉사자들이 읽어주는 도서관</div> <br>
+                        <br>
+                        <div class="p-diffi" font-size="+2" style="text-align:left">자원봉사자들이 직접 시각장애인들을 위해서 자원하여 세계적인 베스트셀러, 만화 등 다양한 컨텐츠를 들을 수 있는 기회를 제공하고 있습니다.<br>
+                        <br>
+                        
+                        <!-- Button : Begin -->
+                        
+                        <!-- Button : END --></td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <!--[if mso]>
+                              </td>
+                              </tr>
+                              </table>
+                              <![endif]--></td>
+            </tr>
+          </table>
+          
+          <!--[if mso]>
+                  </td>
+                  </tr>
+                  </table>
+                  <![endif]--></td>
+      </tr>
+      <!-- Thumbnail Right, Text Left : END -->
+      
+    </table>
+    <!-- Email Body : END --> 
+    
+    <!-- Email Footer : BEGIN -->          <!-- Email Footer : END --> 
+    
+    <!--[if (gte mso 9)|(IE)]>
+      </td>
+      </tr>
+      </table>
+      <![endif]--> 
+  </div>
+</body>
 <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script> 
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script> 

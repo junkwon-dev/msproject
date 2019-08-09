@@ -40,10 +40,14 @@
                      padding:15px;
                      width:400px
                 }
-            }
-
-/*--출처: https://mainia.tistory.com/2791 [녹두장군 - 상상을 현실로]*/
+                .padding-table{
+                    padding-left:100px;
+                    padding-right:100px;
                 }
+            
+
+
+                
                 </style>
                 <style type="text/css">
                     .copyright {
@@ -52,14 +56,14 @@
                         width:100%;
                         height:30px;   
                         background: rgb(231, 231, 231);
-                        position:static;
+                        position: static;
                     }
                 
                     #black{color: rgb(156, 156, 156);}
                 </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>마인드쉐어 - help</title>
+    <title>마인드쉐어 - 문의</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -111,7 +115,8 @@
                 <ul class="nav navbar-right navbar-brand">
                     {% if user.is_active and user.profile2.agreement2 %}
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
-                    <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+                    <a href="{% url 'vr_mypage'%}" class="page-scroll navbar navbar-right navbar-brand">나의 봉사시간</a>
+                    <a href="{% url 'apply_choice'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
                     <a href="{% url 'about'%}" class="page-scroll navbar navbar-brand navbar-right">소개</a>
                     {% else %}
 
@@ -189,37 +194,29 @@
         </div>
             <h1 class="login-text">요청받은 질문들</h1>
             <div class="table-responsive-md" style="align-content:center">
-                <table class="table col-md-8 table-column">
-                <thead class="thead-light thead-text">
-                  <tr>
-                            <!--<th>ORDER</th>-->
-                            <th scope="col">#</th>
-                            <th scope="col">QUESTIONS</th>
-                            <!--<th>APPLY NUMBER</th>
-                    <th>VIEWS</th>-->
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <table width="100%" class="table col-md-8 table-column">
             <!-- 내용들-->
-                <tr style="text-align:left">
-                {% for ques in questions %}
-                <td>
-                <td><a href="{% url 'question_info' ques.id %}">Q. {{ques.question_title}}</a><br></td>
-                </p>
-                </tr>
-                {% endfor%}
-            </table>
+                    <div class="col-md-3 col-offset-2">
+                  <tr style="text-align:left">
+                   {% for ques in questions %}
+                  <td class="padding-text center-text" width="100%"><a href="{% url 'question_info' ques.id %}">Q. {{ques.question_title}}</a><br></td>
+                   </p>
+                   </tr>
+                   {% endfor%}
+                  </table>
         </div>
             <!--pagination입니당-->
-            {% if questions.has_previous%}
-                <a href="?page=1">First</a>
-                <a href="?page={{questions.previous_page_number}}">Previous</a>
-            {% endif %}
             <div class="black-text" style="text-align:center">
             <span>{{questions.number}}</span>
             <span>of</span>
             <span>{{questions.paginator.num_pages}}</span>
             </div>
+            <div style="text-align:center">
+                {% if questions.has_previous%}
+                    <a href="?page=1">First</a>
+                    <a href="?page={{questions.previous_page_number}}">Previous</a>
+                </div>
+                {% endif %}
             <div style="text-align:center">
             {% if questions.has_next%}
                 <a href="?page={{questions.next_page_number}}">Next</a>
@@ -237,10 +234,10 @@
   </div>
 </header>
 
-<div>
+
     <div id = "black" class="copyright text-center py-3" >&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a></div>
-</div>
-{% comment %<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+
+<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
 <script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>

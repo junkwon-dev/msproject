@@ -8,7 +8,7 @@ class Profile1(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)  #id,pw,email, firstname, lastname
     evidence = models.ImageField(upload_to = 'images/')  # 추가 chanho - 19_8_2_11:43
     sex = models.CharField(max_length=15, blank=True)
-    birth_date = models.CharField(max_length=15, blank=True)
+    birth_date = models.CharField(max_length=30, blank=True)
     phone_number = models.CharField(max_length=15,blank=True)
     agreement1 = models.CharField(max_length=10, blank=True)
     agreement2 = models.CharField(max_length=10, blank=True)

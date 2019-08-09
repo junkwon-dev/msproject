@@ -71,8 +71,9 @@
                 <ul class="nav navbar-right navbar-brand">
                     {% if user.is_active and user.profile2.agreement2 %}
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
-                    <a href="{% url 'apply'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
-                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">도움말</a>
+                    <a href="{% url 'vr_mypage'%}" class="page-scroll navbar navbar-right navbar-brand">나의 봉사시간</a>
+                    <a href="{% url 'apply_choice'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">문의</a>
                     {% else %}
 
                     <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>
@@ -119,7 +120,7 @@
 </div>
 <br>
 {% endif %}
->
+
 <header id="header">
     <div class="intro">
         <div class="overlay">
@@ -128,7 +129,6 @@
                     <div class="col-md-8 col-md-offset-2 intro-text">
                         <h1>MINDSHARE</h1>
                         <h4>당신의 목소리를 들려주세요</h4>
-                        <a href = "{% url 'vr_list'%}"> list</a> <!--test(son)-->
                     </div>
                 </div>
                 <div class="column-text-white col-md-15">
@@ -140,7 +140,7 @@
 </header>
 
 
-    <div class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
+    <div class="copyright">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
     </div>
 <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>

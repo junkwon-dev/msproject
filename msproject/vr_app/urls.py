@@ -19,10 +19,10 @@ urlpatterns = [
     path('question_info/<int:question_id>/delete/',views.delete,name='delete'),
     path('<int:question_id>/modify/',views.modify,name='modify'),
     path('<int:question_id>/qnamodify/',views.qnamodify,name='qnamodify'),
-    path('mypage/',views.mypage,name='mypage'),
-    path('mapage/transmile',views.mypage,name='transmile'),
-    path('test',ms_views.lists, name='vr_list'), #test(son)
+    path('vr_mypage/',views.vr_mypage,name='vr_mypage'),
+    path('vr_mypage/transmile',views.transmile,name='transmile'),
+    path('wish_book_list/',ms_views.lists, name='wish_book_list'), #test(son)
     path('apply_choice/',views.apply_choice, name='apply_choice'),
-    # path('<int:question_id>/comment_new', views.comment_write, name="comment_write"),
+    path('<int:question_id>/comment_new', views.comment_write, name="comment_write"),
     
 ]

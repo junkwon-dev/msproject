@@ -21,8 +21,8 @@ from .models import Apply
 from ms_app.models import Library
 from django.utils import timezone
 from django.core import serializers #for js
-
-
+from .forms import Profile2Form
+from ms_app.models import Wish_Book
 def index(request): # ohjinjin 함수 추가
     return render(request,'index.html')
 
@@ -107,25 +107,56 @@ def apply(request):
     username = request.user.username
     last_name = request.user.last_name
     first_name = request.user.first_name
+    obj3=None
+    for eachProf in Profile2.objects.all():
+        if eachProf.user.username == username:
+            obj3 = eachProf
+            break
     if request.method=='POST':
         form1 = LibraryForm(request.POST, request.FILES)
         form2 = ApplyForm(request.POST)
-        if form1.is_valid() and form2.is_valid(): # 수정 
+        form3 = Profile2Form(request.POST)
+        frommile=obj3.mileage
+        if form1.is_valid() and form2.is_valid() and form3.is_valid(): # 수정 
             obj = Library(title=form1.data['title'], author=form1.data['author'], publisher=form1.data['publisher'], record=request.FILES['record'], pub_date=form1.data['pub_date'])
             obj.save()
-            #obj2 = Apply(primarykey=obj , writer=username, date = timezone.datetime.now(), vms_1365_id=form2.data['vms_1365_id'], writer_name=form2.data['writer_name'],sms = form2.data['sms'] )
-            obj2 = Apply(primarykey=obj ,vr_accounts=form2.data['vr_accounts'], username=username, vms_or_1365=form2.data['vms_or_1365'], sms = form2.data['sms'], full_name = last_name+first_name)
-            #obj = form.save(commit=False)
-            #obj.writer = username
-            #obj.pub_date=timezone.now()
+            ##obj2 = Apply(primarykey=obj , writer=username, date = timezone.datetime.now(), vms_1365_id=form2.data['vms_1365_id'], writer_name=form2.data['writer_name'] )
+            obj2 = Apply(primarykey=obj ,vr_accounts=form2.data['vr_accounts'], username=username, vms_or_1365=form2.data['vms_or_1365'], full_name = last_name+first_name)
+            ##obj = form.save(commit=False)
+            ##obj.writer = username
+            ##obj.pub_date=timezone.now()
             obj2.save()
-            
+            mileage_= int(form3.data['mileage']) + int(frommile)
+            obj3.mileage = mileage_
+            obj3.save()
             return redirect('vr_index')
+        else:
+            library = Library.objects.all()
+            for eachBook in library:
+                if request.POST.get(eachBook.title,'') == "on":
+                    return render(request, 'apply.html', {'Abook':eachBook})
+                #pass
+       #     choice = request.POST['{{wbook_title}}']
+            # wbook = Wish_Book.objects.all()
+            # for book in wbook.title:
+            #     if wbook.title == choice:
+
+            ##test(son)
+            pass
+        
         return redirect('vr_index')
     else:
         form1 = ApplyForm()
         form2 = LibraryForm()
-        return render(request, 'apply.html', {'form1':form1, 'form2':form2})
+        form3 = Profile2Form()
+
+        wishbooks = Wish_Book.objects.all()
+        
+        list_of_input_ids = request.GET.get("boook")
+        if list_of_input_ids!=None:
+            return render(request,'apply.html', {'Abook':list_of_input_ids,'wishbooks':wishbooks,'form1':form1, 'form2':form2, 'form3':form3})
+        
+        return render(request, 'apply.html', {'form1':form1, 'form2':form2, 'form3':form3})
 #####################################################################
 
 def vr_help(request): 
@@ -183,27 +214,29 @@ def delete(request,question_id):
     question.delete()
     return redirect('vr_help')
 
-def mypage(request):
+def vr_mypage(request):
     user=request.user
     username=request.user.username
     frommile=request.user.profile2.mileage
     realmile2=request.user.profile2.realmile
     canmile = int(frommile)//60
-    return render(request, 'mypage.html',{'frommile':frommile, 'realmile2' : realmile2, 'canmile' : canmile})
+    return render(request, 'vr_mypage.html',{'frommile':frommile, 'realmile2' : realmile2, 'canmile' : canmile})
 
 def transmile(request):
     username = request.user.username
     obj=None
     for eachProf in Profile2.objects.all():
-            if eachProf.user.username == username:
-                obj = eachProf
-                break
+        if eachProf.user.username == username:
+            obj = eachProf
+            break
     
     if request.method=='POST':
         frommile = obj.mileage
         tomile= obj.realmile
         wanttomile2 = request.POST.get('wanttomile')
-        if(int(int(wanttomile2)*60)>int(frommile)):
+        if(wanttomile2=="NULL"):
+            return redirect('vr_mypage')
+        elif(int(int(wanttomile2)*60)>int(frommile)):
             pass
         else:
             frommile = int(int(frommile) - int(wanttomile2)*60)
@@ -211,7 +244,7 @@ def transmile(request):
         obj.mileage = frommile
         obj.realmile = tomile
         obj.save()
-        return redirect('mypage')
+        return redirect('vr_mypage')
 
 
 def modify(request,question_id):
@@ -232,15 +265,15 @@ def apply_choice(request):
 
 
 
-# def comment_write(request,question_id):
-#     if request.method=='POST':
-#         question = get_object_or_404(HelpData,pk=question_id)
-#         content = request.POST.get('content')
-#         if not content:
-#             messages.info(request,"You don't write")
-#             return redirect('/vr/question_info/'+str(question_id))
-#         Comment.objects.create(question=questioin,comment_contents=content)
-#         return redirect('/vr/question_info/'+str(question_id))
+def comment_write(request,question_id):
+    if request.method=='POST':
+        question = get_object_or_404(HelpData,pk=question_id)
+        content = request.POST.get('content')
+        if not content:
+            messages.info(request,"You don't write")
+            return redirect('/vr/question_info/'+str(question_id))
+        Comment.objects.create(question=questioin,comment_contents=content)
+        return redirect('/vr/question_info/'+str(question_id))
 ##
 class RegisteredView(TemplateView): # �쉶�썝媛��엯�씠 �셿猷뚮맂 寃쎌슦
     template_name = 'vr_index.html'

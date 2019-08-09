@@ -142,6 +142,9 @@ def ms_logout(request):
 def ms_index(request):
     return render(request, 'ms_index.html')
 
+def ms_mypage(request):
+    return render(request, 'ms_mypage.html')
+
 @login_required
 def ms_library(request):
     #db table 이미 만들어져있어야되고 걔네를 불러와줘야함 다운로드가능하게해줘야함_ohjinjin 080619 PM15:08

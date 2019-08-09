@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>마인드쉐어 - 로그인</title>
+    <title>마인드쉐어 - 바로 신청</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -60,10 +60,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-right navbar-brand">
 
-                    <a href="{% url 'about'%}" class="page-scroll navbar navbar-brand navbar-right">ABOUT</a>
-                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">QnA</a>
                     {% if user.is_active and user.profile2.agreement2 %}
                     <a href="{% url 'logout'%}" class="page-scroll navbar navbar-right navbar-brand">로그아웃</a>
+                    <a href="{% url 'vr_mypage'%}" class="page-scroll navbar navbar-right navbar-brand">나의 봉사시간</a>
+                    <a href="{% url 'apply_choice'%}" class="page-scroll navbar navbar-right navbar-brand"> 봉사 신청 </a>
+                    <a href="{% url 'vr_help'%}" class="page-scroll navbar navbar-brand navbar-right">문의</a>
+                    {% else %}
+
+                    <a href="{% url 'vr_signup'%}" class="page-scroll navbar navbar-right navbar-brand"> 회원가입 </a>
+                    <a href="{% url 'vr_login'%}" class="page-scroll navbar navbar-right navbar-brand"> 로그인 </a>
 
                     {% endif %}
                 </ul>
@@ -86,6 +91,7 @@
                         <form method='POST' enctype="multipart/form-data">
                             {% csrf_token %}
                             <h1 class="application">봉사 신청</h1>
+                            
                             <br><br>
                             <div class="form-group row">
                                 <label for="inputinform" class="col-sm-2 col-form-label">VMS OR 1365</label>
@@ -100,44 +106,84 @@
                                     {% render_field form1.vr_accounts class="form-control" %}
                                     <br>
                                 </div>
-                                <label for="inputinform" class="col-sm-2 col-form-label">SMS</label>
+                                <label for="inputinform" class="col-sm-2 col-form-label">VR TIME</label>
                                 <div class="col-sm-11">
-                                    {{form1.sms}}
+                                    {{form3.mileage}}
                                     <br>
                                 </div>
                                 <!--{{form1.as_table}}-->
 
                                 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
                             </div>
+                            {% if wishbooks is not None %}
+                                {% for eachBook in wishbooks %}
+                                    {% if eachBook.title == Abook %}
+                                    
+                                    <div class="form-group row">
+                                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                                        <label for="inputinform" class="col-sm-2 col-form-label">TITLE</label>
+                                        <div class="col-sm-11">
+                                            {% render_field form2.title value=eachBook.title class="form-control" %}
+                                            <br>
+                                        </div>
+                                        <label for="inputinform" class="col-sm-2 col-form-label">AUTHOR</label>
+                                        <div class="col-sm-11">
+                                            {% render_field form2.author value=eachBook.author class="form-control" %}
+                                            <br>
+                                        </div>
+                                        <label for="inputinform" class="col-sm-2 col-form-label">PUBLISHER</label>
+                                        <div class="col-sm-11">
+                                            {% render_field form2.publisher value=eachBook.publisher class="form-control" %}
+                                            <br>
+                                        </div>
+                                        <label for="inputinform" class="col-sm-2 col-form-label">RECORD</label>
+                                        <div class="col-sm-11">
+                                            {{form2.record}}
+                                            <br>
+                                        </div>
+                                        <label for="inputinform" class="col-sm-2 col-form-label">PUB_DATE</label>
+                                        <div class="col-sm-11">
+                                            {% render_field form2.pub_date class="form-control" %}
+                                            <br>
+                                        </div>
+                                        <!--{{form2.as_table}}-->
+                                    </div><br>
+                                    {% else %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
                             <div class="form-group row">
-                                <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-                                <label for="inputinform" class="col-sm-2 col-form-label">TITLE</label>
-                                <div class="col-sm-11">
-                                    {% render_field form2.title class="form-control" %}
-                                    <br>
-                                </div>
-                                <label for="inputinform" class="col-sm-2 col-form-label">AUTHOR</label>
-                                <div class="col-sm-11">
-                                    {% render_field form2.author class="form-control" %}
-                                    <br>
-                                </div>
-                                <label for="inputinform" class="col-sm-2 col-form-label">PUBLISHER</label>
-                                <div class="col-sm-11">
-                                    {% render_field form2.publisher class="form-control" %}
-                                    <br>
-                                </div>
-                                <label for="inputinform" class="col-sm-2 col-form-label">RECORD</label>
-                                <div class="col-sm-11">
-                                    {{form2.record}}
-                                    <br>
-                                </div>
-                                <label for="inputinform" class="col-sm-2 col-form-label">PUB_DATE</label>
-                                <div class="col-sm-11">
-                                    {% render_field form2.pub_date class="form-control" %}
-                                    <br>
-                                </div>
-                                <!--{{form2.as_table}}-->
-                            </div><br>
+                                    <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+                                    <label for="inputinform" class="col-sm-2 col-form-label">TITLE</label>
+                                    <div class="col-sm-11">
+                                        {% render_field form2.title class="form-control" %}
+                                        <br>
+                                    </div>
+                                    <label for="inputinform" class="col-sm-2 col-form-label">AUTHOR</label>
+                                    <div class="col-sm-11">
+                                        {% render_field form2.author class="form-control" %}
+                                        <br>
+                                    </div>
+                                    <label for="inputinform" class="col-sm-2 col-form-label">PUBLISHER</label>
+                                    <div class="col-sm-11">
+                                        {% render_field form2.publisher class="form-control" %}
+                                        <br>
+                                    </div>
+                                    <label for="inputinform" class="col-sm-2 col-form-label">RECORD</label>
+                                    <div class="col-sm-11">
+                                        {{form2.record}}
+                                        <br>
+                                    </div>
+                                    <label for="inputinform" class="col-sm-2 col-form-label">PUB_DATE</label>
+                                    <div class="col-sm-11">
+                                        {% render_field form2.pub_date class="form-control" %}
+                                        <br>
+                                    </div>
+                                    <!--{{form2.as_table}}-->
+                                </div><br>
+                            {% endif %}
+
+
                             <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="제출하기">
                         </form>
                     </div>

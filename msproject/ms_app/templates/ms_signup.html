@@ -134,20 +134,20 @@
                         동의합니다.</strong></label>-->
 
                     <div class="form-group row">
-                      <label for="inputname" class="col-sm-2 col-form-label">First name</label>
+                      <label for="inputname" class="col-sm-2 col-form-label">이름</label>
                       <div class="col-sm-11">
-                        {% render_field form.first_name class="form-control" %}
+                        {% render_field form.first_name class="form-control" placeholder="이름을 입력해주세요" %}
                         {% if form.first_name.help_text %}
-                        <small style="color: grey">{{ form.first_name.help_text }}</small>
+                        <small style="color: grey ">{{ form.first_name.help_text }}</small>
                         {% endif %}
                         {% for error in form.first_name.errors %}
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
                       </div>
                       <br>
-                      <label for="inputname" class="col-sm-2 col-form-label">Last name</label>
+                      <label for="inputname" class="col-sm-2 col-form-label">성</label>
                       <div class="col-sm-11">
-                        {% render_field form.last_name class="form-control" %}
+                        {% render_field form.last_name class="form-control" placeholder="성을 입력해주세요" %}
                         {% if form.last_name.help_text %}
                         <small style="color: grey">{{ form.last_name.help_text }}</small>
                         {% endif %}
@@ -157,11 +157,11 @@
                         <br>
                       </div>
                       <br>
-                      <label for="inputusername" class="col-sm-2 col-form-label">USERNAME</label>
+                      <label for="inputusername" class="col-sm-2 col-form-label">아이디</label>
                       <div class="col-sm-11">
-                        {% render_field form.username class="form-control" %}
+                        {% render_field form.username class="form-control" placeholder="아이디 입력해주세요" %}
                         {% if form.username.help_text %}
-                        <small style="color: grey"><br>{{ form.username.help_text }}
+                        <small style="color: grey">{{ form.username.help_text }}
                         </small>
                         {% endif %}
                         {% for error in form.username.errors %}
@@ -169,9 +169,9 @@
                         {% endfor %}
                       </div>
                       <br>
-                      <label for="inputemail" class="col-sm-2 col-form-label">EMAIL</label>
+                      <label for="inputemail" class="col-sm-2 col-form-label">이메일</label>
                       <div class="col-sm-11">
-                        {% render_field form.email class="form-control" %}
+                        {% render_field form.email class="form-control" placeholder="이메일을 입력해주세요" %}
                         {% if form.email.help_text %}
                         <small style="color: grey">{{ form.email.help_text }}</small>
                         {% endif %}
@@ -184,7 +184,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">DOCUMENT OF PROOF</label>
+                      <label style="width:40%;" class="col-sm-2 col-form-label">증빙서류</label>
                       <div class="col-sm-11">
                         {{form.evidence}}
                         {% if form.evidence.help_text %}
@@ -195,7 +195,7 @@
                         {% endfor %} <br><br>
                         <br>
                       </div>
-                      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">GENDER</label>
+                      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">성별</label>
                       <div class="col-sm-11">
                         {% render_field form.sex class="radio" %}
                         {% if form.sex.help_text %}
@@ -205,9 +205,9 @@
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
                       </div>
-                      <label for="date" class="col-sm-2 col-form-label">DATE OF BIRTH</label>
+                      <label for="date" style="width:40%;" class="col-sm-2 col-form-label">생일</label>
                       <div class="col-sm-11">
-                        {% render_field form.birth_date class="form-control" %}
+                        {% render_field form.birth_date class="form-control" placeholder="생년월일을 입력해주세요" %}
                         {% if form.birth_date.help_text %}
                         <small style="color: grey"><br>{{ form.birth_date.help_text }}</small>
                         {% endif %}
@@ -220,9 +220,9 @@
 
 
                     <div class="form-group row">
-                      <label for="inputnumber" class="col-sm-2 col-form-label">PHONE NUMBER</label>
+                      <label for="inputnumber" style="width:40%;" class="col-sm-2 col-form-label">휴대폰 번호</label>
                       <div class="col-sm-11">
-                        {% render_field form.phone_number class="form-control" %}
+                        {% render_field form.phone_number class="form-control" placeholder="전화번호를 입력해주세요" %}
                         {% if form.phone_number.help_text %}
                         <small style="color: grey">{{ form.phone_number.help_text }}</small>
                         {% endif %}
@@ -232,9 +232,9 @@
                         <br><br>
                       </div>
                       <br>
-                      <label for="inputusername2" class="col-sm-2 col-form-label">PASSWORD</label>
+                      <label for="inputusername2" class="col-sm-2 col-form-label">비밀번호</label>
                       <div class="col-sm-11">
-                        {% render_field form.password1 class="form-control" %}
+                        {% render_field form.password1 class="form-control" placeholder="비밀번호를 입력해주세요"%}
                         {% if form.password1.help_text %}
                         <small style="color: grey">{{ form.password1.help_text }}</small>
                         {% endif %}
@@ -244,12 +244,11 @@
                       </div>
                       <br>
 
-                      <label for="inputemail2" class="col-sm-2 col-form-label">PASSWORD CONFIRMATION</label>
+                      <label for="inputemail2" style="width:40%;" class="col-sm-2 col-form-label">비밀번호 확인</label>
                       <div class="col-sm-11">
-                        {% render_field form.password2 class="form-control" %}
+                        {% render_field form.password2 class="form-control" placeholder="비밀번호를 다시 입력해주세요" %}
                         {% if form.password2.help_text %}
                         <small style="color: grey">
-                          <br>
                           {{ form.password2.help_text }}
                         </small>
                         {% endif %}
@@ -262,7 +261,7 @@
                   </div>
                   <br>
               </div>
-              <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="submit">
+              <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="가입하기">
               </form>
             </br>
           </header>

@@ -129,7 +129,7 @@
                     <label class="form-check-label" for="exampleCheck1"><strong><a href="#">이용약관3</a>에
                         동의합니다.</strong></label>-->
                     <div class="form-group row">
-                      <label for="inputname" class="col-sm-2 col-form-label">First name</label>
+                      <label for="inputname" class="col-sm-2 col-form-label">이름</label>
                       <div class="col-sm-11">
                         {% render_field form.first_name class="form-control" %}
                         {% if form.first_name.help_text %}
@@ -140,7 +140,7 @@
                         {% endfor %}
                       </div>
                       <br>
-                      <label for="inputname" class="col-sm-2 col-form-label">Last name</label>
+                      <label for="inputname" style="width: 100px" class="col-sm-2 col-form-label">성</label>
                       <div class="col-sm-11">
                         {% render_field form.last_name class="form-control" %}
                         {% if form.last_name.help_text %}
@@ -152,11 +152,11 @@
                         <br>
                       </div>
                       <br>
-                      <label for="inputusername" class="col-sm-2 col-form-label">USERNAME</label>
+                      <label for="inputusername" class="col-sm-2 col-form-label">아이디</label>
                       <div class="col-sm-11">
                         {% render_field form.username class="form-control" %}
                         {% if form.username.help_text %}
-                        <small style="color: grey"><br>{{ form.username.help_text }}
+                        <small style="color: grey">{{ form.username.help_text }}
                         </small>
                         {% endif %}
                         {% for error in form.username.errors %}
@@ -164,7 +164,7 @@
                         {% endfor %}
                       </div>
                       <br>
-                      <label for="inputemail" class="col-sm-2 col-form-label">EMAIL</label>
+                      <label for="inputemail" class="col-sm-2 col-form-label">이메일</label>
                       <div class="col-sm-11">
                         {% render_field form.email class="form-control" %}
                         {% if form.email.help_text %}
@@ -179,7 +179,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">VR TEST RECORD</label>
+                      <label style="width:40%;" class="col-sm-2 col-form-label">자원봉사자 녹음파일 샘플</label>
                       <div class="col-sm-11">
                         {{form.test_record}}
                         {% if form.test_record.help_text %}
@@ -190,7 +190,7 @@
                         {% endfor %} <br><br>
                         <br>
                       </div>
-                      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">GENDER</label>
+                      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">성별</label>
                       <div class="col-sm-11">
                         {% render_field form.sex class="radio" %}
                         {% if form.sex.help_text %}
@@ -200,11 +200,11 @@
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
                       </div>
-                      <label for="date" class="col-sm-2 col-form-label">DATE OF BIRTH</label>
+                      <label for="date" style="width:40%;" class="col-sm-2 col-form-label">생년월일</label>
                       <div class="col-sm-11">
                         {% render_field form.birth_date class="form-control" %}
                         {% if form.birth_date.help_text %}
-                        <small style="color: grey"><br>{{ form.birth_date.help_text }}</small>
+                        <small style="color: grey">{{ form.birth_date.help_text }}</small>
                         {% endif %}
                         {% for error in form.birth_date.errors %}
                         <p style="color: red">{{ error }}</p>
@@ -215,7 +215,7 @@
 
 
                     <div class="form-group row">
-                      <label for="inputnumber" class="col-sm-2 col-form-label">PHONE NUMBER</label>
+                      <label for="inputnumber" style="width:40%;" class="col-sm-2 col-form-label">핸드폰 번호</label>
                       <div class="col-sm-11">
                         {% render_field form.phone_number class="form-control" %}
                         {% if form.phone_number.help_text %}
@@ -227,7 +227,7 @@
                         <br><br>
                       </div>
                       <br>
-                      <label for="inputusername2" class="col-sm-2 col-form-label">PASSWORD</label>
+                      <label for="inputusername2" class="col-sm-2 col-form-label">비밀번호</label>
                       <div class="col-sm-11">
                         {% render_field form.password1 class="form-control" %}
                         {% if form.password1.help_text %}
@@ -239,12 +239,11 @@
                       </div>
                       <br>
 
-                      <label for="inputemail2" class="col-sm-2 col-form-label">PASSWORD CONFIRMATION</label>
+                      <label for="inputemail2" style="width:40%;" class="col-sm-2 col-form-label">비밀번호 확인</label>
                       <div class="col-sm-11">
                         {% render_field form.password2 class="form-control" %}
                         {% if form.password2.help_text %}
                         <small style="color: grey">
-                          <br>
                           {{ form.password2.help_text }}
                         </small>
                         {% endif %}
@@ -257,7 +256,7 @@
                   </div>
                   <br>
               </div>
-              <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="submit">
+              <input type="submit" class="btn btn-custom btn-lg page-scroll" name="submit" id="submit" value="가입하기">
               </form>
             
             </header>

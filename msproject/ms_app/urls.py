@@ -11,6 +11,7 @@ urlpatterns = [
     path('wish_books/', views.wish_books, name ='wish_books'),
     path('wish_books/create', views.create, name = 'create'),
     path('mybooks/', views.mybooks, name = 'mybooks'),
+    path('ms_mypage/', views.ms_mypage, name = 'ms_mypage'),
     path('ms_logout/',views.ms_logout,name='ms_logout'),
     path('listening_page/<int:book_id>', views.listening_page, name = 'listening')
 ]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,87 +1,106 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" style="margin: 0; padding: 0; overflow: hidden;">
+
 <head>
-<style>
-.table_list{
-    border-color:black;
-    width:800; height:500;
-    text-align:center;
-    margin-left: auto;
-    margin-right: auto;
-}
-th, td {
-    border: 1px solid black;
-    padding: 15px;
-}.table{
-  border-radius: 5px;
-  width: 50%;
-  float: none;
-}
 
-.table_title{
-    background-color:pink;
-}
-.total_list{
-    background-color:pink;
-    text-align:center;
-}
-.contain_list{text-align:center; background-color:gray;}
-.buttons{text-align: center;}
+  <style>
+    .table_list {
+      border-color: black;
+      width: 800;
+      height: 500;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 15px;
+    }
+
+    .table {
+      border-radius: 5px;
+      width: 50%;
+      float: none;
+    }
+
+    .table_title {
+      background-color: pink;
+    }
+
+    .total_list {
+      background-color: pink;
+      text-align: center;
+    }
+
+    .contain_list {
+      text-align: center;
+      background-color: gray;
+    }ㄴ
+
+    .buttons {
+      text-align: center;
+    }
 
 
 
-.table-column{
-            margin: auto;
-        }
+    .table-column {
+      margin: auto;
+    }
 
-        .table th {
-            text-align: center;
-}
+    .table th {
+      text-align: center;
+    }
 
-        .table {
-            border-radius: 5px;
-            width: 50%;
-            float: none;
-}
-       .thead-text
-       {
-           color:black;
-       }
+    .table {
+      border-radius: 5px;
+      width: 50%;
+      float: none;
+    }
 
-        li {
-            list-style: none;
-            display: inline-block;
+    .thead-text {
+      color: black;
+    }
 
-        }
+    li {
+      list-style: none;
+      display: inline-block;
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+    }
 
-        .pagination {
-            text-align: center;
-        }
-</style>
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .pagination {
+      text-align: center;
+    }
+    html{height:100%;}
+    body{height:100%;margin:}
+  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>마인드쉐어 - 리스트</title>
+  <title>마인드쉐어 - 희망도서목록</title>
   <meta name="description" content="">
   <meta name="author" content="">
   <style type="text/css">
     .copyright {
-        position:absolute;
-        bottom:0;
-        width:100%;
-        height:30px;   
-        background: rgb(231, 231, 231);
-        position: static;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      background: rgb(231, 231, 231);
+      
     }
 
-    #black{color: rgb(156, 156, 156);}
-</style>
+    #black {
+      color: rgb(156, 156, 156);
+    }
+  </style>
 
   <!-- Favicons
       ================================================== -->
@@ -116,84 +135,99 @@ th, td {
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   <nav id="menu" class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    <img src="{% static '/admin/img/ms_logo.png'%}" alt="" width="100" height="52"
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img src="{% static '/admin/img/ms_logo.png'%}" alt="" width="100" height="52"
           class="page-scroll img-responsive img-rounded"></div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      </div>
+      <!-- /.navbar-collapse -->
     </div>
-    <!-- /.navbar-collapse -->
-  </div>
   </nav>
-  <div class="jumbotron0">
-    <p style="background-color: black; color:white; text-align:center; margin-top: 15px">Total List<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
-</h1>
-    <Br>
-      <div class="table-responsive-md" style="align-content:center">
-        <table class="table col-md-8 table-column">
-        <thead class="thead-light thead-text">
-        <tr>
-            {% if user.is_active and user.profile2.agreement2 %}
-            <th>CHOICE</th>
-            {% endif %}
-            <th>STATE</th>
-            <th>BOOK LIST</th>
-            <th>AUTHOR</th>
-            <th>APPLY NUM</th>
-        </tr>
-        </thead>
-        
-        <tbody>
-            <form method="POST" action={% url 'apply' %}>
-            {% csrf_token %}
-            {% for wbook in wbook_list%}            
-            <tr>
-            {% if user.is_active and user.profile2.agreement2 %}
-              <th><input type="radio" name= wbook.title ></th>
-            {% endif %}
-                {%if wbook.state == 0%}
-                <td><p style = "background-color: green; opacity: 0.5; color: black;">녹음대기중</td>
-                {%elif wbook.state == 1 %}
-                <td><p style = "background-color: yellow; opacity: 0.5; color: black;">녹음중</td>
-                {%elif wbook.state == 2 %}
-                <td><p style = "background-color: red; opacity: 0.5; color: black;">녹음완료</td>
-                {%endif%}
-                <td>{{wbook.title}}</td>
-                <td>{{wbook.author}}</td>
-                <td>{{wbook.id}}</td>
-              
-            </tr>
-            {%endfor%}
-            {% if user.is_active and user.profile2.agreement2 %}
-              <input type="submit" value="제출하기">
-            {% endif %}
-            </form>
-      </tbody>
-    </table>
-    <Br><Br>
-      <hr>
+  <header id="header">
+    <div class="intro">
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <h1>희망도서목록</h1>
+              <Br>
+              <div class="table-responsive-md" style="align-content:center">
+                <table class="table col-md-8 table-column">
+                  <thead class="thead-light thead-text">
+                    <tr>
+                      {% if user.is_active and user.profile2.agreement2 %}
+                      <th>CHOICE</th>
+                      {% endif %}
+                      <th>STATE</th>
+                      <th>BOOK LIST</th>
+                      <th>AUTHOR</th>
+                      <th>APPLY NUM</th>
+                    </tr>
+                  </thead>
 
- {% if wbook_list.has_previous%}
-<a href="?page=1">First</a>
-<a href="?page={{wbook_list.previous_page_number}}">Previous</a>
-{% endif%}
-<div class="thead-text0">
-<span>{{wbook_list.number}}</span>
-<span>of</span>
-<span>{{wbook_list.paginator.num_pages}}</span>
-</div>
-{% if wbook_list.has_next%}
-<a href="?page={{wbook_list.next_page_number}}">Next</a>
-<a href="?page={{wbook_list.paginator.num_pages}}">Last</a>
-{% endif%}
-<div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.
-</div>
+                  <tbody>
+                    <form action="{% url 'apply' %}">
+                      {% for wbook in wbook_list%}
+                      <tr>
+                        {% if user.is_active and user.profile2.agreement2 %}
+                        <th><input type="checkbox" name="boook" id ="{{wbook.title}}" value="{{wbook.title}}"></th>
+                        {% endif %}
+                        {%if wbook.state == 0%}
+                        <td>
+                          <p style="background-color: green; opacity: 0.5; color: black;">녹음대기중</p>
+                        </td>
+                        {%elif wbook.state == 1 %}
+                        <td>
+                          <p style="background-color: yellow; opacity: 0.5; color: black;">녹음중</p>
+                        </td>
+                        {%elif wbook.state == 2 %}
+                        <td>
+                          <p style="background-color: red; opacity: 0.5; color: black;">녹음완료</p>
+                        </td>
+                        {%endif%}
+                        <td>{{wbook.title}}</td>
+                        <td>{{wbook.author}}</td>
+                        <td>{{wbook.id}}</td>
+
+                      </tr>
+                      {%endfor%}
+                      {% if user.is_active and user.profile2.agreement2 %}
+                      <input type="submit" value="낭독파일 등록하러 가기">
+                      {% endif %}
+                    </form>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+  {% if wbook_list.has_previous%}
+  <a href="?page=1">처음</a>
+  <a href="?page={{wbook_list.previous_page_number}}">이전</a>
+  {% endif%}
+  <span>{{wbook_list.number}} </span>
+  <span> of </span>
+  <span>{{wbook_list.paginator.num_pages}} </span>
+  {% if wbook_list.has_next%}
+  <a href="?page={{wbook_list.next_page_number}}">다음</a>
+  <a href="?page={{wbook_list.paginator.num_pages}}">마지막</a>
+  {% endif%}
+  </div>
+  <br>
+  <div id="black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</div>
 </body>
+
 </html>

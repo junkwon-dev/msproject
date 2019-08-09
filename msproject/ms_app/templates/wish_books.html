@@ -11,7 +11,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>마인드쉐어 - 회원가입</title>
+  <title>마인드쉐어 - 희망도서 신청</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -94,29 +94,29 @@
               {% render_field models.title class="radio" %}
                 <label class="col-sm-2 col-form-label">도서명</label>
                 <div class="col-sm-10 col-md-11">
-                  <input type="text" class="form-control" name="book_name" required>
+                  <input type="text" class="form-control" name="book_name" placeholder="도서명을 입력해주세요." required>
                 </div>
                 <br>
                 <label class="col-sm-2 col-form-label">저자</label>
                 <div class="col-sm-10 col-md-11">
-                  <input type="text" class="form-control" name="book_author" required>
+                  <input type="text" class="form-control" name="book_author" placeholder="저자명을 입력해주세요." required>
                 </div>
                 <br>
                 <label class="col-sm-2 col-form-label">출판사이름</label>
                 <div class="col-sm-10 col-md-11">
-                  <input type="text" class="form-control" name="book_publish" required>
+                  <input type="text" class="form-control" name="book_publish" placeholder="출판사를  입력해주세요." required>
                 </div>
                 <br>
                 <label class="col-sm-2 col-form-label">발행년도</label>
                 <div class="col-sm-10 col-md-11">
-                  <input type="number" class="form-control" name="book_year" required>
+                  <input type="number" class="form-control" name="book_year" placeholder="발행년도를 입력해주세요." required>
                 </div>
                 <br>
                 </div>
                 <br><br>
                 
                 <input type="submit" class="btn btn-custom btn-lg page-scroll" value="제출하기">
-                <button onclick="location.href='{% url 'ms_index'%}'" class="btn btn-custom btn-lg page-scroll">돌아가기</<button>
+                <button onclick="location.href='{% url 'ms_index'%}'" class="btn btn-custom btn-lg page-scroll">돌아가기</button>
             </form>
           </div>
         </div>
