@@ -140,6 +140,9 @@ th, td {
         <table class="table col-md-8 table-column">
         <thead class="thead-light thead-text">
         <tr>
+            {% if user.is_active and user.profile2.agreement2 %}
+            <th>CHOICE</th>
+            {% endif %}
             <th>STATE</th>
             <th>BOOK LIST</th>
             <th>AUTHOR</th>
@@ -148,9 +151,13 @@ th, td {
         </thead>
         
         <tbody>
-        
+            <form method="POST" action={% url 'apply' %}>
+            {% csrf_token %}
             {% for wbook in wbook_list%}            
             <tr>
+            {% if user.is_active and user.profile2.agreement2 %}
+              <th><input type="radio" name= wbook.title ></th>
+            {% endif %}
                 {%if wbook.state == 0%}
                 <td><p style = "background-color: green; opacity: 0.5; color: black;">녹음대기중</td>
                 {%elif wbook.state == 1 %}
@@ -161,8 +168,13 @@ th, td {
                 <td>{{wbook.title}}</td>
                 <td>{{wbook.author}}</td>
                 <td>{{wbook.id}}</td>
+              
             </tr>
             {%endfor%}
+            {% if user.is_active and user.profile2.agreement2 %}
+              <input type="submit" value="제출하기">
+            {% endif %}
+            </form>
       </tbody>
     </table>
     <Br><Br>

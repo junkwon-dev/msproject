@@ -20,7 +20,7 @@ from .forms import LibraryForm
 from .models import Apply
 from ms_app.models import Library
 from django.utils import timezone
-
+from django.core import serializers #for js
 
 
 def index(request): # ohjinjin 함수 추가
@@ -131,7 +131,7 @@ def apply(request):
 def vr_help(request): 
     question =HelpData.objects
     question_list = HelpData.objects.all()
-    paginator = Paginator(question_list,5)
+    paginator = Paginator(question_list,10)
     page = request.GET.get('page')
     questions = paginator.get_page(page)
     return render(request, 'vr_help.html',{'question':question,'questions':questions})
@@ -184,19 +184,35 @@ def delete(request,question_id):
     return redirect('vr_help')
 
 def mypage(request):
-    
-    return render(request,'mypage.html')
+    user=request.user
+    username=request.user.username
+    frommile=request.user.profile2.mileage
+    realmile2=request.user.profile2.realmile
+    canmile = int(frommile)//60
+    return render(request, 'mypage.html',{'frommile':frommile, 'realmile2' : realmile2, 'canmile' : canmile})
 
 def transmile(request):
-    frommile = request.user.Profile2.Mileage
-    wanttomile = request.GET['wanttomile']
-    if(wanttomile*60>transmile):
-        pass
-    else:
-        frommile = tranmile - wanttomile*60
+    username = request.user.username
+    obj=None
+    for eachProf in Profile2.objects.all():
+            if eachProf.user.username == username:
+                obj = eachProf
+                break
     
-    fromsmile.save()
-    return redirect('mypage')
+    if request.method=='POST':
+        frommile = obj.mileage
+        tomile= obj.realmile
+        wanttomile2 = request.POST.get('wanttomile')
+        if(int(int(wanttomile2)*60)>int(frommile)):
+            pass
+        else:
+            frommile = int(int(frommile) - int(wanttomile2)*60)
+            tomile = int(tomile) + int(wanttomile2)
+        obj.mileage = frommile
+        obj.realmile = tomile
+        obj.save()
+        return redirect('mypage')
+
 
 def modify(request,question_id):
     question = get_object_or_404(HelpData,pk=question_id)
@@ -208,6 +224,13 @@ def qnamodify(request,question_id):
     question.question_content = request.POST['question_content']
     question.save()
     return redirect('vr_help')
+
+def apply_choice(request):
+    json_serializer = serializers.get_serializer("json")()
+    books = json_serializer.serialize(Library.objects.all(), ensure_ascii=False)
+    return render(request,'apply_choice.html',{'books':books})
+
+
 
 # def comment_write(request,question_id):
 #     if request.method=='POST':

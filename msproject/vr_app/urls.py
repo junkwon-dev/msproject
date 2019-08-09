@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from ms_app import views as ms_views #test(son)
 #from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -20,7 +21,8 @@ urlpatterns = [
     path('<int:question_id>/qnamodify/',views.qnamodify,name='qnamodify'),
     path('mypage/',views.mypage,name='mypage'),
     path('mapage/transmile',views.mypage,name='transmile'),
-    #path('apply_create/',views.apply_create, name='apply_create'),
+    path('test',ms_views.lists, name='vr_list'), #test(son)
+    path('apply_choice/',views.apply_choice, name='apply_choice'),
     # path('<int:question_id>/comment_new', views.comment_write, name="comment_write"),
     
 ]

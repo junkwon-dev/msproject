@@ -191,6 +191,7 @@
                     {% endif %} 
 
                     {% if user.is_active and user.profile1.agreement3 %}
+                        <a href="{% url 'vr_list'%}">test</a>
                         <button  class="box2" onclick="location.href='{% url 'ms_logout'%}'">
                             <h2 style="color: black"> 로그아웃</h2>
                         </button >

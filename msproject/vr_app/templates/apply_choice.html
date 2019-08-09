@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+    function book_overlap_check(){
+        var books = "{{books}}";
+        alert(books)
+        if (books.indexOf(document.getElementById("book_input").value) != -1){
+            alert('이미 낭독 파일이 있습니다. 그래도 새로운 목소리로 낭독하시겠습니까?');
+        }
+        else{
+            alert('아직 한 번도 낭독된 적 없습니다. 낭독파일을 애타게 기다리고 있습니다!!')
+        }
+    }
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <input type="text" id="book_input" name="bookname" check_result="fail" required />
+        <button type="button" id="book_overlap_button" onclick="book_overlap_check()">중복검사</button>
+    </form>
+    <a href="{% url 'apply' %}">바로 신청하기</a>
+    <p>
+        <a href="{% url 'vr_list' %}">리스트 보기</a>
+</body>
+
+</html>
