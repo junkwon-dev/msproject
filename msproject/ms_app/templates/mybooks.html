@@ -30,6 +30,18 @@
   <title>마인드쉐어 - 나의 도서</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <style type="text/css">
+    .copyright {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;   
+        background: rgb(231, 231, 231);
+        position: static;
+    }
+
+    #black{color: rgb(156, 156, 156);}
+</style>
 
   <!-- Favicons
       ================================================== -->
@@ -82,7 +94,7 @@
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-    <h1 class="total_list">나의 도서 목록</h1><!--최근 들은 도서 목록으로 해도 좋을것 같아요-->
+    <h1 class="total_list">나의 도서 목록{{user}}</h1><!--최근 들은 도서 목록으로 해도 좋을것 같아요-->
     
     <table class="table_list" >
         
@@ -99,7 +111,7 @@
             <tr>
                 <td>8/2</td>
                 <td>죽음1</td>
-                <td>베르나르 베르베르</td>
+                <td>베르나르 베르베르{{user.}}</td>
                 <td>843 W491d 019가 </td>
             </tr>
             <tr>
@@ -161,6 +173,8 @@
     -->
     <div class="buttons">
     <a href="{%url 'ms_library'%}"><button>음성 도서관</button></a>
-    </div>   
+    </div> 
+    <div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.
+    </div>
 </body>
 </html>

@@ -53,18 +53,14 @@ a:hover, a:focus {
 }
 ul, ol {
 	list-style: none;
-}
-ul, ol {
 	padding: 0;
-	webkit-padding: 0;
-	moz-padding: 0;
 }
 hr {
 	height: 2px;
 	width: 70px;
 	text-align: center;
 	position: relative;
-	background: #1E7A46;
+	background: #000;
 	margin-bottom: 20px;
 	border: 0;
 }

@@ -7,6 +7,19 @@
   <title>마인드쉐어 - 로그인</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <style type="text/css">
+    .copyright {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        height:30px;   
+        background: rgb(231, 231, 231);
+        position: static;
+        margin-bottom: 0px;
+    }
+
+    #black{color: rgb(156, 156, 156);}
+</style>
 
   <!-- Favicons
     ================================================== -->
@@ -58,7 +71,6 @@
           <a href="{% url 'about'%}" class="page-scroll navbar navbar-right navbar-brand">소개</a>
         </ul>
       </div>
-      <!-- /.navbar-collapse -->
     </div>
   </nav>
 </body>
@@ -98,18 +110,16 @@
 </header>
 
 
-<div id="footer">
-  <div class="container text-center">
-    <p>&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
+<div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>
   </div>
-</div>
-<!--<script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
+
+{% comment %} <script type="text/javascript" src="/static/admin/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/static/admin/js/bootstrap.js"></script>
 <script type="text/javascript" src="/static/admin/js/SmoothScroll.js"></script>
 <script type="text/javascript" src="/static/admin/js/nivo-lightbox.js"></script>
 <script type="text/javascript" src="/static/admin/js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="/static/admin/js/contact_me.js"></script>
-<script type="text/javascript" src="/static/admin/js/main.js"></script>-->
+<script type="text/javascript" src="/static/admin/js/main.js"></script> {% endcomment %}
 </body>
 
 </input>

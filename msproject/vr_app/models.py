@@ -62,7 +62,9 @@ class Apply(models.Model): #ohjinjin 080619 PM15:08
     #book_name = models.CharField(max_length=30,blank=True)
     #author = models.CharField(max_length=15,blank=True)
     #publisher = models.CharField(max_length=15,blank=True)
-    BoolChoices = [(True,'Yes'),(False,'No')]
-    sms = models.BooleanField(choices=BoolChoices,default=False,blank=True)
+    #BoolChoices = [(True,'Yes'),(False,'No')]
+    #sms = models.BooleanField(choices=BoolChoices,default=False,blank=True)
+    #sms = models.BooleanField(default=False)
+    sms = models.CharField(max_length=10,blank=True)
     full_name = models.CharField(max_length=15,blank=True)
     username = models.CharField(max_length=15,blank=True)#view?

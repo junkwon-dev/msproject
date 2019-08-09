@@ -67,7 +67,7 @@
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-<header id="header">
+<form id="header">
   <div class="intro">
     <div class="overlay">
       <div class="container">
@@ -95,19 +95,19 @@
                 <br>
                 <label class="col-sm-2 col-form-label">발행년도</label>
                 <div class="col-sm-10 col-md-11">
-                  <input type="text" class="form-control" name="book_year" required>
+                  <input type="number" class="form-control" name="book_year" required>
                 </div>
                 <br>
                 </div>
                 <input type="submit" class="btn btn-custom btn-lg page-scroll" value="제출하기">
-                <a href="{% url 'ms_index'%}"><button class="btn btn-custom btn-lg page-scroll">돌아가기</button></a>
+                <button onclick="location.href='{% url 'ms_index'%}'" class="btn btn-custom btn-lg page-scroll">돌아가기</<button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</header>
+</form>
 <!--의준 :: 다음을 누르면 "신청되었습니다"창이 뜬후에 index로 넘어가게 해주세용-->
 
 <div id = "black" class="copyright text-center py-3">&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</a>

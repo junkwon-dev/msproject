@@ -76,35 +76,38 @@
     <!--<img src="{% static 'ms_logo.png'%}" alt="ms_logo">-->
 </div>
 <!--  어플라이 수정 8_8 찬호-->
-
 <header id="header">
-    <form method='POST' enctype="multipart/form-data">
-        {% csrf_token %}
-        <h1 class="application">봉사 신청</h1>
-        <Br><br><br><Br>
-
-        <div class="applyform">
-            <table class="tabl"></table>
-            <div class="id_1365">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{form1.as_table}}
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 login-text">
+                        <form method='POST' enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h1 class="application">봉사 신청</h1>
+                            <br><br>
+                            <div class="applyform">
+                                <table class="tabl"></table>
+                                <div class="id_1365">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    {{form1.as_table}}
+                                </div>
+                                <div class="priv">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                                {{form2.as_table}}
+                                </table>
+                            </div>
+                            <br>
+                            <input class="btn btn-dark" type="submit" value="제출하기">
+                        </form>
+                    </div>
+                </div>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="priv">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-
-
-            {{form2.as_table}}
-            </table>
         </div>
-        <br>
-        <input class="btn btn-dark" type="submit" value="제출하기">
+    </div>
+</header>
 
-    </form>
     <br><br><br>
 
     {% comment %}

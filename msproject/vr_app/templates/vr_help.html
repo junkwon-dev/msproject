@@ -4,7 +4,8 @@
 <head>
         <style>
                 .helping {border : 1px solid; margin-bottom:10px;}
-                .notice {border : 1px solid; margin-bottom:5px; margin-right:10px; margin-left:10px;}
+                .notice {border-left : 1px solid; margin-bottom:5px; margin-right:10px; margin-left:10px;}
+                .white-border {border: 1px solid; margin-bottom:10px; color:white; text-align:center;}
                 .question { border : 1px solid; margin-bottom:10px; margin-right:10px; margin-left:10px;}
                 </style>
                 <style type="text/css">
@@ -110,24 +111,27 @@
     <div class="overlay">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 login-text">
-    <div class="helping" style="margin-top:150px;">
-            <h2>공지사항</h2>
-            <div class="notice">
-                안녕하세요<br>
-                안녕하세요<br>
-                안녕하세요<br>
-                안녕하세요<br>
-                안녕하세요<br>
-        
-            </div>
+          <div class="col-md-10 col-md-offset-1">
+    <div style="margin-top:150px;">
+            <h1 class="login-text">공지사항</h1>
+            <div class="white-border">
+            <p style="text-align:left">
+                <a href="#">1. 새로운 책이 출시되었습니다</a><br>
+                <a href="#">2. 추가적인 컨텐츠를 제작할 예정입니다</a><br>
+                <a href="#">3. 회원 100명에 달성했습니다?</a><br>
+                <a href="#">4. 라이징 스타 작가들과의 계약 프로젝트</a><br>
+                <a href="#">5. 마인드쉐어에 오신것을 환영합니다!</a><br>
+            </p>
         </div>
-        <div class="column-text-white col-md-15">
+        </div>
+            <br>
+            <br>
             <a href="{% url 'qna'%}" class="btn btn-custom btn-lg page-scroll">질문하기</a>
+            </div>
+            
         </div>
         <br>
-        <div class="helping">
-            <h2>자주 물어보는 질문</h2>
+            <h1 class="login-text">자주 물어보는 질문</h1>
             <div class="question">
             Q. 봉사시간은 어떻게 받을 수 있나요?
             <br>
@@ -146,7 +150,7 @@
         </div>
             
         <div class="helping">
-            <h2>요청받은 질문들</h2>
+            <h1 class="login-text">요청받은 질문들</h1>
             <div class="ques_list">
             <!-- 내용들-->
             {% for ques in questions %}

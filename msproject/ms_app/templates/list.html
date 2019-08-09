@@ -12,7 +12,12 @@
 th, td {
     border: 1px solid black;
     padding: 15px;
+}.table{
+  border-radius: 5px;
+  width: 50%;
+  float: none;
 }
+
 .table_title{
     background-color:pink;
 }
@@ -22,6 +27,43 @@ th, td {
 }
 .contain_list{text-align:center; background-color:gray;}
 .buttons{text-align: center;}
+
+
+
+.table-column{
+            margin: auto;
+        }
+
+        .table th {
+            text-align: center;
+}
+
+        .table {
+            border-radius: 5px;
+            width: 50%;
+            float: none;
+}
+       .thead-text
+       {
+           color:black;
+       }
+
+        li {
+            list-style: none;
+            display: inline-block;
+
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .pagination {
+            text-align: center;
+        }
 </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,11 +119,13 @@ th, td {
     <!-- /.navbar-collapse -->
   </div>
   </nav>
-    <h1 class="total_list">전체 목록</h1>
-    
-    <table class="table_list" style="margin-top:100px"><!--울 마진값 일부러 준거에요 추후에 수정할게요-->
-        
-        <thead class="table_title">
+  <div class="jumbotron">
+    <p style="background-color: black; color:white; text-align:center; margin-top: 15px">Total List<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
+</h1>
+    <Br>
+      <div class="table-responsive-md style="align-content:center">
+        <table class="table col-md-8 table-column">
+        <thead class="thead-light thead-text">
         <tr>
             <th>STATE</th>
             <th>BOOK LIST</th>
@@ -90,7 +134,7 @@ th, td {
         </tr>
         </thead>
         
-        <tbody class="contain_list">
+        <tbody>
         
             {% for wbook in wbook_list%}            
             <tr>
@@ -108,39 +152,22 @@ th, td {
             {%endfor%}
       </tbody>
     </table>
-    <div class="buttons">
-    <a href="{%url 'ms_index'%}"><button></button>돌아가기</button></a>
-    <a href="{%url 'mybooks'%}"><button>나의 도서</button></a>
-    <a href="{%url 'ms_library'%}"><button>음성 도서관</button></a>
-    {% comment %} <a href="{%url 'listening'%}"><button>녹음듣기</button></a>
- {% endcomment %}    </div>
+    <Br><Br>
+      <hr>
 
  {% if wbook_list.has_previous%}
 <a href="?page=1">First</a>
 <a href="?page={{wbook_list.previous_page_number}}">Previous</a>
 {% endif%}
-
+<div class="thead-text">
 <span>{{wbook_list.number}}</span>
 <span>of</span>
 <span>{{wbook_list.paginator.num_pages}}</span>
-
+</div>
 {% if wbook_list.has_next%}
 <a href="?page={{wbook_list.next_page_number}}">Next</a>
 <a href="?page={{wbook_list.paginator.num_pages}}">Last</a>
 {% endif%}
-    <footer id="footer">
-  <div class="container text-center"  >
-    <p style="text-align:center" >&copy; 2019 MINDSHARE. ALL RIGHTS RESERVED.</p>
-  </div>
-  
-</footer>
-
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+ 
 </body>
 </html>

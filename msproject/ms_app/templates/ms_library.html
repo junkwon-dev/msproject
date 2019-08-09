@@ -4,7 +4,23 @@
 <head>
     <meta charset="utf-8">
     <style>
-       
+        .table-column{
+            margin: auto;
+        }
+
+        .table th {
+            text-align: center;
+}
+
+        .table {
+            border-radius: 5px;
+            width: 50%;
+            float: none;
+}
+       .thead-text
+       {
+           color:black;
+       }
 
         li {
             list-style: none;
@@ -78,12 +94,13 @@
         </div>
     </nav>
     <h1>
-        <p style="background-color: pink;text-align:center; margin-top: 50px">VOICE LIBRARY<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
+        <div class="jumbotron">
+        <p style="background-color: black; color:white; text-align:center; margin-top: 15px">VOICE LIBRARY<!--울 마진값 일부러 준거에요 추후에 수정할게요-->
     </h1>
-    <br><br>
-    <div class="table-responsive-md col-md-12" style="align-content:center">
-        <table class="table">
-        <thead class="thead-light" style="text-align:center">
+    <br>
+    <div class="table-responsive-md style="align-content:center">
+        <table class="table col-md-8 table-column">
+        <thead class="thead-light thead-text">
           <tr>
                     <!--<th>ORDER</th>-->
                     <th>BOOK TITLE</th>
@@ -159,7 +176,7 @@
         </tbody>-->
         </table>
         <Br><Br>
-        <hr />
+        <hr>
 
         <!--<div class="page#">
                 <ul clas<a href="?page=1">1</a>                    <li><a href="?page=2">2</a></li>
@@ -173,11 +190,11 @@
         <a href="?page=1">First</a>
         <a href="?page={{books.previous_page_number}}">Previous</a>
         {%endif%}
-
+        <div class="thead-text">
         <span>{{books.number}}</span>
         <span>of</span>
         <span>{{books.paginator.num_pages}}</span>
-
+        </div>
         {%if books.has_next%}
         <a href="?page={{books.next_page_number}}">Next</a>
         <a href="?page={{books.paginator.num_pages}}">Last</a>

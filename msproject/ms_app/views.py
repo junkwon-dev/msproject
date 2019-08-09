@@ -60,8 +60,8 @@ class RegisteredView(TemplateView): # 회원가입이 완료된 경우
 @login_required
 def lists(request):
     #wbooks=Wish_Book.objects.all()
-    tmpWbooks = Wish_Book.objects
-    paginator = Paginator(tmpWbooks.all(), 6)
+    tmpWbooks = Wish_Book.objects.all()
+    paginator = Paginator(tmpWbooks, 6)
     page = request.GET.get('page')
     wbook_list = paginator.get_page(page)
 
@@ -146,7 +146,7 @@ def ms_index(request):
 def ms_library(request):
     #db table 이미 만들어져있어야되고 걔네를 불러와줘야함 다운로드가능하게해줘야함_ohjinjin 080619 PM15:08
     bookList=Library.objects
-    paginator = Paginator(bookList.all(), 3)
+    paginator = Paginator(bookList.all(), 10)
     page = request.GET.get('page')
     books = paginator.get_page(page)
 
